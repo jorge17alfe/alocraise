@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* color: red; */
+}
+body {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 1);
+  color: #a9a9a9;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 15px;
+}
+
+/* NAV */
+.orange_square {
+  /* background: none repeat scroll 0 0 #f47b33; */
+  height: 40px;
+  /* position: absolute;
+  right: 15px;
+  top: 50px; */
+  width: 40px;
+}
+
+.green_square {
+  /* background: none repeat scroll 0 0 #74BE37; */
+  height: 40px;
+  /* position: absolute;
+  left: 25px;
+  bottom: -10px;*/
+  width: 40px; 
+}
+.picture_logo {
+  height: 40px;
+  position: relative;
+  width: 40px;
+}
+
+nav {margin-bottom: 7rem; }
+
+nav li{
+  position: relative;
+  overflow: hidden;
+}
+
+nav li {
+  border-bottom: 1px dotted rgb(78, 76, 76);
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+nav a {
+  display: block;
+  padding: 0.5rem 0.5rem 0.5rem 1.8rem;
+}
+
+nav i {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  z-index: 1;
+  font-size: 1.1rem;
+  -webkit-transition: left 0.5s ease 0.2s;
+     -moz-transition: left 0.5s ease 0.2s;
+          transition: left 0.5s ease 0.2s;
+}
+
+nav li:hover i{
+  left: 10px;
+}
+
+nav li span {
+  position: relative;
+  z-index: 1;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+}
+
+nav .bg-nav {
+  background: none repeat scroll 0 0 rgb(255, 255, 255);
+  height: 100%;
+  left: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  -webkit-transition: left 0.3s ease 0s;
+     -moz-transition: left 0.3s ease 0s;
+          transition: left 0.3s ease 0s;
+}
+
+nav li:hover .bg-nav {
+  left: 0; 
+}
+
+nav .active a {
+  background: none repeat scroll 0 0 rgb(204, 22, 22);
+}
+
+nav .active i, nav .active span {
+  color: #f47b33; 
+}
+nav .active i {
+  left:10px; 
+}
+
+.burguer {
+  
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  height: 2.3rem;
+  z-index: 1000;
+}
+
+/*-------- END NAV ------*/

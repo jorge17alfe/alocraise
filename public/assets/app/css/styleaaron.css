@@ -1,0 +1,340 @@
+:root {
+  --letra_londrina: "Londrina Shadow", cursive;
+  --letra_pizarra: "Fredericka the Great", cursive;
+  --color_font: #262626;
+  --color_font_hover: rgb(94, 65, 42);
+  --bg_table_web: -webkit-linear-gradient(
+      to left,
+      rgb(255, 255, 255, 0.2),
+      rgb(255, 255, 255, 0.2)
+    ),
+    url("../img/madera.jpg ");
+  --bg_table_linear: linear-gradient(
+      to left,
+      rgb(255, 255, 255, 0.2),
+      rgb(255, 255, 255, 0.2)
+    ),
+    url("../img/madera.jpg ");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Hind", sans-serif;
+  font-size: 1rem;
+  color: var(--color_font);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/*NAVIGATION*/
+
+.main-header,
+.dropdown-menu,
+.burguer {
+  background: var(--bg_table_web);
+  background: var(--bg_table_linear);
+  box-shadow: 0px 0px 10px 0 #802400;
+}
+
+.nav-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#nav-brand {
+  width: 60px;
+}
+
+/*nav right*/
+
+li a {
+  color: var(--color_font);
+  font-size: 1.2rem;
+}
+
+.signup-section button {
+  background-color: hsla(17, 100%, 25%, 0.3);
+  color: var(--color_font);
+}
+
+li a:hover {
+  /* border-bottom: 5px solid var(--color_font_hover); */
+  color: var(--color_font_hover);
+  font-size: 1.3rem;
+}
+.social li a {
+  background-color: rgba(210, 105, 30, 0.2);
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+}
+
+.social li a:hover,
+.signup-section button:hover {
+  background-color: rgba(210, 105, 30, 0.502);
+}
+
+.menu-btn {
+  position: fixed;
+  cursor: pointer;
+  right: 2rem;
+  bottom: 2rem;
+  color: var(--color_font);
+  display: none;
+}
+
+/* vacio portada */
+
+.vacio {
+  height: 110px;
+}
+
+.titulo {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+/* portada el punto */
+
+.nuestra_historia,
+.signup-section,
+.menu_carta {
+  background-color: rgba(128, 36, 0, 0.07);
+}
+
+.linea {
+  border-bottom: 15px dashed hsla(17, 100%, 25%, 0.3);
+}
+
+.main_images button {
+  font-size: 1.2rem;
+  height: 4rem;
+  width: 100%;
+  background-color: rgba(210, 105, 30, 0.2);
+  color: var(--color_font);
+  font-weight: 1000;
+  padding: 4rem auto;
+}
+
+.fa-chevron-left,
+.fa-chevron-right {
+  color: #d2691e80;
+}
+
+.main_images button:hover {
+  cursor: pointer;
+  background-color: #d2691e80;
+}
+
+.menu_dia,
+.fondo_text {
+  background-image: url("../img/pizarra.jpg");
+
+  background-size: cover;
+  background-position: center;
+  max-width: 800px;
+  font-style: italic;
+  width: 100%;
+  margin: auto;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+/* credit card*/
+
+.ccards h6 {
+  font-size: 0.8rem;
+}
+
+.follow_ccards .ccards .main_card img {
+  width: 60px;
+  height: 40px;
+}
+
+/*footerlinks*/
+
+.footer-links {
+  color: var(--color_font);
+  padding: 10px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+}
+
+.footer-links dl dt {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.footer-links dl dd {
+  font-size: 0.8rem;
+}
+.footer-links dl dd a {
+  color: var(--color_font);
+}
+.footer-links dl dd a:hover {
+  color: #5e412a;
+}
+
+.footer {
+  background: var(--bg_table_web);
+  background: var(--bg_table_linear);
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.copy {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.copy a {
+  color: var(--color_font);
+}
+.copy a:hover {
+  color: var(--color_font_hover);
+}
+
+.map dd a i {
+  font-size: 3rem;
+}
+
+.burguer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  height: 2.3rem;
+  z-index: 1000;
+}
+
+/* dispositivos 992px */
+
+@media (max-width: 992px) {
+  .vacio {
+    height: 30px;
+  }
+  .nav-brand {
+    width: 52px;
+  }
+
+  .menu_dia {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .titulo {
+    font-size: 3.5rem;
+  }
+}
+
+/* dispositivos 600px */
+
+@media (max-width: 600px) {
+ 
+  .nav-menu li a{
+    font-size: 1rem;
+  }
+
+  .nuestra_historia {
+    width: 98%;
+    margin-top: 1.2rem;
+  }
+
+  .titulo {
+    font-size: 3rem;
+  }
+
+  .nuestra_historia h2 {
+    font-size: 0.9;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  .follow_ccards .social h6 {
+    font-size: 0.7rem;
+  }
+
+  .ccards h6 {
+    font-size: 0.7rem;
+  }
+
+  .follow_ccards .social a i {
+    font-size: 1.6rem;
+  }
+  .follow_ccards .ccards .main_card img {
+    width: 50px;
+  }
+
+  /* footer */
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .footer-links dl {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .footer-links dl dt {
+    font-weight: 800;
+    font-size: 0.8rem;
+  }
+
+  .footer-links dl dd {
+    font-size: 0.7rem;
+  }
+
+  .copy {
+    font-weight: 1000;
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 400px) {
+    /* .navbar-collapse {
+      width: 70%;
+    } */
+    .nav-menu {
+      padding: 0.1rem;
+    }
+    .nav-main ul li {
+      padding-left: 10px;
+    }
+
+    .titulo {
+      font-size: 2.5rem;
+    }
+
+    .container {
+      width: 100%;
+      margin: auto;
+    }
+
+    .nuestra_historia {
+      margin-top: 1rem;
+    }
+
+    .images {
+      margin: auto;
+      width: 100%;
+    }
+  }
+}
