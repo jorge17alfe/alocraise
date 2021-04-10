@@ -1,18 +1,18 @@
-<!-- progress line -->
+<!-- PROGRESS LINE -->
 <div class="bar-long"></div>
-<!-- burguer -->
+<!-- BURGUER -->
 <div class="btn-10 col-2">
   <button class="burguer navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class=" fas fa-bars fa-lg"></i>
   </button>
 </div>
-<!-- button up -->
+<!-- BUTTON UP -->
 <div class=" position-fixed upbuttom btn-10">
   <button id="upbutton" class="m-auto btn btn-outline-primary "><i class="fas fa-angle-up"></i></button>
 </div>
-<!-- networw social -->
-
-<!-- social_network  -->
+<!-- COOKIES -->
+<?php viewadd("includes/add/cookies") ?> 
+<!-- SOCIAL NETWORK  -->
 <div class="social_network position-fixed d-flex  flex-column btn-20 top ml-xl-5 ml-md-4 ml-sm-2 ml-0">
   <a href="https://m.facebook.com/sharer.php?u=<?= SERVERURL ?>" target="_blank" class=" btn  "><i class="fab fa-facebook-f"></i></a>
   <a href="https://twitter.com/intent/tweet?text= carta-restaurante-online&url=<?= SERVERURL ?>&hashtags=alocraise" target="_blank" class=" btn "><i class="fab fa-twitter"></i></a>
@@ -23,7 +23,6 @@
   <a href="whatsapp://send?text=<?= SERVERURL ?>" target="_blank" class=" btn " data-action="share/whatsapp/share"><i class="fab fa-whatsapp"></i> </a>
   <!-- <a href="" class=" btn mb-1"><i class="fas fa-envelope-square"></i> </a> -->
 </div>
-
 <style>
   .social_network {
     z-index: 2000;
@@ -41,7 +40,6 @@
     transform-origin: 50% 50%;
     transform: rotate(5760deg);
     transition: all 5s ease-in;
-
   }
 
   .social_network a i {
