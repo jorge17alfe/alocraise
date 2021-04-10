@@ -79,7 +79,8 @@ body {
   color: var(--color_hover_primary);
 }
 
-.cuadrado {
+.cuadrado,
+#main-cookies {
   box-shadow: 0px 0px 15px 0 var(--color_primary);
   background-color: rgb(255, 255, 255);
 }

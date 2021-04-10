@@ -62,32 +62,37 @@ class AdminController
             $this->model->deleteUser($this->tabla_menu_dia, $where);
             $this->model->deleteUser($this->tabla_datos_personales, $where);
             $this->model->deleteUser($this->tabla_usuarios_pass, $where);
-            
+
             die("Usuario borrado");
         }
         page_404();
     }
 
-    public function deleteFoldersUsers($user)
+    public function deleteFoldersUsers($user = null)
     {
-        $result = $this->model->getRow('datos_usuarios', '*', array("id_usuario", $user));
-        $menu_dia = $this->model->getRow('menu_dia', 'img_menu', array("id_usuario", $user));
-        $img = ["logo", "portada", "bebida", "carta", "img_menu"];
-        $result->img_menu = $menu_dia->img_menu;
-        foreach ($result as $k => $v) {
-            if (in_array($k, $img)) {
-                $ruta = (dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img/" . $k . "/");
-                $result->$k = unserialize($result->$k);
-                print_r($result->$k);
-                foreach ($result->$k as $v1) {
-                    if (is_file($ruta . $v1)) {
-                        unlink($ruta  . $v1);
+        session_start();
+        if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] === config('admin') && isset($user)) {
+            $result = $this->model->getRow('datos_usuarios', '*', array("id_usuario", $user));
+            $menu_dia = $this->model->getRow('menu_dia', 'img_menu', array("id_usuario", $user));
+            $img = ["logo", "portada", "bebida", "carta", "img_menu"];
+            $result->img_menu = $menu_dia->img_menu;
+            foreach ($result as $k => $v) {
+                if (in_array($k, $img)) {
+                    $ruta = (dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img/" . $k . "/");
+                    $result->$k = unserialize($result->$k);
+                    print_r($result->$k);
+                    foreach ($result->$k as $v1) {
+                        if (is_file($ruta . $v1)) {
+                            unlink($ruta  . $v1);
+                        }
                     }
                 }
+                rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img/" . $k);
             }
-            rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img/" . $k);
+            rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img");
+            rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user);
+            return;
         }
-        rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img");
-        rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user);
+        page_404();
     }
 }
