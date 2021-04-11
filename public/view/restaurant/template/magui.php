@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse col-6 " id="navbarSupportedContent">
                 <ul class="navbar-nav col-12 justify-content-end align-items-end pr-0 mr-0">
                     <?php
-                    if ($_GET['url'] == 'design/view/magui') {
+                    if ($_GET['url'] == 'design/example/magui') {
                         $data = [$parameter->data->color_web2, ""];
                         viewadd("includes/add/menutemplate", $data);
                     } ?>

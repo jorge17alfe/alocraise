@@ -15,3 +15,6 @@
 <script src="<?=SERVERURL?>lib/js-cookie-latest/src/js.cookie.js"></script>
 <script src="<?=assets("js/main.js")?>"></script>
 <?php } ?>
+<script>
+   
+</script>

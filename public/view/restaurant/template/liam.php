@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse col-6 " id="navbarSupportedContent">
                 <ul class="navbar-nav col-12 justify-content-end align-items-end pr-0 mr-0 text-dark">
                     <?php
-                    if ($_GET['url'] == 'design/view/liam') {
+                    if ($_GET['url'] == 'design/example/liam') {
                         $data = ["bg-primary", "text-light"];
                         viewadd("includes/add/menutemplate", $data);
                     } ?>

@@ -1,5 +1,5 @@
 :root {
-  --color_primary: rgb(39, 51, 165);
+  --color_primary: #2733a5;
   --color_second: #6071be;
   --color_third: rgb(180, 190, 237);
   --color_hover_primary: hsl(240, 2%, 41%);
@@ -20,6 +20,7 @@ a {
 
 a:hover {
   color: var(--color_hover_primary);
+  font-weight: 800;
 }
 
 ul {
@@ -70,13 +71,11 @@ body {
   transform:scale(0);
 }
 
-.burguer:hover {
-  color: #3b3b64;
-}
 
 .nav-link i:hover,
 .collapse ul li a:hover {
   color: var(--color_hover_primary);
+  font-weight: 800;
 }
 
 .cuadrado,
@@ -133,7 +132,8 @@ h2 {
 .btn-registrate .btn:hover,
 .btn-carrousel .btn:hover,
 .btn-10 .btn:hover,
-.btn-20 .btn:hover {
+.btn-20 .btn:hover 
+{
   color: var(--color_hover_primary);
   background-color: var(--color_second);
 }

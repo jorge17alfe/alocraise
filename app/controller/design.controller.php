@@ -2,7 +2,7 @@
 class DesignController
 {
 
-    public function view($var = null)
+    public function example($var = null)
     {
         if (isset($var[0])) {
             session_start();

@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse col-6 pr-0 mr-0" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-menu align-items-end col-12 pr-0 mr-0" id="">
                         <?php
-                        if ($_GET['url'] == 'design/view/aaron') {
+                        if ($_GET['url'] == 'design/example/aaron') {
                             viewadd("includes/add/menutemplate",);
                         } ?>
                         <li class="nav-item  dropdown mr-lg-4 mr-0 pr-0">
@@ -228,23 +228,26 @@
     <!-- credit card -->
     <div class="container-fluid row mr-0 pr-0 ">
         <div class="container m-auto row  my-5 py-5 pr-0 mr-0">
-            <?php if ($parameter->data->swaceptartarjetas == 1) { ?> <div class="follow_ccards col-md-6 col-12 pl-0 my-3" id="follow_ccards">
-                    <section class="ccards" id="ccards">
-                        <h6>Aceptamos Tarjetas de Crédito</h6>
-                        <div class="main_card">
-                            <img src="<?= assets("app/img/amex.gif") ?>" alt="tarjeta-de-credito-imagen-animada-0011" />
-                            <img src="<?= assets("app/img/mastercard.gif") ?>" alt="tarjeta-de-credito-imagen-animada-0010" />
-                            <img src="<?= assets("app/img/visa.gif") ?>" alt="tarjeta-de-credito-imagen-animada-0009" />
-                        </div>
-                    </section>
-                </div>
-            <?php } ?>
-            <div class="social d-flex justify-content-end col-md-6 col-12 pr-0 my-3 ">
-                <?php if ($parameter->data->swtwitter == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_twitter; ?>"><i class="fab fa-twitter"></i></a></li> <?php } ?>
-                <?php if ($parameter->data->swinstagram == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_instagram; ?>"><i class="fab fa-instagram"></i></a></li> <?php } ?>
-                <?php if ($parameter->data->swfacebook == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_facebook; ?>"><i class="fab fa-facebook"></i></a></li> <?php } ?>
-                <?php if ($parameter->data->swlinkedin == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_linkedin; ?>"><i class="fab fa-linkedin"></i></a></li> <?php } ?>
+            <section class="ccards col-md-6 col-12 pl-0 my-3" id="ccards">
+                <?php if ($parameter->data->swaceptartarjetas == 1) { ?>
+                    <h6>Aceptamos Tarjetas de Crédito</h6>
+                    <div class="main_card mt-3">
+                        <img src="<?= assets("app/img/amex.gif") ?>" alt="tarjeta-de-credito-imagen-animada-0011" />
+                        <img src="<?= assets("app/img/mastercard.gif") ?>" alt="tarjeta-de-credito-imagen-animada-0010" />
+                        <img src="<?= assets("app/img/visa.gif") ?>" alt="tarjeta-de-credito-imagen-animada-0009" />
+                    </div>
+                <?php } ?>
+            </section>
 
+            <div class="main-social-network col-md-6 col-12 pr-0 my-3 ">
+                <h6 class="text-right">Siguenos...</h6>
+                <div class="social-network d-flex justify-content-end">
+                    <?php if ($parameter->data->swtwitter == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_twitter; ?>"><i class="fab fa-twitter"></i></a></li> <?php } ?>
+                    <?php if ($parameter->data->swinstagram == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_instagram; ?>"><i class="fab fa-instagram"></i></a></li> <?php } ?>
+                    <?php if ($parameter->data->swfacebook == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_facebook; ?>"><i class="fab fa-facebook"></i></a></li> <?php } ?>
+                    <?php if ($parameter->data->swlinkedin == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_linkedin; ?>"><i class="fab fa-linkedin"></i></a></li> <?php } ?>
+
+                </div>
             </div>
         </div>
     </div>
@@ -264,9 +267,9 @@
     <div class="container m-auto row justify-content-center ">
         <div class=" my-3 col-6 linea" id="information"></div>
     </div>
-
+    <!-- INFORMACIÓN Y EMAIL -->
     <?php if (!empty($parameter->data->email)) { ?>
-        <div class="signup-section mt-5 container-fluid position-sticky ">
+        <div class="signup-section my-5 container-fluid position-sticky ">
             <section class="container py-5">
                 <div class="row">
                     <div class="col-md-10 col-lg-8 mx-auto text-center text-dark">
@@ -288,9 +291,25 @@
             </section>
         </div>
     <?php } ?>
+    <!-- lines -->
+    <div class="container m-auto row justify-content-center ">
+        <div class=" my-3 col-6 linea"></div>
+    </div>
+    <div class="container m-auto row justify-content-center ">
+        <div class="my-3 col-4 linea"></div>
+    </div>
+    <div class="container m-auto row justify-content-center ">
+        <div class="my-3 col-2 linea"></div>
+    </div>
+    <div class="container m-auto row justify-content-center ">
+        <div class="my-3 col-4 linea"></div>
+    </div>
+    <div class="container m-auto row justify-content-center ">
+        <div class=" my-3 col-6 linea" id="information"></div>
+    </div>
     <!-- fin slider -->
-    <div class=" container-fluid footer px-0 mx-0 font-weight-bold" id="contact">
-        <div class="footer-links py-5 container px-0">
+    <div class="main-contact-schedule container-fluid  mt-5">
+        <div class="contact-schedule  py-5 container mx-auto d-flex flex-wrap justify-content-between flex-md-row flex-column">
             <dl class="contacto ">
                 <dt class="mb-3">Contacto</dt>
                 <dd><a href="mailto:<?= $parameter->data->email; ?>" target="_blank"><?= $parameter->data->email; ?></a></dd>
@@ -299,8 +318,8 @@
                     <dd> <a href="tel:<?= $parameter->data->telefono[0]; ?>" target="_blank"><?= $parameter->data->telefono[0]; ?></a></dd>
                 <?php } ?>
             </dl>
-            <dl>
-                <dt class="horario mb-3">Horarios</dt>
+            <dl class="horario text-center">
+                <dt class=" mb-3">Horarios</dt>
                 <?php
                 if (!empty($parameter->data->horario)) {
                     for ($i = 0; $i < count($parameter->data->horario); $i++) {            ?>
@@ -311,7 +330,7 @@
                 }
                 ?>
             </dl>
-            <dl class="map">
+            <dl class="map text-right ">
                 <dt class="mb-3"> Visitanos</dt>
                 <dd><a href="<?= $parameter->data->ubicacion_google; ?>"><i class="fas fa-street-view "></i></a></dd>
                 <dd> <?= $parameter->data->direccion ?></dd>
@@ -319,13 +338,13 @@
                 <dd> <?= $parameter->data->pais ?></dd>
             </dl>
         </div>
-        <footer class=" copy pb-2 ">
-            <a href="<?= SERVERURL ?>politica-privacidad"> Política de privacidad </a>-
-            <a href="<?= SERVERURL ?>politica-cookies"> Política de cookies </a>-
-            <a href="<?= SERVERURL ?>aviso-legal"> Aviso legal </a>-
-            <a href="<?= SERVERURL ?>">&copy; Aloc_Raise <?php echo date('Y') ?> Copyright</a>
-        </footer>
     </div>
+    <footer class=" copy footer container-fluid py-4">
+        <a href="<?= SERVERURL ?>politica-privacidad"> Política de privacidad </a>-
+        <a href="<?= SERVERURL ?>politica-cookies"> Política de cookies </a>-
+        <a href="<?= SERVERURL ?>aviso-legal"> Aviso legal </a>-
+        <a href="<?= SERVERURL ?>">&copy; Aloc_Raise <?php echo date('Y') ?> Copyright</a>
+    </footer>
 
 </body>
 

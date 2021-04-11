@@ -7,9 +7,9 @@ $design = ["aaron", "liam", "magui", "magdy"];
     </a>
     <div class="dropdown-menu <?= $parameter[0] ?> " aria-labelledby="navbarDropdown" style="background-color:<?= $parameter[0] ?>;">
         <?php foreach ($design as $k => $v) {
-            if (!isset($_GET["url"]) || $_GET["url"] != "design/view/" . $v) {
+            if (!isset($_GET["url"]) || $_GET["url"] != "design/example/" . $v) {
         ?>
-                <a class="dropdown-item <?= $parameter[1] ?>" href="<?= SERVERURL ?>design/view/<?= $v ?>"><?= get_string('design') ?> <?= ucwords($v) ?></a>
+                <a class="dropdown-item <?= $parameter[1] ?>" href="<?= SERVERURL ?>design/example/<?= $v ?>"><?= get_string('design') ?> <?= ucwords($v) ?></a>
         <?php
             }
         }

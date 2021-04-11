@@ -34,12 +34,16 @@
     margin-bottom: 1rem;
     -webkit-transition: all 0.6s ease-in;
     transition: all 0.6s ease-out;
+  
   }
 
   .social_network a:hover {
-    transform-origin: 50% 50%;
+    /* transform-origin: 50% 50%;
     transform: rotate(5760deg);
-    transition: all 5s ease-in;
+    transition: all 5s ease-in; */
+    color: #fff !important;
+    transform: scale(1.4);
+    transition: transform 1s;
   }
 
   .social_network a i {

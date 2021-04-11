@@ -175,7 +175,7 @@
 						foreach ($data["templatename"] as $k => $v) {
 						?>
 							<li class="show-hidden show-hiddentemplatename ml-4 " style="line-height: 1;">
-								<a href="<?= SERVERURL . "design/view/" . $v ?>">
+								<a href="<?= SERVERURL . "design/example/" . $v ?>">
 									<i class="fas fa-caret-right "></i>
 									<span><small>DISEÑO <?= strtoupper($v) ?></small></span>
 									<div class="bg-nav"></div>
