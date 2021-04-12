@@ -6,7 +6,7 @@
 <div class=" py-5 container-fluid bg-light header" style="color: var(--color_primary);">
     <h1 class="col-12 text-center pl-0 index left "><?= get_string('description') ?></h1>
     <h2 class="text-center col-12 mb-4 pl-0 right logo  "><?= config('title') ?></h2>
-
+    <div class="response-ejemplo"></div>
 </div>
 <!-- index 1 -->
 <div class="container-fluid p-xl-5 p-lg-4 p-md-4 p-3 cuadrado">

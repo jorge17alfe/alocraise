@@ -23,7 +23,7 @@ jQuery.fn.wowSlider = function (aj) {
             left: aU
               ? -aU + "00%"
               : /Safari/.test(navigator.userAgent)
-              ? "0%"
+              ? "0%" 
               : 0,
           },
           k.duration,

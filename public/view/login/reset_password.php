@@ -1,14 +1,23 @@
-<div class="contenido container pb-2 pt-5" id="main_registro">
-    <form action="<?=SERVERURL?>login/updatepassword" method="POST" class="m-auto text-center mx-5 registro">
+<div class="contenido container text-center" id="main_resetpass">
+    <div class="mx-auto">
+        <h2 class="logo" style="color:var(--color_primary)" href=""><?= config('title') ?></h2>
+        <script>
+            $(".logo").on("click", function() {
+                window.location = '<?= SERVERURL ?>';
+            })
+        </script>
+    </div>
+    <form action="<?= SERVERURL ?>login/updatepassword" method="POST" class=" resetpass">
         <div class="mt-4">
-            <input type="hidden" id="token" name="token" class="form-control m-auto" value="<?php 
-            if(isset( $_GET['i'])){
-            echo $_GET['i'];  }
-            ?>" required>
+            <input type="hidden" id="token" name="token" class="form-control m-auto" value="<?php
+                                                                                            if (isset($_GET['i'])) {
+                                                                                                echo $_GET['i'];
+                                                                                            }
+                                                                                            ?>" required>
         </div>
         <h3>Reestablece tu contraseña</h3>
 
-        <div class="mt-4">
+        <div class="mt-4 mx-auto">
             <label for="Password">Contraseña</label>
             <input type="password" id="Password" name="password" class="form-control m-auto" minlength='5' maxlength="25" required>
             <small id="passwordHelpBlock" class="form-text text-muted">
@@ -16,14 +25,14 @@
             </small>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4 mx-auto">
             <label for="repeatpassword">Repite contraseña</label>
             <input type="password" id="repeatpassword" name="confirm_password" class="form-control m-auto" minlength='5' maxlength="25" required>
             <small id="repeatpasswordHelpBlock" class="form-text text-muted"></small>
         </div>
 
 
-        <div class="btn-20 mt-4">
+        <div class="btn-20 mt-4 mx-auto">
             <input type="submit" class="btn" name="reset_password" value="Reestablecer contraseña">
         </div>
 </div>
@@ -34,25 +43,23 @@
 
 
 <style>
-    .registro {
-        padding-top: 17%;
-        padding-bottom: 18%;
+    #main_resetpass {
+        padding-top: 13%;
+        padding-bottom: 12%;
     }
 
-    .registro div input,
-    .registro div a {
-        width: 50%;
+    .resetpass div {
+        width: 20%;
     }
 
 
-    @media (max-width: 580px) {
-        .registro {
+    @media (max-width: 767px) {
+        .resetpass {
             font-size: .9rem;
         }
 
-        .registro div input,
-        .registro div button {
-            width: 70%;
+        .resetpass div {
+            width: 40%;
 
         }
 
@@ -60,8 +67,12 @@
 
 
     @media (max-width: 380px) {
-        .registro {
+        .resetpass {
             font-size: .8rem;
+        }
+
+        .resetpass div {
+            width: 60%;
         }
     }
 

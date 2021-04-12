@@ -563,7 +563,6 @@
 				<dd> <?= $parameter->data->pais ?></dd>
 			</dl>
 		</ul>
-
 	</footer>
 	<!-- footer -->
 	<footer class="justify-content-center d-flex bg-light text-primary pt-3">
@@ -585,13 +584,14 @@
 	<audio id="audio-bg">
 		<!-- <source src="<?= assets('app/audio/magdy/cuna.mp3') ?>"> -->
 	</audio>
-	<!-- <script type='text/javascript' src="<?= assets('app/js/magdy/js2/jquery-2.1.3.js') ?>"></script> -->
+	<script type='text/javascript' src="<?= assets('app/js/magdy/js2/jquery-2.1.3.js') ?>"></script>
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js/visuallightbox.js') ?>"></script>
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js/vlbdata.js') ?>"></script>
-	<script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider.js') ?>"></script>
-	<script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider-gallery.js') ?>"></script>
-	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script.js') ?>"></script>
-	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script-gallery.js') ?>"></script>
+	<!-- <script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider.js') ?>"></script> -->
+	<!-- <script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider-gallery.js') ?>"></script> -->
+	<!-- <script type="text/javascript" src="<?= assets('app/js/magdy/js/script.js') ?>"></script> -->
+	<!-- gallery portada-->
+	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script-gallery.js') ?>"></script> 
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js2/app.js') ?>"></script>
 </body>
 

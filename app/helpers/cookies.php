@@ -14,4 +14,13 @@ class Cookies
     }
     return;
   }
+  static public function create_cookie1($name = null, $value = null,  $expires = null)
+  {
+    if (!isset($_COOKIE[$name])) {
+      setcookie($name, $value, time() + $expires, '/');
+    } else{
+      setcookie($name, $value, time() + $expires, '/');
+    }
+    return;
+  }
 }

@@ -1,5 +1,5 @@
 <div class="contenido container" id="main_registro">
-<?php require assetsphp("js/general"); ?>
+    <?php require assetsphp("js/general"); ?>
     <form class="m-auto text-center p-md-5 px-0 registro " id="registro">
         <div class=" my-5">
             <h2 class="logo right" style="color:var(--color_primary)" href=""><?= config('title') ?></h2>
@@ -63,8 +63,7 @@
     }
 
     .registro div input,
-    .registro div button
-     {
+    .registro div button {
         width: 25%;
     }
 
@@ -84,6 +83,7 @@
         .registro {
             font-size: .8rem;
         }
+
         .registro div input,
         .registro div button {
             width: 60%;

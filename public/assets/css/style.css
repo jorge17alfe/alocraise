@@ -55,10 +55,13 @@ body {
 .alocraise {
   font-family: "Londrina Shadow", cursive;
   font-weight: 1000;
+  cursor: pointer;
 }
 
 .logo:hover {
   color: none;
+  transform: scale(1.1);
+  transition: transform 1s;
 }
 
 .navbar-collapse ul li a,

@@ -13,7 +13,7 @@ class LoginController
     public function reestablecerPassword()
     {
         if (isset($_GET['i'])) {
-            view('login/reset_password', HEAD, FOOTER);
+            view('login/reset_password', HEADHEAD,'');
             die();
         }
         redirect('');
@@ -176,7 +176,7 @@ class LoginController
                 $code = md5(uniqid(mt_rand()) . time());
                 $this->model->updateRow(TABLE_PASS, 'recuperar_password', $code, array('email', $consult_email->email));
 
-                $link_reestablecer = SERVERURL . "login/reestablecerpassword/&i=$code";
+                $link_reestablecer = SERVERURL . "login/reestablecerpassword?i=$code";
                 // header("location:" . SERVERURL . "login/reestablecerpassword/?i=$code");
                 // exit();
                 controller('email');
