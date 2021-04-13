@@ -82,13 +82,16 @@
         margin-top: 1rem;
         height: 2.8rem;
         width: 2.8rem;
-        -webkit-transition: all 0.6s ease-in;
-        transition: all 0.6s ease-out;
+        /* -webkit-transition: all 0.6s ease-in;
+        transition: all 0.6s ease-out; */
+
     }
 
-    .network-social a:hover {
-        transform: rotate(360deg);
-
+    .network-social a:hover,
+    .network-social a i:hover{
+        transform: scale(1.2);
+        transition: transform 1s;
+        color:<?=$parameter->data->color_web2?>;
     }
 
     hr {
@@ -121,7 +124,7 @@
         .menu_dia {
             width: 90%;
         }
-    
+
     }
 
     @media (max-width: 580px) {

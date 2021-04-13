@@ -71,9 +71,8 @@ body {
 
 .scrollshow {
   /* opacity: 1; */
-  transform:scale(0);
+  transform: scale(0);
 }
-
 
 .nav-link i:hover,
 .collapse ul li a:hover {
@@ -135,10 +134,14 @@ h2 {
 .btn-registrate .btn:hover,
 .btn-carrousel .btn:hover,
 .btn-10 .btn:hover,
-.btn-20 .btn:hover 
-{
+.btn-20 .btn:hover {
   color: var(--color_hover_primary);
   background-color: var(--color_second);
+}
+
+.design_example div a img:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
 }
 
 .iframe {

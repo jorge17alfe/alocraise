@@ -13,11 +13,11 @@ include 'app/config/database.php';
 include 'app/config/config.php';
 include 'app/helpers/functions.php';
 
-if (file_exists('app/lang/' . $lang . '.php')) {
-    include 'app/lang/' . $lang . '.php';
-} else {
+// if (file_exists('app/lang/' . $lang . '.php')) {
+    // include 'app/lang/' . $lang . '.php';
+// } else {
     include 'app/lang/es.php';
-}
+// }
 
 include 'app/routes/route.php';
 include 'app/routes/core.php';

@@ -95,16 +95,14 @@
         </div>
 
     </div>
-    <div class="row mx-0 px-0 justify-content-around  ">
-        <div class=" col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-1 divex  cuadrado scrollshow">
-            <a href="<?= SERVERURL ?>template/aaron" class=" "><img src="<?= assets("img/aaron.png") ?>" alt="" class="w-100 h-100"></a>
-        </div>
-        <div class=" col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-1 divex   cuadrado scrollshow">
-            <a href="<?= SERVERURL ?>template/liam" class=" "><img src="<?= assets("img/liam.png") ?>" alt="" class="w-100 h-100"></a>
-        </div>
-        <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-1 divex   cuadrado scrollshow">
-            <a href="<?= SERVERURL ?>template/magui" class=" "><img src="<?= assets("img/magui.png") ?>" alt="" class="w-100"></a>
-        </div>
+    <div class="row mx-0 px-0 justify-content-around  design_example">
+        <?php 
+        $design = ["aaron", "liam", "magui", "magdy"];
+        foreach ($design as $v) { ?>
+            <div class=" col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-1 divex  cuadrado scrollshow">
+                <a href="<?= SERVERURL ?>design/example/<?= $v ?>" class=" "><img src="<?= assets("img/" . $v . ".png") ?>" alt="" class="w-100 h-100"></a>
+            </div>
+        <?php } ?>
     </div>
 
 </div>
@@ -188,6 +186,8 @@
         margin-top: 15% !important;
         margin-bottom: 15% !important;
     }
+
+
 
     @media (max-width:993px) {
 

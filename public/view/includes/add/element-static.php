@@ -32,8 +32,8 @@
   .social_network a {
     width: 2.8rem;
     margin-bottom: 1rem;
-    -webkit-transition: all 0.6s ease-in;
-    transition: all 0.6s ease-out;
+    /* -webkit-transition: all 0.6s ease-in;
+    transition: all 0.6s ease-out; */
   
   }
 

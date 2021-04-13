@@ -22,7 +22,9 @@
                             </li>
                         <?php
                         }
-                        include "menutemplate.php"
+                        
+                        // include "menutemplate.php";
+                        viewadd('includes/add/menutemplate',['',''])
                         ?>
                         <!-- <li class="nav-item pl-3">
                             <a class="nav-link " href="<?= SERVERURL ?>available"><?= get_string('available') ?></a>

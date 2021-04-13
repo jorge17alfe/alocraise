@@ -1,6 +1,6 @@
 <div class="contenido container" id="main_registro">
     <?php require assetsphp("js/general"); ?>
-    <form class="m-auto text-center p-md-5 px-0 registro " id="registro">
+    <form class="mx-auto text-center px-0 registro " id="registro">
         <div class=" my-5">
             <h2 class="logo right" style="color:var(--color_primary)" href=""><?= config('title') ?></h2>
             <script>
@@ -58,7 +58,7 @@
 
 <style>
     .registro {
-        padding-top: 2%;
+        padding-top: 1%;
         padding-bottom: 1%;
     }
 

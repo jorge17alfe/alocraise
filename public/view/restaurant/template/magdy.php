@@ -587,9 +587,9 @@
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js2/jquery-2.1.3.js') ?>"></script>
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js/visuallightbox.js') ?>"></script>
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js/vlbdata.js') ?>"></script>
-	<!-- <script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider.js') ?>"></script> -->
-	<!-- <script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider-gallery.js') ?>"></script> -->
-	<!-- <script type="text/javascript" src="<?= assets('app/js/magdy/js/script.js') ?>"></script> -->
+	<script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider.js') ?>"></script>
+	<script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider-gallery.js') ?>"></script>
+	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script.js') ?>"></script>
 	<!-- gallery portada-->
 	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script-gallery.js') ?>"></script> 
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js2/app.js') ?>"></script>

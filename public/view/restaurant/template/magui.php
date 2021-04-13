@@ -33,7 +33,7 @@
         </button>
     </div>
     <!-- navegación -->
-    <header class="container-fluid fixed-top main_header" style="z-index:100; ">
+    <header class="container-fluid fixed-top main_header" style="z-index:1000; ">
         <nav class="navbar navbar-expand-md pr-0 justify-content-between">
             <div class="col-2 ml-0 pl-0">
                 <?php if (!empty($parameter->data->logo[0])) { ?>
@@ -81,7 +81,7 @@
         })
     </script>
     <!-- portada -->
-    <div class="container-fluid mb-5 position-relative portada" style="padding-top:80px;">
+    <div class="container-fluid mb-5 position-relative portada py-5" style="padding-top:80px;">
         <h1 class='text-center col-12 my-5 titulo'><strong><?= $parameter->data->nombre_empresa; ?></strong></h1>
         <div class="row container mx-auto flex-column-reverse flex-lg-row flex-md-column-reverse justify-content-end d-flex align-items-center  py-5 px-0">
             <?php
@@ -238,7 +238,7 @@
             <hr class=" my-3 col-6" style="border-color:<?= $parameter->data->color_web1 ?>; ">
         </div>
         <!-- information mail -->
-        <div class="signup-section my-5 container-fluid position-sticky" id="information">
+        <div class="signup-section my-5 py-5 container-fluid position-sticky" id="information">
             <section class="container py-5">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
                     <i class="far fa-paper-plane fa-2x mb-2 "></i>
@@ -275,8 +275,8 @@
         <?php if ($parameter->data->swlinkedin == 1) { ?><a href="<?= $parameter->data->social_linkedin; ?>" target="_blank" class=" btn mb-1"><i class="fab fa-linkedin "></i> </a><?php } ?>
     </div>
     <!-- footer  -->
-    <div class="footer  container-fluid position-sticky mt-5" id="footer">
-        <footer class="row container  mx-auto row pt-3 font-size px-0">
+    <div class="footer  container-fluid position-sticky mt-5 " id="footer">
+        <footer class="row container  mx-auto row pt-3 font-size px-0 pt-5">
             <ul class=" col-md-4 col-sm-4 col-12 px-0">
                 <dl class="  ">
                     <dt class="pb-3">Contacto</dt>
