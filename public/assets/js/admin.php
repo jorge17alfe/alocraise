@@ -1,7 +1,5 @@
 <script>
   $(document).ready(function() {
-
-
     getDataAll()
 
     function getDataAll() {

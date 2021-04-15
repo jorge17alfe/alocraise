@@ -31,7 +31,7 @@ class Pages
         session_start();
         self::registerPage('index', 'usuario/index', HEAD, FOOTER);
         self::registerPage('page-404', 'includes/404', HEAD, FOOTER);
-        self::registerPage('sobre-nosotros', 'usuario/sobre_nosotros', HEAD, FOOTER);
+        self::registerPage('quienes-somos', 'usuario/whoweare', HEAD, FOOTER);
         self::registerPage('aviso-legal', 'legal/aviso_legal', HEAD, FOOTER);
         self::registerPage('politica-cookies', 'legal/politica_cookies', HEAD, FOOTER);
         self::registerPage('politica-privacidad', 'legal/politica_privacidad', HEAD, FOOTER);

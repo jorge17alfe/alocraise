@@ -70,7 +70,7 @@ class AdminController
 
     public function deleteFoldersUsers($user = null)
     {
-        session_start();
+        
         if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] === config('admin') && isset($user)) {
             $result = $this->model->getRow('datos_usuarios', '*', array("id_usuario", $user));
             $menu_dia = $this->model->getRow('menu_dia', 'img_menu', array("id_usuario", $user));
@@ -80,7 +80,7 @@ class AdminController
                 if (in_array($k, $img)) {
                     $ruta = (dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img/" . $k . "/");
                     $result->$k = unserialize($result->$k);
-                    print_r($result->$k);
+                    // print_r($result->$k);
                     foreach ($result->$k as $v1) {
                         if (is_file($ruta . $v1)) {
                             unlink($ruta  . $v1);

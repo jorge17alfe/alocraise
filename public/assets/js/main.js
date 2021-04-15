@@ -1,4 +1,4 @@
-
+// COOKIES
 function aceptarCookies(data) {
     if (data === "accept") {
         Cookies.set( '__accept-cookies', 'yes_accept',{ expires: 365 });
@@ -17,9 +17,3 @@ function aceptarCookies(data) {
     }
 
 }
-// $(".response-ejemplo").html("__accept-cookies");
-// setTimeout(()=>{
-//     var cookie =Cookies.remove('__accept-cookies');
-
-// },5000)
-// $(".response-ejemplo").html("He aceptado la cookie: " +cookie);

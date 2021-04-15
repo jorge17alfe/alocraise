@@ -6,11 +6,11 @@ $lang =
     // 'it'
     // 'en'
     substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2)
-
     ;
 
 include 'app/config/database.php';
 include 'app/config/config.php';
+include 'app/routes/route.php';
 include 'app/helpers/functions.php';
 
 // if (file_exists('app/lang/' . $lang . '.php')) {
@@ -19,12 +19,6 @@ include 'app/helpers/functions.php';
     include 'app/lang/es.php';
 // }
 
-include 'app/routes/route.php';
 include 'app/routes/core.php';
 new Core;
-// print_r($_SERVER["PATH_INFO"]); echo '<br>';
-// print_r(); echo '<br>';
-// echo gethostname();
-// $host= $_SERVER["REMOTE_ADDR"];
-// echo gethostbyaddr($host) ;
 ?>

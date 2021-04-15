@@ -1,4 +1,4 @@
-<article class="container text-justify contenido container pr-5 my-5">
+<article class="aviso-legal container  text-justify py-5 pl-5 pr-3">
 
     <h4 class="">AVISO LEGAL</h4>
     <br>

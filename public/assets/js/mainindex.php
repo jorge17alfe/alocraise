@@ -1,5 +1,6 @@
 <script>
     getComment()
+    // SEND COMENT USERS
     $(document).ready(function() {
         $("#comments").submit((e) => {
             e.preventDefault();
@@ -31,7 +32,7 @@
                 });
         });
     })
-
+    // GET COMMENTS
     function getComment(data = 2) {
         $.post({
                 url: "<?= SERVERURL ?>information/getDataAll",
@@ -52,7 +53,7 @@
                         // console.log(comments[i]);
                         var row = "<div class='col-lg-5 col-12 delete_comment presentacion_2  p-4 my-3 ' style='' id='show" + i + "'> "
                         row += "<p class = 'text-right' > <strong> Publicado: </strong><cite>" + comments[i]["registration_date"] + "</cite><br><strong> dice: </strong>" + comments[i]["user"] + "</p>"
-                        row += "<p> " + comments[i]["content"] +" </p> "
+                        row += "<p> " + comments[i]["content"] + " </p> "
                         row += "<p class = 'text-right' ></p></div>"
                         // row += "<p class = 'text-right' > <a href = '<?= SERVERURL ?>index#main_comment' > Responder... </a></p></div>"
                         $(".comments").append(row);
@@ -65,11 +66,8 @@
             })
     }
 
-    // show divs
+    // SHOW-HIDE ELEMENTS
     let element = document.querySelectorAll(".scrollshow");
-    // var element1 = $(".scrollshow");
-    // console.log(element[0]);
-    // console.log(element1[0]);
     let showscrollporcent = (80 * $(window).height() / 100);
     window.addEventListener("scroll", showelements);
     window.addEventListener("scroll", hideelements);
@@ -81,11 +79,12 @@
             if (alturaelement - showscrollporcent < scrolltop1) {
                 // element[i].style.opacity = 1,
                 element[i].style.transform = "scale(1)",
-                element[i].style.transition = "transform .5s"
-              
+                    element[i].style.transition = "transform .5s"
+
             }
         }
     }
+
     function hideelements() {
         let scrolltop1 = document.documentElement.scrollTop;
         for (var i = 0; i < element.length; i++) {
@@ -93,12 +92,12 @@
             if (alturaelement - showscrollporcent > scrolltop1) {
                 // element[i].style.opacity = 1,
                 element[i].style.transform = "scale(0)",
-                element[i].style.transition = "transform .5s"
-              
+                    element[i].style.transition = "transform .5s"
+
             }
         }
     }
-    // show bacground fixed
+    // CHANGED IMAGE STATIC BACKGROUND
     $(window).scroll(function() {
         let porcent = (38 * $(document).height() / 100);
         if ($(document).scrollTop() < porcent) {
@@ -110,6 +109,4 @@
 
         }
     })
-
-  
 </script>

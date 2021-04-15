@@ -1,8 +1,7 @@
 <?php
 $_translations = array(
     'title'                     => config('title'),
-    'description'               => 'Web restaurante online',
-    'aboutus'                   => 'Sobre nosotros',
+    'aboutus'                   => 'Quienes somos',
     'privacy-politic'           => 'Politica privacidad',
     'cookies-politic'           => 'Politica de cookies',
     'legal-notice'              => 'Aviso legal',

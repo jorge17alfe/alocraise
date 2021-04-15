@@ -2,12 +2,8 @@
     <?php require assetsphp("js/general"); ?>
     <form class="mx-auto text-center px-0 registro " id="registro">
         <div class=" my-5">
-            <h2 class="logo right" style="color:var(--color_primary)" href=""><?= config('title') ?></h2>
-            <script>
-                $(".logo").on("click", function() {
-                    window.location = '<?= SERVERURL ?>';
-                })
-            </script>
+            <h2 class="logo right" ><?= config('title') ?></h2>
+         
         </div>
         <h3>Regístrate...</h3>
         <small id="respuesta" class="form-text text-muted text-danger"> </small>
@@ -49,11 +45,9 @@
             <input type="submit" class="btn btn-sm " name="registrar_usuario" value="Registrate...">
             <p class=" text-center mb-5">¿Ya tienes cuenta? <a href="<?= SERVERURL ?>iniciar-sesion">Inicia sesión...</a></p>
         </div>
-
     </form>
-
-
 </div>
+<?php require assetsphp("js/general"); ?>
 
 
 <style>

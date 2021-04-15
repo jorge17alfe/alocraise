@@ -1,11 +1,6 @@
 <div class="contenido container text-center" id="main_resetpass">
     <div class="mx-auto">
-        <h2 class="logo" style="color:var(--color_primary)" href=""><?= config('title') ?></h2>
-        <script>
-            $(".logo").on("click", function() {
-                window.location = '<?= SERVERURL ?>';
-            })
-        </script>
+        <h2 class="logo"><?= config('title') ?></h2>
     </div>
     <form action="<?= SERVERURL ?>login/updatepassword" method="POST" class=" resetpass">
         <div class="mt-4">
@@ -37,9 +32,7 @@
         </div>
 </div>
 </form>
-
-
-</div>
+<?php require assetsphp("js/general"); ?>
 
 
 <style>

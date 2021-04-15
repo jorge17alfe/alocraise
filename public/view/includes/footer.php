@@ -4,7 +4,7 @@
         <div class=" footer ">
             <div class=" contacto text-center row  pt-3 pb-0 ">
                 <dt class="col-12 col-sm-12 mb-1">Información</dt>
-                <dd class="col-12 col-sm-4 my-0"> <a href="<?= SERVERURL ?>sobre-nosotros"><?= get_string('aboutus') ?></a> </dd>
+                <dd class="col-12 col-sm-4 my-0"> <a href="<?= SERVERURL ?>quienes-somos"><?= get_string('aboutus') ?></a> </dd>
                 <dd class="col-12 col-sm-4 my-0"> <a href="mailto:info@alocraise.com"><?= config('email-info') ?></a> </dd>
                 <!-- <dd class="col-12 col-sm-4 my-0"><a href="tel:+34010101010101">+34010101010101</a> </dd> -->
                 <div class="col-12 col-sm-4 my-0">

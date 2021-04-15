@@ -6,7 +6,7 @@
 <meta name="author" content="<?= config('autor-name') . ' ' . config('autor-surname') ?>" />
 <meta name="copyright" content="<?= config('title') ?>" />
 <meta name="robots" content="index, follow" />
-<title><?= config('title') ?></title>
+<title><?= config('title') .config('addtitle')?></title>
 <link rel="shortcut icon" href="<?= assets('img/osoliam.png') ?>" type="image/x-icon">
 <?php if(isset($_COOKIE["__accept-cookies"])){?>
 <!-- google search console-->

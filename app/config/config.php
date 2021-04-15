@@ -1,31 +1,34 @@
-<?php 
-define  ('SERVERURL','https://localhost/alocraise2.0/');
+<?php
+define('SERVERURL', 'https://localhost/alocraise2.0/');
 // define  ('SERVERURL','https://alocraise.com/');
-define  ('HEAD','includes/head');
-define  ('HEADHEAD','includes/add/head');
-define  ('FOOTER','includes/footer');
-define  ('TABLE_PERSONAL','datos_personales');
-define  ('TABLE_MENU','menu_dia');
-define  ('TABLE_PASS','usuarios_pass');
-define  ('TABLE_DATAAPP','datos_usuarios');
-define  ('TABLE_MESSAGES','messages');
-define  ('claves','987718761');
+define('HEAD', 'includes/head');
+define('HEADHEAD', 'includes/add/head');
+define('FOOTER', 'includes/footer');
+define('TABLE_PERSONAL', 'datos_personales');
+define('TABLE_MENU', 'menu_dia');
+define('TABLE_PASS', 'usuarios_pass');
+define('TABLE_DATAAPP', 'datos_usuarios');
+define('TABLE_MESSAGES', 'messages');
+define('claves', '987718761');
 
 
-$_config=array(
+$_config = array(
     'title' => 'Aloc_Raise',
-    'addtitle' => ' - Web restaurante online',
+    'addtitle' => ' - Restaurante online',
+    'subtitle' => 'Web para tu restaurante',
     'codification' => 'utf-8',
     'autor-name' => 'Jorge',
     'autor-surname' => 'Ordóñez',
     'nif' => '543*****A',
     'email-info' => 'info@alocraise.com',
     'id_consult' => 'id_usuario',
-    'admin' => 'jorge'
+    'admin' => 'jorge',
+    'co-admin' => 'Jorge Ordóñez',
+    'co-admin1' => 'Damarys Cordova'
 );
 
-$_columns_tables=array(
-    'datos_textos'=>array(
+$_columns_tables = array(
+    'datos_textos' => array(
         // 'color_web1',
         // 'color_web2',
         // 'color_font',
@@ -45,23 +48,21 @@ $_columns_tables=array(
         'estado',
         'pais'
     ),
-    'menu_text' =>array(
+    'menu_text' => array(
         'carta_text',
         'bebida_text'
     ),
-    'menu' =>array(
+    'menu' => array(
         'primero',
         'segundo',
         'incluye',
         'precio',
         'moneda'
     ),
-    'imagenes'=> array(
+    'imagenes' => array(
         'logo',
         'portada',
         'carta',
         'bebida'
-    )
+    ),
 );
-
- 

@@ -2,7 +2,7 @@
 Options -Indexes
 Options -Multiviews
 RewriteEngine On
-RewriteBase /alocraise2.0   
+RewriteBase /alocraise2.0
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

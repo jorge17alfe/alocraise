@@ -1,12 +1,9 @@
-<article class="container text-justify contenido container pr-5 my-5">
+<article class="politica-primacidad container  text-justify py-5 pl-5 pr-3">
 
 
     <h4>POLÍTICA DE PRIVACIDAD</h4>
     <br>
-    <?php 
-    print_r($parameter);
  
-    ?>
     <p>
         Si estás aquí es porque quieres saber más sobre las obligaciones y derechos que te corresponden como usuario de esta web https://alocraise.com y eso está muy bien. Nuestro deber es informarte y el tuyo estar debidamente informado.
         <br><br>

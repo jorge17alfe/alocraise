@@ -1,4 +1,5 @@
 <script>
+    // DELETE ROW
     function deleterow(data, section, group) {
         var user = $("#id_usuario").val();
         // console.log(data + section + group)
@@ -44,7 +45,7 @@
                 })
         }
     }
-
+    // SHOW HIDE RESPONSE FORM
     function showresponse(data, response) {
         $("." + data + "").show('swing').html(response, "swing")
     }
@@ -56,7 +57,7 @@
 
         return;
     }
-
+    // ANIMATE HIDE-SHOW SLICE ELEMENT
     $(".right").css({
         left: 3000
     });
@@ -136,4 +137,8 @@
             }
         );
     });
+    // CSS logo main
+    $(".logo").on("click", function() {
+        window.location = '<?= SERVERURL ?>';
+    })
 </script>

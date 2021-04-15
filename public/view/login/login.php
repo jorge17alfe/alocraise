@@ -1,12 +1,8 @@
 <div class="contenido container main_login">
     <form class="m-auto text-center mx-5 login" id="login">
         <div class=" my-5">
-            <h2 class="logo right" style="color:var(--color_primary)" href=""><?= config('title') ?></h2>
-            <script>
-                $(".logo").on("click", function() {
-                    window.location = '<?= SERVERURL ?>';
-                })
-            </script>
+            <h2 class="logo right" > <a href=""></a> <?= config('title') ?></h2>
+   
         </div>
         <h3>Inicia Sesión</h3>
         <div id="respuesta"></div>

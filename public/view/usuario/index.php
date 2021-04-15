@@ -1,12 +1,13 @@
+<!-- IMG BG STATIC -->
 <div class="bg-transparent position-fixed w-100 h-100 fondoportada"></div>
 <div class="bg-transparent position-fixed w-100 h-100 fondoportadaone"></div>
 <!-- advertising -->
 
 <!-- titles -->
-<div class=" py-5 container-fluid bg-light header" style="color: var(--color_primary);">
-    <h1 class="col-12 text-center pl-0 index left "><?= get_string('description') ?></h1>
+<div class=" py-5 container-fluid bg-light main_margin main_title" >
+    <h1 class="col-12 text-center pl-0 index left   "><?= config('subtitle') ?></h1>
     <h2 class="text-center col-12 mb-4 pl-0 right logo  "><?= config('title') ?></h2>
-    <div class="response-ejemplo"></div>
+    <!-- <div class="response-ejemplo"></div> -->
 </div>
 <!-- index 1 -->
 <div class="container-fluid p-xl-5 p-lg-4 p-md-4 p-3 cuadrado">
@@ -42,16 +43,9 @@
         </div>
         <!-- form information  -->
         <section class="col-xl-3 col-lg-5 col-md-5 col-sm-8 col-11 mb-5 p-4   cuadrado scrollshow  " id="main_aside">
-            <h3 class=""><?= get_string('index10') ?></h3>
-            <p><?= get_string('index10.1') ?></p>
-            <div class="respuestainformation  w-100 rounded text-center" style="background-color: var(--color_second);"></div>
-            <form class="d-flex flex-column  btn-20 input-group-sm" id="information">
-                <input class="form-control mb-2 input-sm" id="email1" name="msg[email]" type="email" placeholder="Ingrese su e-mail..." required />
-                <input class="form-control mb-2 input-sm" id="name1" name="msg[name]" type="text" placeholder="Ingrese su nombre..." />
-                <input class="form-control mb-2 input-sm" id="asunto" name="msg[affair]" type="text" placeholder="Asunto..." required>
-                <textarea class="form-control  mb-4 input-sm" name="msg[content]" id="" rows="3" placeholder="Sugerencias, información o lo que tu quieras..." required></textarea>
-                <button class="btn btn-sm btn-outline-primary mx-auto  px-5" type="submit" name="enviar_email"><?= get_string('btn-send') ?></button>
-            </form>
+            <?php
+            include "add/formcontact.php"
+            ?>
         </section>
     </div>
 </div>
@@ -96,7 +90,7 @@
 
     </div>
     <div class="row mx-0 px-0 justify-content-around  design_example">
-        <?php 
+        <?php
         $design = ["aaron", "liam", "magui", "magdy"];
         foreach ($design as $v) { ?>
             <div class=" col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-1 divex  cuadrado scrollshow">
@@ -124,14 +118,14 @@
             <img src="<?= assets("img/qr1.png") ?>" alt="" class="w-100">
         </div>
         <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-4 divex   cuadrado scrollshow">
-            <img src="<?= assets("img/qr2.png") ?>" alt="" class="w-100">
+            <img src="<?= assets("img/qr2.png") ?>" alt="" class="w-100 ">
         </div>
         <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-4 divex   cuadrado scrollshow">
             <img src="<?= assets("img/qr3.png") ?>" alt="" class="w-100">
         </div>
     </div>
 </div>
-<div class="container-fluid  py-5 cuadrado main_comments">
+<div class="container-fluid  py-5 cuadrado main_margin">
     <div class="container m-auto justify-content-around row">
         <!-- form comment -->
         <div id="main_comment" class=" col-12  divex justify-content-around row py-4 scrollshow" style=" border-radius:10px;">
@@ -181,33 +175,12 @@
         height: 600px;
     }
 
-    .header,
-    .main_comments {
-        margin-top: 15% !important;
-        margin-bottom: 15% !important;
-    }
 
 
 
-    @media (max-width:993px) {
+    @media (max-width:993px) {}
 
-        .header,
-        .main_comments {
-            margin-bottom: 30% !important;
-            margin-top: 30% !important;
-        }
-
-    }
-
-    @media (max-width: 576px) {
-
-        .header,
-        .main_comments {
-            margin-bottom: 40% !important;
-            margin-top: 40% !important;
-        }
-
-    }
+    @media (max-width: 576px) {}
 </style>
 <?php require assetsphp("js/general"); ?>
 <?php require assetsphp("js/mainindex"); ?>
