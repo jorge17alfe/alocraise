@@ -307,10 +307,11 @@
                 </dl>
             </ul>
             <span class="col-12 col-sm-12 my-2 text-center px-0"><small>
-                    <a href="<?= SERVERURL ?>política-privacidad">Politica de privacidad</a> -
-                    <a href="<?= SERVERURL ?>política-cookies">Politica de cookies</a> -
-                    <a href="<?= SERVERURL ?>aviso-legal">Aviso legal</a> -
-                    <a href="<?= SERVERURL ?>">&copy; Aloc_Raise <?php echo date('Y') ?></a></small>
+            <a href="<?= SERVERURL ?>quienes-somos"><?= get_string('aboutus') ?></a> -
+                    <a href="<?= SERVERURL ?>política-privacidad"><?= get_string('privacy-politic') ?></a> -
+                    <a href="<?= SERVERURL ?>política-cookies"><?= get_string('cookies-politic') ?></a> -
+                    <a href="<?= SERVERURL ?>aviso-legal"><?= get_string('legal-notice') ?></a> -
+                    <a href="<?= SERVERURL ?>">&copy; Copyright <?= config('title').' '. date('Y') ?></a></small>
             </span>
         </footer>
     </div>

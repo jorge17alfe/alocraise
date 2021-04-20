@@ -38,6 +38,7 @@ class Pages
         self::registerPage('registro', 'login/register', HEADHEAD, '');
         self::registerPage('iniciar-sesion', 'login/login', HEADHEAD, '');
         self::registerPage('cookies', 'includes/add/cookies', HEAD, FOOTER);
+        self::registerPage('calculator', 'example/calculator', HEADHEAD, '');
     }
 
     public static function  comments()

@@ -2,9 +2,8 @@
 <div class="bg-transparent position-fixed w-100 h-100 fondoportada"></div>
 <div class="bg-transparent position-fixed w-100 h-100 fondoportadaone"></div>
 <!-- advertising -->
-
 <!-- titles -->
-<div class=" py-5 container-fluid bg-light main_margin main_title" >
+<div class=" py-5 container-fluid bg-light main_margin main_title">
     <h1 class="col-12 text-center pl-0 index left   "><?= config('subtitle') ?></h1>
     <h2 class="text-center col-12 mb-4 pl-0 right logo  "><?= config('title') ?></h2>
     <!-- <div class="response-ejemplo"></div> -->

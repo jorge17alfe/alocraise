@@ -4,18 +4,20 @@ define('SERVERURL', 'https://localhost/alocraise2.0/');
 define('HEAD', 'includes/head');
 define('HEADHEAD', 'includes/add/head');
 define('FOOTER', 'includes/footer');
+define('CLAVE_PIN', 'POLK987RETYU7TRYUO18761KFRTH');
 define('TABLE_PERSONAL', 'datos_personales');
 define('TABLE_MENU', 'menu_dia');
 define('TABLE_PASS', 'usuarios_pass');
 define('TABLE_DATAAPP', 'datos_usuarios');
 define('TABLE_MESSAGES', 'messages');
-define('claves', '987718761');
 
-
+// CONFIG WEB
 $_config = array(
     'title' => 'Aloc_Raise',
     'addtitle' => ' - Restaurante online',
     'subtitle' => 'Web para tu restaurante',
+    'web_description' => 'Carta digital y web online para tu restaurante ,cafetería, bar etc. Sencillo y la manejes tu mismo, código qr para tus mesas',
+    'web_keyboards' => 'web restaurante, carta digital, carta online, restaurante, cafeteria, bar, codigo qr',
     'codification' => 'utf-8',
     'autor-name' => 'Jorge',
     'autor-surname' => 'Ordóñez',
@@ -27,6 +29,7 @@ $_config = array(
     'co-admin1' => 'Damarys Cordova'
 );
 
+// COLUMNS FR EDIT
 $_columns_tables = array(
     'datos_textos' => array(
         // 'color_web1',

@@ -11,7 +11,7 @@
   <button id="upbutton" class="m-auto btn btn-outline-primary "><i class="fas fa-angle-up"></i></button>
 </div>
 <!-- COOKIES -->
-<?php viewadd("includes/add/cookies") ?> 
+<?php viewadd("includes/add/cookies") ?>
 <!-- SOCIAL NETWORK  -->
 <div class="social_network position-fixed d-flex  flex-column btn-20 top ml-xl-5 ml-md-4 ml-sm-2 ml-0">
   <a href="https://m.facebook.com/sharer.php?u=<?= SERVERURL ?>" target="_blank" class=" btn  "><i class="fab fa-facebook-f"></i></a>
@@ -34,7 +34,7 @@
     margin-bottom: 1rem;
     /* -webkit-transition: all 0.6s ease-in;
     transition: all 0.6s ease-out; */
-  
+
   }
 
   .social_network a:hover {
@@ -85,6 +85,7 @@
 </style>
 
 <script>
+  // BARRA DE AVANZE
   $(window).scroll(function() {
     // calculate the percentage the user has scrolled down the page
     var scrollPercent =
@@ -93,6 +94,7 @@
 
     $(".bar-long").css("width", scrollPercent + "%");
   });
+  // BUTTON OF UP
   $("#upbutton").click(function() {
     $("html").animate({
       "scrollTop": 0

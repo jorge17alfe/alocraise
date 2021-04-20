@@ -12,7 +12,7 @@
                     <dd class="col-12 col-sm-12 my-0"> <a href="<?= SERVERURL ?>politica-cookies"><?= get_string('cookies-politic') ?></a> </dd>
                     <dd class="col-12 col-sm-12 my-0"> <a href="<?= SERVERURL ?>aviso-legal"><?= get_string('legal-notice') ?></a> </dd>
                 </div>
-                <span class="col-12 col-sm-12 mt-2 mb-1"> &copy;<a id="copyright" href="<?= SERVERURL ?>" copyright="<?= SERVERURL ?>"> <?php echo config('title') . ' ' .  date('Y') ?></a></span>
+                <span class="col-12 col-sm-12 mt-2 mb-1"> &copy;<a id="copyright" href="<?= SERVERURL ?>" copyright="<?= SERVERURL ?>"> <?= config('title') . ' ' .  date('Y') ?></a></span>
             </div>
         </div>
     </footer>

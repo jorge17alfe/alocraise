@@ -136,7 +136,7 @@
 							if ($(".main-nav").css('display') == 'none') {
 								$(".main-nav").removeAttr('class', 'd-none');
 								$(".main-nav").removeAttr('class', 'position-fixed');
-							} else if($(".main-nav").css('display') == 'block') {
+							} else if ($(".main-nav").css('display') == 'block') {
 								$(".main-nav").removeAttr('class', 'd-block');
 								$(".main-nav").css('class', 'd-none');
 
@@ -570,14 +570,12 @@
 
 
 		<div class="">
-			<a class="dark_grey small_text" href="<?= SERVERURL . 'politica-privacidad' ?>">Política de privacidad -</a>
-			<a class="dark_grey small_text" href="<?= SERVERURL . 'politica-cookies' ?>">Política de cookies -</a>
-			<a class="dark_grey small_text" href="<?= SERVERURL . 'aviso-legal' ?> ">Aviso legal</a>
+			<a href="<?= SERVERURL ?>quienes-somos"><?= get_string('aboutus') ?> </a> -
+			<a class="dark_grey small_text" href="<?= SERVERURL . 'politica-privacidad' ?>"><?= get_string('privacy-politic') ?></a> -
+			<a class="dark_grey small_text" href="<?= SERVERURL . 'politica-cookies' ?>"><?= get_string('cookies-politic') ?></a> -
+			<a class="dark_grey small_text" href="<?= SERVERURL . 'aviso-legal' ?> "><?= get_string('legal-notice') ?></a> -
+			<a href="<?= SERVERURL ?>"> &copy; Copyright <?= config('title').' '. date('Y') ?></a></small>
 		</div>
-		<div class="">
-			<p class="copyright"> - Copyright &copy; <?php echo date('Y') ?> <a href="<?= SERVERURL ?>">Aloc_Raise</a></p>
-		</div>
-
 	</footer>
 	<!-- end footer -->
 	</div>
@@ -591,7 +589,7 @@
 	<script type="text/javascript" src="<?= assets('app/js/magdy/js/wowslider-gallery.js') ?>"></script>
 	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script.js') ?>"></script>
 	<!-- gallery portada-->
-	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script-gallery.js') ?>"></script> 
+	<script type="text/javascript" src="<?= assets('app/js/magdy/js/script-gallery.js') ?>"></script>
 	<script type='text/javascript' src="<?= assets('app/js/magdy/js2/app.js') ?>"></script>
 </body>
 
