@@ -1,5 +1,7 @@
 <?php
-header('AcceHTTP_REFERERs-Control-Allow-Origin:*');
+header('Access-Control-Allow-Origin:*');
+// header('AcceHTTP_REFERERs-Control-Allow-Origin:*');
+
 $zone = date_default_timezone_set('UTC');
 $lang =
     // 'pt'

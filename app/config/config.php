@@ -11,6 +11,7 @@ define('TABLE_PASS', 'usuarios_pass');
 define('TABLE_DATAAPP', 'datos_usuarios');
 define('TABLE_MESSAGES', 'messages');
 
+
 // CONFIG WEB
 $_config = array(
     'title' => 'Aloc_Raise',
