@@ -119,6 +119,13 @@
 
         <input name="search[search]" id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <!-- <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button> -->
+
+        <script>
+        $(document).on("keyup", "#search", ()=>{
+          console.log($("#search").val());
+        })
+        
+        </script>
       </form>
       <div class="card my-4" id="result-search">
         <div class="card-body">
@@ -144,33 +151,6 @@
 
 </div>
 
-<div class="">
-
-  <form action="<?= SERVERURL ?>Admin/getDataAll" method="POST">
-    <button type="submit " name="enviar_consult" value="" class="btn btn-outline-info">enviar consulta datos</button>
-  </form>
-  <form action="<?= SERVERURL ?>Admin/GetRow" method="POST">
-    <input type="text " name="id_usuario">
-    <button type="submit " name="enviar_consult" value="" class="btn btn-outline-info">enviar consulta row</button>
-  </form>
-  <form action="<?= SERVERURL ?>Admin/Search" method="POST" name="form">
-    <div class="form-inline">
-      <!-- <label for="search[search]" class=" pr-2"><strong>Buscar: </strong> </label>  -->
-      <input type="text " name="search">
-    </div>
-    <select class="form-control" name="select">
-      <option value="usuario">Usuario</option>
-      <option value="email">Email</option>
-    </select>
-    <button type="submit " name="enviar_consult" value="" class="btn btn-outline-info">enviar search</button>
-  </form>
-  <form action="<?= SERVERURL ?>Admin/Delete" method="POST">
-    <input type="text " name="id_usuario">
-    <button type="submit " name="enviar_consult" value="" class="btn btn-outline-info">borrar</button>
-  </form>
-</div>
-
-</div>
 <?php
 require  assetsphp("js/admin") ;
 ?>

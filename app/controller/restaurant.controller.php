@@ -24,7 +24,12 @@ class RestaurantController
     {
         session_start();
         if (isset($_SESSION["usuario"])) {
-            echo "estamos en ejempolo";
+            // $var =  "<div style='margin-bottom:1rem; margin:2rem 1rem; font-size:85px; background-color:blue; height:10rem; width:10rem;'> </div>";
+            // $var .= "<div style='margin-bottom:1rem; margin:2rem 1rem; font-size:85px; background-color:red; height:10rem; width:10rem;'> </div>";
+            // $var .= "<div style='margin-bottom:1rem; margin:2rem 1rem; font-size:85px; background-color:purple; height:10rem; width:10rem;'> </div>";
+            $var = "It´s page show route " . SERVERURL . "restaurant/example";
+            echo $var;
+
             // $alm = $this->getParameter($_SESSION["usuario"]);
             // view('example/example', HEAD, FOOTER, $alm);
             die();
@@ -109,6 +114,9 @@ class RestaurantController
 
     public function updateTextMenu()
     {
+
+        // print_r($_POST);
+        // die();
         if (!empty($_POST)) {
             [$group, $e, $user] = descomposeArray($_POST);
             $result = array_keys($_POST[$group]);
@@ -216,16 +224,28 @@ class RestaurantController
             $sw = array('swtwitter' => 0, 'swinstagram' => 0, 'swfacebook' => 0, 'swlinkedin' => 0, 'swaceptartarjetas' => 0, 'swwifi' => 0);
             foreach ($_POST[$group] as $k => $v) {
                 $alm->$group[$k] = $v;
-                $alm->$group[$k] = $alm->Filtrar_datos($alm->$group[$k]);
                 if (is_array($alm->$group[$k])) {
                     if (in_array($k, array('sobre_nosotros', 'horario', 'primero', 'segundo'))) {
+                        // print_r($alm->$group[$k]);
+                        $alm->$group[$k] = array_values($alm->$group[$k]);
+                        // print_r($alm->$group[$k]);
                         for ($i = 0; $i  < count($alm->$group[$k]); $i++) {
-                            $alm->$group[$k][$i] = ucfirst($alm->$group[$k][$i]);
+                            if (is_array($alm->$group[$k][$i])) {
+                                for ($a = 0; $a  < count($alm->$group[$k][$i]); $a++) {
+                                    $alm->$group[$k][$i][$a] = $alm->Filtrar_datos($alm->$group[$k][$i][$a]);
+                                    $alm->$group[$k][$i][$a] = ucfirst($alm->$group[$k][$i][$a]);
+                                    // print_r($alm->$group[$k][$i][$a]);
+                                }
+                            } else {
+
+                                $alm->$group[$k][$i] = ucfirst($alm->$group[$k][$i]);
+                            }
                         }
-                        $alm->$group[$k] = serialize($alm->$group[$k]);
-                    } else {
-                        $alm->$group[$k] = serialize($alm->$group[$k]);
+                        // $alm->$group[$k] = serialize($alm->$group[$k]);
                     }
+                    $alm->$group[$k] = serialize($alm->$group[$k]);
+                } else {
+                    $alm->$group[$k] = $alm->Filtrar_datos($alm->$group[$k]);
                 }
                 if (in_array($k, array('nombre_empresa', 'titulo_sobre_nosotros', 'direccion', 'ciudad', 'estado', 'pais'))) {
                     $alm->$group[$k] = ucfirst($alm->$group[$k]);
@@ -242,8 +262,8 @@ class RestaurantController
                     $alm->$group[$k] = $v;
                 }
             }
+            // print_r($alm->$group);
             $table = $this->getTable($group);
-
             foreach ($alm->$group as $name => $value) {
                 $ok =  $this->model->updateRow($table, $name, $value, array($this->column, $alm->$group['id_usuario']));
             }

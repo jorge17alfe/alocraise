@@ -76,6 +76,8 @@ class Core
 
     public function page($url)
     {
+        require_once "app/routes/routes.php";
+        new Routes();
         $controller = 'pages';
         require_once "app/routes/$controller.php";
         $controller = ucwords($controller);

@@ -52,6 +52,7 @@ class DesignController
 
     public function example($var = null)
     {
+
         if (isset($var[0])) {
             session_start();
             $result = $this->datas("jorge");
@@ -65,7 +66,9 @@ class DesignController
     }
 
     public function example2(){
-        // view("example/example", '','');
         view("example/example", HEADHEAD,'');
+    }
+    public function example3(){
+        print_r($_POST);
     }
 }

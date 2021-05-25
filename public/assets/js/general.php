@@ -41,22 +41,19 @@
                     $(form).trigger("reset");
                     setTimeout(getRow, 300)
                     setTimeout(getIframe, 300);
-                    hideresponse("respuesta")
                 })
         }
     }
     // SHOW HIDE RESPONSE FORM
     function showresponse(data, response) {
         $("." + data + "").show('swing').html(response, "swing")
-    }
-
-    function hideresponse(data) {
-        setTimeout(function() {
+        setTimeout(()=> {
             $("." + data + "").hide('swing').html('')
         }, 3000);
-
         return;
     }
+
+ 
     // ANIMATE HIDE-SHOW SLICE ELEMENT
     $(".right").css({
         left: 3000

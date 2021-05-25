@@ -13,7 +13,7 @@ class LoginController
     public function reestablecerPassword()
     {
         if (isset($_GET['i'])) {
-            view('login/reset_password', HEADHEAD,'');
+            view('login/reset_password', HEADHEAD, '');
             die();
         }
         redirect('');
@@ -21,50 +21,51 @@ class LoginController
 
     public function register()
     {
-        if (isset($_POST["usuario"])) {
-            $error = array();
-            $alm = new Validar();
-            $registro = $alm->Filtrar_datos($_POST["usuario"]);
-            $password = $alm->Filtrar_datos($_POST["password"]);
-            $confirm_password = $alm->Filtrar_datos($_POST["confirm_password"]);
-            $email = $alm->Filtrar_datos($_POST["email"]);
-            $confirm_email = $alm->Filtrar_datos($_POST["confirm_email"]);
+            if (isset($_POST["usuario"])) {
+                $error = array();
+                $alm = new Validar();
+                $registro = $alm->Filtrar_datos($_POST["usuario"]);
+                $password = $alm->Filtrar_datos($_POST["password"]);
+                $confirm_password = $alm->Filtrar_datos($_POST["confirm_password"]);
+                $email = $alm->Filtrar_datos($_POST["email"]);
+                $confirm_email = $alm->Filtrar_datos($_POST["confirm_email"]);
 
-            // Validamos usuario
-            $result_user = $this->validateUser($registro);
-            if ($result_user == 1) {
-                $alm->user = $registro;
-            } else {
-                $error[] = $result_user;
-            }
-
-            // Validamos password
-            [$result_pass, $bolean_pass] = $this->validatePassword($password, $confirm_password);
-            if ($bolean_pass == 1) {
-                $alm->password = $result_pass;
-            } else {
-                $error[] = $result_pass;
-            }
-
-            // Validamos E-mail
-            [$result_email, $bolean_email] = $this->validateEmail($email, $confirm_email);
-            if ($bolean_email == 1) {
-                $alm->email = $result_email;
-            } else {
-                $error[] = $result_email;
-            }
-
-            if (!empty($error)) {
-                for ($i = 0; $i < count($error); $i++) {
-                    echo  $i + 1 . ' .- ' . $error[$i][0] . '<br>';
+                // Validamos usuario
+                $result_user = $this->validateUser($registro);
+                if ($result_user == 1) {
+                    $alm->user = $registro;
+                } else {
+                    $error[] = $result_user;
                 }
-                die();
-            } else {
-                $result =  $this->model->registerUser($alm);
-                msgAlert($result, 'iniciar-sesion');
-                die();
+
+                // Validamos password
+                [$result_pass, $bolean_pass] = $this->validatePassword($password, $confirm_password);
+                if ($bolean_pass == 1) {
+                    $alm->password = $result_pass;
+                } else {
+                    $error[] = $result_pass;
+                }
+
+                // Validamos E-mail
+                [$result_email, $bolean_email] = $this->validateEmail($email, $confirm_email);
+                if ($bolean_email == 1) {
+                    $alm->email = $result_email;
+                } else {
+                    $error[] = $result_email;
+                }
+
+                if (!empty($error)) {
+                    for ($i = 0; $i < count($error); $i++) {
+                        echo  $i + 1 . ' .- ' . $error[$i][0] . '<br>';
+                    }
+                    die();
+                } else {
+                    $result =  $this->model->registerUser($alm);
+                    msgAlert($result, 'iniciar-sesion');
+                    die();
+                }
             }
-        }
+        
         // notAllowed('');
     }
 
@@ -148,7 +149,7 @@ class LoginController
                         // Cookies::create_cookie('pass',$password, -2);
                         // Cookies::create_cookie('user',$login, 120);
                         // Cookies::create_cookie('pass',$password, 120);
-                        redirect("restaurant/inicio"); 
+                        redirect("restaurant/inicio");
                         die();
                     } else {
                         $msg[] = 'Contraseña incorrecta.';

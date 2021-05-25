@@ -72,6 +72,7 @@ class Login extends ConsultsBD
         $this->consult->insertInto('datos_personales', 'id', $user->id);
         $this->consult->updateRow('datos_personales', 'id_usuario', $user->id_usuario, array('id', $user->id));
         $this->consult->updateRow('datos_personales', 'email', $user->email, array('id', $user->id));
+        $this->consult->updateRow('datos_personales', 'fecha_registro', $user->fecha_registro, array('id', $user->id));
         // Create folders of work for images
         controller("createfolders");
         createfoldersController::createFoldersImages($user);

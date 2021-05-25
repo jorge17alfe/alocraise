@@ -11,6 +11,7 @@ $lang =
     ;
 
 include 'app/config/database.php';
+include 'app/config/databaseAhorcado.php';
 include 'app/config/config.php';
 include 'app/routes/route.php';
 include 'app/helpers/functions.php';

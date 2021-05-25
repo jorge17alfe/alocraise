@@ -64,7 +64,7 @@
                 <input name="menu[id_usuario]" id="id_usuario" class="id_usuario form-control w-25 " type="hidden" value="">
                 <div id="main_primero" class="input-group-sm   main_primero border-top  col-sm-12 col-12 mb-3 pr-0 my-4 row justify-content-between">
                     <div class="row col-12 py-4">
-                        <label for="primer_plato" class="col-form-label-sm col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-1 text-right mb-3">Primeros platos</label>
+                        <label for="primer_plato" class="form-label-sm col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-1 text-right mb-3">Primeros platos</label>
                         <input id="addprimero" onclick="addplato('primero')" class="btn btn-outline-info btn-sm col-lg-3 col-md-6 col-sm-6 col-6 mb-3 " type="button" value="Añadir primero">
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                     $("#menu_dia").trigger("reset");
                     setTimeout(getRow, 100);
                     showresponse("respuesta", response)
-                    hideresponse("respuesta")
+                    console.log(response)
                     return false;
                 });
         });
@@ -175,6 +175,7 @@
             })
             .done(function(response) {
                 const task = JSON.parse(response);
+                console.log(task.menu)
                 var moneda = '';
                 if (task.data.moneda == 1) {
                     moneda = '€';
@@ -218,9 +219,61 @@
 
             })
     }
+    let num = 1000;
 
     function addplato(data) {
-        $("#main_" + data + "").append("<input name='menu[" + data + "][]'  type='text' class='deleterow form-control w-25 col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12 mr-1 mb-1 '  placeholder='Añadir " + data + "' >");
+        var row = "<input name='menu[" + data + "][" + num + "][]'  type='text' class='deleterow form-control w-25 col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12 mr-1 mb-1 '  placeholder='Añadir " + data + "' >"
+        for (var i = 3; i < 17; i++) {
+            row += addShowAlergens(data, num, i);
+        }
+        $("#main_" + data + "").append(row);
+        num++
+    }
+    var alergenos = {
+        3: "altramuces",
+        4: "apio",
+        5: "azufresulfitos",
+        6: "cacahuetes",
+        7: "crustaceos",
+        8: "frutoscascara",
+        9: "gluten",
+        10: "huevos",
+        11: "lacteos",
+        12: "moluscos",
+        13: "mostaza",
+        14: "pescado",
+        15: "sesamo",
+        16: "soya"
+    }
+
+    var alergenostitle = {
+        3: "altramuces",
+        4: "apio",
+        5: "azufre y sulfitos",
+        6: "cacahuetes",
+        7: "crustáceos",
+        8: "frutos de cáscara",
+        9: "gluten",
+        10: "huevos",
+        11: "lácteos",
+        12: "moluscos",
+        13: "mostaza",
+        14: "pescado",
+        15: "sésamo",
+        16: "soja"
+    }
+    function addShowAlergens( data, num, i) {
+
+        var index = "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center align-content-center'>"
+        index += "<div  class=' col-12 pb-0 mb-0'>"
+        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenostitle[i] + "</small></p>"
+        index += "</div>"
+        index += "<div  class='' style='height:45px;'>"
+        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[i] + ".png' name='alergenoimg" + i + "' style='width:45px; height:45px;'>"
+        index += "<input  type='checkbox' onclick='choosealergens(\"inputalergensmenu"+ data + num + i + "\")' id='inputalergensdatos_textos" +data + num + i + "' name='menu[" + data + "][" + num + "][" + i + "]' class='position-relative mb-0' style='width:13px; top:-20px; right:-15px;' value='" + alergenos[i] + "'>"
+        index += "</div>"
+        index += "</div>"
+        return index;
     }
 </script>
 <?php require assetsphp("js/general") ?>

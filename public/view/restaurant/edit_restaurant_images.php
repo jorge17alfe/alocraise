@@ -2,8 +2,8 @@
 
     <div class=" text-center row mb-5">
         <div class=" row  col-sm-12 col-12 mb-5 ml-md-1 ml-0">
-            <input name='' type='hidden' id='id_usuario' value='<?= $parameter->data->id_usuario; ?>'>
-            <h2 class="text-center  col-sm-12 col-12 mb-5">TÚ MENÚ</h2>
+             <input name='' type='hidden' id='id_usuario' value='<?= $parameter->data->id_usuario; ?>'>
+           <!-- <h2 class="text-center  col-sm-12 col-12 mb-5">TÚ MENÚ</h2>
             <div class="row text-justify border-top border-left col-md-6 col-sm-12 col-12 ">
                 <div class="p-4">
                     <p class="mb-0">&nbsp&nbsp&nbsp Muy bien vamos a por el segundo paso: <br><br>
@@ -28,24 +28,24 @@
 
                 </div>
 
-            </div>
+            </div> -->
         </div>
         <!-- choose plantilla -->
         <div class="col-12 pl-0 ">
             <?php
-            include "add/ira.php";
+            // include "add/ira.php";
             ?>
             <?php
-            include  "add/lines_aloc.php";
+            // include  "add/lines_aloc.php";
             ?>
         </div>
         <!-- menu -->
-        <div id="inicio_menu" class="text-center col-12 mb-4">
+        <!-- <div id="inicio_menu" class="text-center col-12 mb-4">
             <h3 class="col-12  text-center px-0 ml-0 my-4 pt-5">Edíta, Actualiza y borra.</h3>
             <p> &nbsp&nbsp&nbspEn este apartado te recomiendo que mires el tutorial. <a href=""><i class="fas fa-video fa-lg"></i></a></p>
-        </div>
+        </div> -->
         <?php
-        include_once "carta/portadaimg.php"
+        include_once "carta/logoportada.php"
         ?>
         <!-- sw change menu -->
         <?php

@@ -237,8 +237,7 @@
                 })
                 .done(function(response) {
                     console.log(response);
-                    showresponse("respuesta", response)
-                    hideresponse("respuesta")
+                    showresponse("respuesta", response);
                     setTimeout(getRow, 200);
                     setTimeout(getIframe, 200);
                     return false;

@@ -70,7 +70,6 @@ class AdminController
 
     public function deleteFoldersUsers($user = null)
     {
-        
         if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] === config('admin') && isset($user)) {
             $result = $this->model->getRow('datos_usuarios', '*', array("id_usuario", $user));
             $menu_dia = $this->model->getRow('menu_dia', 'img_menu', array("id_usuario", $user));

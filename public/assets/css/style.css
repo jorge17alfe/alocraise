@@ -2,9 +2,9 @@
   --color_primary: #2733a5;
   --color_second: #6071be;
   --color_third: rgb(180, 190, 237);
-  --color_hover_primary: hsl(240, 2%, 41%);
+  --color_hover_primary: rgb(102, 102, 107);
   --color_textos: #01012dd5;
-  --color_fondo: hsla(229, 42%, 56%, 0.102);
+  --color_fondo: rgba(96, 113, 190, 0.102);
   --letra_londrina: "Londrina Shadow", cursive;
 }
 

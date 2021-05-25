@@ -60,8 +60,7 @@ $_columns_tables = array(
         'primero',
         'segundo',
         'incluye',
-        'precio',
-        'moneda'
+        'precio'
     ),
     'imagenes' => array(
         'logo',

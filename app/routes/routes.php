@@ -1,24 +1,27 @@
 <?php
-// include 'app/routes/pages.php';
+include 'app/routes/pages.php';
 
-// class Routes extends Pages
-// {
-//         public function __construct()
-//         {
-//                 new Pages;
-//         }
-//         public static function routePage()
-//         {
-//                 Pages::registerPage('index', 'usuario/index', HEAD, FOOTER);
-//                 Pages::registerPage('page-404', 'includes/404', HEAD, FOOTER, $data = null);
-//                 Pages::registerPage('registro', 'login/register', HEAD, FOOTER, $data = null);
-//                 Pages::registerPage('inicio-sesion', 'login/login', HEAD, FOOTER);
-//                 Pages::registerPage('reset-password', 'login/reset_password', HEAD, FOOTER);
-//                 Pages::registerPage('sobre-nosotros', 'usuario/sobre_nosotros', HEAD, FOOTER);
-//                 Pages::registerPage('aviso-legal', 'legal/aviso_legal', HEAD, FOOTER);
-//                 Pages::registerPage('politica-cookies', 'legal/politica_cookies', HEAD, FOOTER);
-//                 Pages::registerPage('politica-privacidad', 'legal/politica_privacidad', HEAD, FOOTER);
-//                 Pages::registerPage('restaurante', 'restaurante/content', HEAD, FOOTER);
-//                 Pages::registerPage('restaurantesegundo', 'restaurante/content1', HEAD, FOOTER);
-//         }
-// }
+class Routes extends Pages
+{
+    public function __construct()
+    {
+        $this->routePage();
+    }
+    public static function routePage()
+    {
+        session_start();
+        Pages::registerPage('index', 'usuario/index', HEAD, FOOTER);
+        Pages::registerPage('page-404', 'includes/404', HEAD, FOOTER);
+        Pages::registerPage('quienes-somos', 'usuario/whoweare', HEAD, FOOTER);
+        Pages::registerPage('aviso-legal', 'legal/aviso_legal', HEAD, FOOTER);
+        Pages::registerPage('politica-cookies', 'legal/politica_cookies', HEAD, FOOTER);
+        Pages::registerPage('politica-privacidad', 'legal/politica_privacidad', HEAD, FOOTER);
+        Pages::registerPage('registro', 'login/register', HEADHEAD, '');
+        Pages::registerPage('iniciar-sesion', 'login/login', HEADHEAD, '');
+        Pages::registerPage('cookies', 'includes/add/cookies', HEAD, FOOTER);
+        Pages::registerPage('calculator', 'example/calculator', HEADHEAD, '');
+        Pages::registerPage('reloj', 'example/reloj', HEADHEAD, '');
+        Pages::registerPage('ahorcado1', 'example/ahorcado', HEADHEAD, '');
+        Pages::registerPage('example', 'example/example', HEADHEAD, '');
+    }
+}
