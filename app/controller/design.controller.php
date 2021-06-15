@@ -1,10 +1,6 @@
 <?php
 class DesignController
 {
-
-
-
-
     public function datas($user = null)
     {
         if ($user == "jorge") {

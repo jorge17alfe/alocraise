@@ -5,13 +5,12 @@ define('HEAD', 'includes/head');
 define('HEADHEAD', 'includes/add/head');
 define('FOOTER', 'includes/footer');
 define('CLAVE_PIN', 'POLK987RETYU7TRYUO18761KFRTH');
+define('CLAVE_PIN_APP', 'POLKRETY7117UTRY651UOK3FRTH6');
 define('TABLE_PERSONAL', 'datos_personales');
 define('TABLE_MENU', 'menu_dia');
 define('TABLE_PASS', 'usuarios_pass');
 define('TABLE_DATAAPP', 'datos_usuarios');
 define('TABLE_MESSAGES', 'messages');
-
-
 // CONFIG WEB
 $_config = array(
     'title' => 'Aloc_Raise',
@@ -68,4 +67,26 @@ $_columns_tables = array(
         'carta',
         'bebida'
     ),
+    'personal_data' => array(
+        'id',
+        'id_usuario',
+        'plan',
+        'precio_plan',
+        'nombre',
+        'apellidos',
+        'fecha_nacimiento',
+        'dni_nif',
+        'email',
+        'direccion',
+        'numero_direccion',
+        'planta',
+        'codigo_postal',
+        'ciudad',
+        'estado_provincia',
+        'pais',
+        'telefono',
+        'fecha_registro',
+        'ultima_conexion'
+        
+    )
 );

@@ -315,7 +315,7 @@
                     $("#main_horario").append(row);
                     $("#horario" + i).val(task.data.horario[i]);
                 }
-                // load social networks
+                // load switc social networks
                 var sw = ["swinstagram", "swtwitter", "swfacebook", "swlinkedin", "swaceptartarjetas", "swwifi"];
                 for (var i = 0; i < sw.length; i++) {
                     if (task.data[sw[i]] == 1) {

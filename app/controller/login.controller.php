@@ -66,7 +66,7 @@ class LoginController
                 }
             }
         
-        // notAllowed('');
+        page_404();
     }
 
     public function validateUser($registro = null)
@@ -86,7 +86,7 @@ class LoginController
             }
             return $error;
         }
-        notAllowed();
+        page_404();
     }
 
     public function validatePassword($password = null, $confirm_password = null)
@@ -106,7 +106,7 @@ class LoginController
             }
             return [$error, FALSE];
         }
-        notAllowed('');
+        page_404();
     }
 
     public function validateEmail($email = null, $confirm_email = null)
@@ -127,7 +127,7 @@ class LoginController
             }
             return [$error, FALSE];
         }
-        notAllowed('');
+        page_404();
     }
 
     public function checkLogin()
@@ -143,7 +143,9 @@ class LoginController
                     if (password_verify($password, $consult->password)) {
                         session_start();
                         $_SESSION["usuario"] = $login;
-                        $this->model->updateRow(TABLE_PASS, 'ultima_conexion', date('Y-m-d H:i:s'), array('id_usuario', $_SESSION["usuario"]));
+                        $last_conection =date('Y-m-d H:i:s') ;
+                        $this->model->updateRow(TABLE_PASS, 'ultima_conexion', $last_conection, array('id_usuario', $_SESSION["usuario"]));
+                        $this->model->updateRow(TABLE_PERSONAL, 'ultima_conexion', $last_conection, array('id_usuario', $_SESSION["usuario"]));
                         // include 'app/helpers/cookies.php';
                         // Cookies::create_cookie('user',$login, -2);
                         // Cookies::create_cookie('pass',$password, -2);
@@ -160,7 +162,7 @@ class LoginController
                 echo $msg[0];
                 die();
             }
-            notAllowed('');
+           page_404();
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -190,7 +192,7 @@ class LoginController
                 msgAlert('El email no esta registrado. vuelve a intentarlo.', 'iniciar-sesion');
             }
         }
-        notAllowed('');
+        page_404();
     }
 
     public function updatePassword()
@@ -217,7 +219,7 @@ class LoginController
             }
             msgAlert($error, 'iniciar-sesion');
         }
-        notAllowed('');
+        page_404();
     }
 
     public function signOut()

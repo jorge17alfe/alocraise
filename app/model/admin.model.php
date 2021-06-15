@@ -1,4 +1,4 @@
-<?php 
+<?php
 model('consultsbd');
 
 class Admin extends ConsultsBD
@@ -22,7 +22,11 @@ class Admin extends ConsultsBD
 
     public function getData($table, $column)
     {
-       return $this->consult->getData($table, $column);
+        return $this->consult->getData($table, $column);
+    }
+    public function getGroupRows($table, $column, $since, $total_rows)
+    {
+        return $this->consult->getGroupRows($table, $column, $since, $total_rows);
     }
 
     public function getRow($table, $column, $where)
@@ -34,12 +38,14 @@ class Admin extends ConsultsBD
     {
         $this->consult->updateRow($table, $name, $value, $where);
     }
-    
+
     public function deleteUser($table,  $where)
     {
         $this->consult->deleteUser($table, $where);
-
     }
 
-
+    public function searchData($table, $column, $where)
+    {
+        return $this->consult->searchData($table, $column, $where);
+    }
 }

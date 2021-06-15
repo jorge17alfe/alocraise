@@ -18,7 +18,10 @@
                         <?php
                         } else { ?>
                             <li class="nav-item pl-lg-3">
-                                <a class="nav-link" href="<?= SERVERURL ?>">Home</a>
+                                <a class="nav-link" href="<?= SERVERURL ?>">
+                                    <!-- <i class="fa fa-home" aria-hidden="true"></i> -->
+                                    Home
+                                </a>
                             </li>
                         <?php
                         }
@@ -26,23 +29,20 @@
                         // include "menutemplate.php";
                         viewadd('includes/add/menutemplate', ['', ''])
                         ?>
-                        <!-- <li class="nav-item pl-3">
-                            <a class="nav-link " href="<?= SERVERURL ?>available"><?= get_string('available') ?></a>
-                        </li> -->
                         <?php if (!isset($_SESSION["usuario"])) { ?>
                         <?php } else { ?>
                             <li class="nav-item pl-lg-3 ">
                                 <a class="nav-link " href="<?= SERVERURL ?>restaurant/inicio">
-                                    Usuario
                                     <!-- <i class="fas fa-user"></i> -->
+                                    Usuario
                                 </a>
                             </li>
                         <?php } ?>
                         <?php if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] === config('admin')) { ?>
                             <li class="nav-item pl-lg-3 ">
                                 <a class="nav-link " href="<?= SERVERURL ?>admin/admin">
-                                    Admin
                                     <!-- <i class="fas fa-lock"></i> -->
+                                    Admin
                                 </a>
                             </li>
                         <?php  } ?>
@@ -66,4 +66,3 @@
     <div class="vacio">
         <!-- espacio vacio de 70px para la cabecera -->
     </div>
-   

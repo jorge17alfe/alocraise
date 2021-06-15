@@ -25,7 +25,7 @@
 <script>
     getRow();
     var alergenos = {
-        // 3: "no-available",
+        3: "not-available",
         4: "altramuces",
         5: "apio",
         6: "azufresulfitos",
@@ -43,7 +43,7 @@
     }
 
     var alergenostitle = {
-        // 3: "no disponible",
+        3: "no disponible",
         4: "altramuces",
         5: "apio",
         6: "azufre y sulfitos",
@@ -125,16 +125,43 @@
                                 index += "<small class='font-weight-bold'>" + i + ")</small><input id='namedatostextos" + section2[s] + a + i + "0' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][0]' class=' form-control col-3 col-3'  type='text' >"
                                 index += "<input id='descripdatostextos" + section2[s] + a + i + "1' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][1]' class=' form-control col-5 col-6'  type='text' value=''>"
                                 index += "<input id='pricedatostextos" + section2[s] + a + i + "2' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][2]' class=' form-control col-2 col-2'  type='text' value='' >"
-                                
+
                                 index += "<a href='javascript:void[0]' onclick='showalergenos(\"" + section2[s] + "\"," + a + "," + i + ")' id='' class='btn_vermas_alergen" + section2[s] + a + i + " btn_vermas_alergen text-info ' ><small>ver +</small></a>"
-                                
+
                                 index += "<div  class='show_alergenos" + section2[s] + a + i + " close_alergenos input-sm row  py-1 ml-3 col-12 input-group-sm justify-content-between' style=' display:none;'>"
                                 index += "<div class='col-12 row justify-content-end mr-0 pr-0'>"
                                 index += "<div class='col-md-5 col-sm-9 col-12 row justify-content-between mr-0 pr-0 mb-3'>"
-                                
-                                index += "<div>"
-                                index += "<input id='pricedatostextos" + section2[s] + a + i + "2' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][3]' class=' form-control col-2 col-2'  type='checkbox' value='' >"
-                               
+
+
+                                index += "<div  class=' input-sm row  input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 '>"
+                                // index += "<div  class=' col-12 pb-0 mb-2'>"
+                                // index += "<a href='javascript:void[0]'<small>" + alergenostitle[3] + "</small></a>"
+                                // index += "<a href='javascript:void[0]' style='color:var(--color_primary);' class=''><small><small>" + alergenostitle[3] + "</small></small></a>"
+                                // index += "</div>"
+                                index += "<div  "
+                                // if (alergenos[3] == "1") {
+                                    index += "style='background-color:var(--color_second); border-radius:10%; "
+                                // }
+                                index += " width:100%;' class='col-12' >"
+                                index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[3] + ".png' name='alergenoimg" + 3+ "' style='width:35px; height:35px;'>"
+                                index += "<input "
+                                // if (alergenos[3] == "1") {
+                                    index += "checked "
+                                // }
+                                index += " onclick='choosealergens(\"alergenos" + section2[s] + a + i + "3\")'  id='alergenos" + section2[s] + a + i + "3'   type='checkbox' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][3]' class='inputalergens position-absolute' style='width:33%; height:50%; top:33%;px; left:35%; opacity:0;' value='" + alergenos[3] + "'>"
+                                index += "</div>"
+                                index += "</div>"
+
+
+
+
+
+
+                                // index += "<div class=''>"
+                                // index += "<small>No disponible</small>"
+                                // index += "<input id='pricedatostextos" + section2[s] + a + i + "2' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][3]' class=' form-control col-2 col-2'  type='checkbox' value='' >"
+                                // index += "</div>"
+
                                 index += "<a href='javascript:void[0]' onclick='upDownItem(\"" + section2[s] + "\"," + a + "," + i + ",-1)' style='color:var(--color_primary);' class=''><small class=' d-block'><small>SUBIR</small></small> <i class='fas fa-arrow-up'></i></a>"
                                 index += "<a href='javascript:void[0]' onclick='upDownItem(\"" + section2[s] + "\"," + a + "," + i + ",1)' style='color:var(--color_primary);' class=''><i class='fas fa-arrow-down'></i><small class=' d-block'><small>BAJAR</small></small> </a>"
                                 index += "<a href='javascript:void[0]' onclick='deleteRowItem(" + i + "," + a + ",\"" + section2[s] + "\",\"datos_textos\")' class='text-danger ' ><small class='d-block'>BORRAR</small><small><i class='fas fa-trash'></i></small></a>"
@@ -148,9 +175,10 @@
                                     index += "</div>"
                                     index += "<div  "
                                     if (task.data[section2[s]][a][i].includes(alergenos[o])) {
+                                
                                         index += "style='background-color:var(--color_second); border-radius:10%; "
                                     }
-                                    index += " width:40%;' class='' >"
+                                    index += " width:100%;' class='col-6' >"
                                     index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[o] + ".png' name='alergenoimg" + o + "' style='width:45px; height:45px;'>"
                                     index += "<input "
                                     if (task.data[section2[s]][a][i].includes(alergenos[o])) {

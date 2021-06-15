@@ -1,17 +1,16 @@
 <div class="container text-center py-5">
-    <h1>JL CALCULADORA <i class="fa fa-calculator text-info" aria-hidden="true"></i></h1>
-    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-7 mx-auto">
+    <h1><i class="fa fa-calculator text-info" aria-hidden="true"></i></h1>
+    <div class="d-flex justify-content-center">
         <table class="my-5 " id="calculator">
             <!-- <thead>
             </thead> -->
             <tbody>
 
                 <tr>
-                    <th colspan="4" class="p-3"><input type="text" class="text-right px-3  bg-white" id="display" disabled></th>
+                    <th colspan="4" class="p-3"><input type="text" class="text-right px-3  bg-white text-info" id="display" disabled></th>
                 </tr>
                 <tr>
-                    <td colspan="2" id="reset" class="reset" scope="row">C</td>
-                    <td colspan="2" id="resetmemory" class="resetmemory">CE</td>
+                    <!-- <td colspan="2" id="resetmemory" class="resetmemory">CE</td> -->
 
                 </tr>
                 <tr>
@@ -33,13 +32,12 @@
                     <td id="multi" class="signooperacion">x</td>
                 </tr>
                 <tr>
-                    <td id="coma" class="numeros" scope="row">,</td>
+                    <!-- <td id="coma" class="numeros" scope="row">,</td> -->
+                    <td id="reset" class="reset" scope="row">C</td>
                     <td id="cero" class="numeros">0</td>
-                    <td id="potencia" class="signooperacion">x²</td>
+                    <!-- <td id="potencia" class="signooperacion">x²</td> -->
+                    <td id="igual" class="igual" scope="row">=</td>
                     <td id="div" class="signooperacion">/</td>
-                </tr>
-                <tr>
-                    <td colspan="4" id="igual" class="igual" scope="row">=</td>
                 </tr>
             </tbody>
         </table>

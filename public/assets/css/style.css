@@ -179,6 +179,10 @@ h2 {
   height: 2.3rem;
 }
 
+.close_window:hover{
+  cursor: pointer;
+}
+
 @media (max-width: 992px) {
   .burguer {
     display: block;

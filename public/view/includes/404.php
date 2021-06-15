@@ -1,9 +1,3 @@
-<!-- <h1>Estás en la 404 page. <br>    No existe esta Página</h1>
-
-<br>
-
-<a href="<?=SERVERURL?>index">Regresar</a>   -->
-
 <div class="container contenido ">
     <section class="container text-center pag_error pl-2">
         <img src="<?=SERVERURL?>public/assets/img/osoliam.png" alt="">
