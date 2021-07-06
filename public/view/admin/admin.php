@@ -143,8 +143,8 @@
             <label for="item_search" class=" mr-3"><strong>Buscar: </strong> </label>
             <select class="form-control form-control-sm col-7" id="item_search" name="item_search">
               <option value="id_usuario">Usuario</option>
-               <option value="email">E-mail</option>
-              <option value="apellidos">Apellido</option> 
+              <option value="email">E-mail</option>
+              <option value="apellidos">Apellido</option>
             </select>
 
           </div>
@@ -159,6 +159,7 @@
         </div>
       </div>
       <h3 class="text-center">Lista de Usuarios</h3>
+      <p id="total_user_registered" class="font-weight-bold text-right"></p>
       <div class="row col-12 justify-content-center mr-0 pr-0">
         <div class="  my-2 col-md-5 col-9 badge badge-info py-2 mr-0 pr-0 response_update_user" style="border-radius:5px; margin-right:45px;"></div>
       </div>
@@ -167,8 +168,8 @@
       </table>
       <div id="pagination1"></div>
       <div class="row col-12 justify-content-center mr-0 pr-0">
-          <div class="  my-2 col-md-5 col-9 badge badge-info py-2 mr-0 pr-0 response_pagination" style=" border-radius:5px; margin-right:45px;"></div>
-        </div>
+        <div class="  my-2 col-md-5 col-9 badge badge-info py-2 mr-0 pr-0 response_pagination" style=" border-radius:5px; margin-right:45px;"></div>
+      </div>
     </div>
   </div>
 

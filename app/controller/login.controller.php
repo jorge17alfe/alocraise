@@ -65,7 +65,6 @@ class LoginController
                     die();
                 }
             }
-        
         page_404();
     }
 

@@ -1,6 +1,6 @@
 <?php
 define('SERVERURL', 'https://localhost/alocraise2.0/');
-// define  ('SERVERURL','https://alocraise.com/');
+// define  ('SERVERURL','https://micartaonline.es/');
 define('HEAD', 'includes/head');
 define('HEADHEAD', 'includes/add/head');
 define('FOOTER', 'includes/footer');
@@ -13,7 +13,7 @@ define('TABLE_DATAAPP', 'datos_usuarios');
 define('TABLE_MESSAGES', 'messages');
 // CONFIG WEB
 $_config = array(
-    'title' => 'Aloc_Raise',
+    'title' => 'MiCartaOnline',
     'addtitle' => ' - Restaurante online',
     'subtitle' => 'Web para tu restaurante',
     'web_description' => 'Carta digital y web online para tu restaurante ,cafetería, bar etc. Sencillo y la manejes tu mismo, código qr para tus mesas',
@@ -22,7 +22,7 @@ $_config = array(
     'autor-name' => 'Jorge',
     'autor-surname' => 'Ordóñez',
     'nif' => '543*****A',
-    'email-info' => 'info@alocraise.com',
+    'email-info' => 'alocraise@gmail.com',
     'id_consult' => 'id_usuario',
     'admin' => 'jorge',
     'co-admin' => 'Jorge Ordóñez',

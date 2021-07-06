@@ -94,7 +94,7 @@ class AdminController
             } else {
                 $result = $group_returned;
             }
-            echo $json = json_encode([$result]);
+            echo $json = json_encode($result);
             die();
         }
         page_404();

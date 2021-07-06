@@ -48,7 +48,8 @@ class ConsultsBD
     public function getGroupRows($table, $column, $since, $total_rows)
     {
         try {
-            $sql = "SELECT $column FROM $table LIMIT $since, $total_rows";
+            // $sql = "SELECT $column FROM $table LIMIT $since, $total_rows";
+            $sql = "SELECT $column FROM $table ORDER BY id_usuario ASC LIMIT $since, $total_rows";
             $result = $this->pdo->prepare($sql);
             $result->execute();
             while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {

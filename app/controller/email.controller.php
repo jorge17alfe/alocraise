@@ -12,6 +12,7 @@ class EmailController
 
     public static function email($data)
     {
+        global $_config;
         // print_r($data);
         // exit();
         $mail = new PHPMailer(true);
@@ -20,19 +21,19 @@ class EmailController
             //Server settings
             $mail->SMTPDebug = 0;                      // Enable verbose debug output
             $mail->isSMTP();                                            // Send using SMTP
-            $mail->Host       = 'smtp.ionos.es';                    // Set the SMTP server to send through
+            $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'info@alocraise.com';                     // SMTP username
-            $mail->Password   = 'Liamcito1+';                               // SMTP password
+            $mail->Username   = $_config["email-info"];                     // SMTP username
+            $mail->Password   = 'Aaroncito1+';                               // SMTP password
             $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
-            $mail->setFrom('info@alocraise.com', 'Alocraise');
+            $mail->setFrom($_config["email-info"], 'Alocraise');
             $mail->addAddress($data->email, $data->id_usuario);     // Add a recipient
             // $mail->addAddress('jorgeordonezmorales@gmail.com', 'Liam');               // Name is optional
             // $mail->addReplyTo('info@example.com', 'Information');
-            $mail->addCC('info@alocraise.com');
+            $mail->addCC($_config["email-info"]);
             // $mail->addBCC('bcc@example.com');
 
             // Attachments

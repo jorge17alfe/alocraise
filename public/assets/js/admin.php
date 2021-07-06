@@ -16,6 +16,7 @@
     // $("#item_search").html(option)
 
     let pagination = 1;
+
     function getDataAll(row_inicio = 1) {
       $.post({
           url: "<?= SERVERURL ?>admin/getDataAll",
@@ -36,6 +37,7 @@
           $("#list_user").html(template);
           $("#pagination1").html(paginationUser(datos[4]));
           pagination = datos[3];
+          $("#total_user_registered").html("Total usuarios registrados : <spam class='text-primary'>"+datos[1]+"</spam>");
           $("#total-pages-pagination").val(pagination);
           // console.log(pagination)
         })
@@ -63,11 +65,11 @@
                     <a class="page-link prev-next" href="javascript:void[0]" tabindex="-1"  style='color:var(--color_primary)'>Previous</a>
                     </li>
                   `;
-      result +=   `<select id="total-pages-pagination" class="page-link" id="" name=""   style='color:var(--color_primary)' >`
+      result += `<select id="total-pages-pagination" class="page-link" id="" name=""   style='color:var(--color_primary)' >`
       for (var i = 0; i < total_rows; i++) {
-        result +=   `<option value="${i+1}">${i+1}</option>`;
+        result += `<option value="${i+1}">${i+1}</option>`;
       }
-        result +=     `</select><li class="page-item">
+      result += `</select><li class="page-item">
                       <a class="page-link prev-next"tabindex="1" href="javascript:void[0]"  style='color:var(--color_primary)'>Next</a>
                       </li>
                 </ul>
@@ -110,7 +112,7 @@
       if (confirm("Are you sure you want to delete it?")) {
         const element = $(this)[0].activeElement;
         const id_usuario = $(element).attr("datoId");
-        console.log(id_usuario)
+        // console.log(id_usuario)
         $.post("<?= SERVERURL ?>admin/deleteUser", {
             id_usuario
           },
@@ -118,7 +120,6 @@
             showresponse("response_update_user", response);
             // console.log(response);
             $("#main_form_data_user").hide(1000)
-
             getDataAll();
           });
       }
@@ -194,12 +195,16 @@
         .done((response) => {
           // console.log(response)
           datas = JSON.parse(response);
-          // console.log(datas)
+          // console.log(datas.length)
           var template = ''
-          $("#result_search").html(headerListUsers('list_search'))
-          datas[0].forEach((dato) => {
-            template += listUsers(dato.id, dato.id_usuario, dato.email, dato.fecha_registro)
-          })
+          if (datas.length > 0) {
+            $("#result_search").html(headerListUsers('list_search'))
+            datas.forEach((dato) => {
+              template += listUsers(dato.id, dato.id_usuario, dato.email, dato.fecha_registro)
+            })
+          } else {
+            $("#result_search").html("<tr><td class='py-3 font-weight-bold text-danger'>Usuario no existe</td></tr>");
+          }
           $("#list_search").html(template)
         })
 

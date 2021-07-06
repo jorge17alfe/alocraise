@@ -59,7 +59,7 @@ $_translations = array(
     'index11.4'                 => '* El e-mail no se mostrará',
 
     // ------------BIENVENIDO------------
-    'welcome1'                  => 'Recibe un cordial saludo de todo el equipo que conformamos Aloc_Raise',
+    'welcome1'                  => 'Recibe un cordial saludo de todo el equipo que conformamos',
 
     'welcome2.1'                => 'Web y carta para tu negocio.',
     'welcome2.2'                => 'Empieza aquí paso a paso descubriendo nuestra web.',

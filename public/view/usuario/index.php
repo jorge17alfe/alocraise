@@ -93,7 +93,7 @@
         $design = ["aaron", "liam", "magui", "magdy"];
         foreach ($design as $v) { ?>
             <div class=" col-xl-2 col-lg-3 col-md-5 col-sm-6 col-7 mx-4 my-3 p-1 divex  cuadrado scrollshow">
-                <a href="<?= SERVERURL ?>design/example/<?= $v ?>" class=" "><img src="<?= assets("img/" . $v . ".png") ?>" alt="" class="w-100 h-100"></a>
+                <a href="<?= SERVERURL ?>design/example/<?= $v ?>" class=" "><img src="<?= assets("img/webp/" . $v . ".webp") ?>" alt="" class="w-100 h-100"></a>
             </div>
         <?php } ?>
     </div>
@@ -154,14 +154,14 @@
 </div>
 <style>
     .fondoportada {
-        background: url(<?= assets("img/picture1.jpg") ?>);
+        background: url(<?= assets("img/webp/picture1.webp") ?>);
         background-position: center;
         background-size: cover;
         z-index: -10;
     }
 
     .fondoportadaone {
-        background: url(<?= assets("img/atardecer.jpg") ?>);
+        background: url(<?= assets("img/webp/atardecer.webp") ?>);
         background-position: center;
         background-size: cover;
         z-index: -10;

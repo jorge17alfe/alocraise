@@ -28,27 +28,28 @@ class Pages
 
     public static function insertPage($parameter = null)
     {
-        // session_start();
-        // self::registerPage('index', 'usuario/index', HEAD, FOOTER);
-        // self::registerPage('page-404', 'includes/404', HEAD, FOOTER);
-        // self::registerPage('quienes-somos', 'usuario/whoweare', HEAD, FOOTER);
-        // self::registerPage('aviso-legal', 'legal/aviso_legal', HEAD, FOOTER);
-        // self::registerPage('politica-cookies', 'legal/politica_cookies', HEAD, FOOTER);
-        // self::registerPage('politica-privacidad', 'legal/politica_privacidad', HEAD, FOOTER);
-        // self::registerPage('registro', 'login/register', HEADHEAD, '');
-        // self::registerPage('iniciar-sesion', 'login/login', HEADHEAD, '');
-        // self::registerPage('cookies', 'includes/add/cookies', HEAD, FOOTER);
-        // self::registerPage('calculator', 'example/calculator', HEADHEAD, '');
-        // self::registerPage('reloj', 'example/reloj', HEADHEAD, '');
+        session_start();
+        self::registerPage('index', 'usuario/index', HEAD, FOOTER);
+        self::registerPage('page-404', 'includes/404', HEAD, FOOTER);
+        self::registerPage('quienes-somos', 'usuario/whoweare', HEAD, FOOTER);
+        self::registerPage('aviso-legal', 'legal/aviso_legal', HEAD, FOOTER);
+        self::registerPage('politica-cookies', 'legal/politica_cookies', HEAD, FOOTER);
+        self::registerPage('politica-privacidad', 'legal/politica_privacidad', HEAD, FOOTER);
+        self::registerPage('registro', 'login/register', HEADHEAD, '');
+        self::registerPage('iniciar-sesion', 'login/login', HEADHEAD, '');
+        self::registerPage('cookies', 'includes/add/cookies', HEAD, FOOTER);
+        self::registerPage('calculator', 'example/calculator', HEADHEAD, '');
+        self::registerPage('reloj', 'example/reloj', HEADHEAD, '');
+        return;
     }
 
-    public static function  comments()
-    {
-        controller("information");
-        $obj = new InformationController;
-        return  $obj->GetDataAll();
+    // public static function  comments()
+    // {
+    //     controller("information");
+    //     $obj = new InformationController;
+    //     return  $obj->GetDataAll();
 
-    }
+    // }
     public static function  callPage($page = null)
     {
         $pages = self::$pages;

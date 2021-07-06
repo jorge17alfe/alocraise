@@ -6,7 +6,7 @@
             <h4 class="  col-md-12 col-12 ">
                 <<< <?= $parameter->data->id_usuario ?>>>>
             </h4>
-            <p class="col-md-12 text-center pb-4 pr-0 font-weight-bold"><?= get_string('welcome1') ?></p>
+            <p class="col-md-12 text-center pb-4 pr-0 font-weight-bold"><?= get_string('welcome1').' '.config('title') ?></p>
         </div>
         <!-- day phase -->
         <div class="row col-12 justify-content-md-end pr-0">
