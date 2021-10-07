@@ -1,20 +1,12 @@
 <meta charset="<?= config('codification') ?>">
-<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="<?= config('web_description')?>" />
-<meta name="keywords" content="<?= config('web_keyboards')?>" />
+<meta name="description" content="<?= config('web_description') ?>" />
+<meta name="keywords" content="<?= config('web_keyboards') ?>" />
 <meta name="author" content="<?= config('autor-name') . ' ' . config('autor-surname') ?>" />
 <meta name="copyright" content="<?= config('title') ?>" />
 <meta name="robots" content="index, follow" />
-<title><?= config('title') .config('addtitle')?></title>
+<?php if(empty($_GET["url"])){$tit ="Restaurante online"; }else{$tit=ucfirst($_GET["url"]);}?>
+<title><?=  $tit  . " · " . config('title') ?></title>
+<link rel="alternate" hreflang="es" href="https://micartaonline.es" />
 <link rel="shortcut icon" href="<?= assets('img/osoliam.png') ?>" type="image/x-icon">
-<?php
-//  if(isset($_COOKIE["__accept-cookies"])){
-    ?>
-<!-- google search console-->
-<meta name="google-site-verification" content="g7Ggdii8cOkJSBATlhSMVbVYRcq8wpDM-5ELI9nvZpk" />
-<!-- google adsense -->
-<script data-ad-client="ca-pub-7997536877733385" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<?php
-//  }
-?>

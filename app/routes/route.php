@@ -12,7 +12,6 @@ class Route
             require "public/view/{$head}.php";
         }
         require "public/view/{$vista}.php";
-        
         if (!empty($footer)) {;
             require "public/view/{$footer}.php";
         }

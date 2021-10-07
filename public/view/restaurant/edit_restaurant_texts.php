@@ -251,8 +251,8 @@
                 type: "GET",
             })
             .done(function(response) {
-                const task = JSON.parse(response);
-                console.log(task);
+                // const task = JSON.parse(response);
+                console.log(response);
                 var result = Object.keys(task.data);
                 // load datos enterprice
                 // load local currency

@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Origin:*');  //for all petition without security
 // header('AcceHTTP_REFERERs-Control-Allow-Origin:*');
 
 $zone = date_default_timezone_set('UTC');
@@ -24,4 +24,8 @@ include 'app/helpers/functions.php';
 
 include 'app/routes/core.php';
 new Core;
+
+// file_put_contents('example.txt', 'ejemplo a cifrar');
+
+// echo hash_hmac_file('md5', 'example.txt', 'secret');
 ?>

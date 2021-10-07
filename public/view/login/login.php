@@ -106,10 +106,17 @@
                     data: $("#login").serialize()
                 })
                 .done(function(res) {
-                    $('#respuesta').append('<p id="reg" class="text-danger">' + res + '</p>')
+                    // $('#respuesta').append('<div id="resss" class="row col-12 justify-content-center "><p id="reg" style="background:var(--color_third);" class="text-danger p-3 col-md-3 col-8">' + res + '</p></div>')
+                    $('#respuesta').append($('<div>',{"id":"resss" ,"class":"row col-12 justify-content-center "})
+                                                    .append($("<p>",{"id":"reg","style":"background:var(--color_third);" ,"class":"text-danger rounded p-3 col-md-3 col-8"}).html(res)
+                                                     ))
                 })
             $("#login").trigger("reset");
-            $("#reg").remove();
+            setTimeout(()=>{
+                $("#reg").fadeOut("slow",()=>{
+                    $("#resss").remove()
+                });
+            }, 2500)
             return false;
         });
     });

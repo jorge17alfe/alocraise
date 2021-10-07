@@ -69,12 +69,16 @@ class RestaurantController
         redirect("iniciar-sesion");
     }
 
-    public function getParameter($user = null)
+    public function getParameter($user = "jorge")
     {
+
+
         if (isset($user)) {
             $alm = new ConsultsBD;
             $alm->menu = $this->model->getRow(TABLE_MENU, '*', array($this->column, $user));
             $alm->data = $this->model->getRow(TABLE_DATAAPP, '*', array($this->column, $user));
+            $alm->data->sobre_nosotros=unserialize($alm->data->sobre_nosotros);
+            // echo $json = json_encode($alm);
             return $alm;
         }
         redirect("iniciar-sesion");
@@ -110,6 +114,30 @@ class RestaurantController
             die();
         }
         page_404();
+    }
+    public function getData2($user2 = 'jorge')
+    {
+   
+            $alm = new ConsultsBD;
+            $alm->menu = $this->model->getRow(TABLE_MENU, '*', array($this->column, $user2));
+            $alm->data = $this->model->getRow(TABLE_DATAAPP, '*', array($this->column, $user2));
+            $menumenu = ["primero", "segundo", "img_menu"];
+            foreach ($menumenu as $k => $v) {
+                $alm->menu->$v = unserialize($alm->menu->$v);
+            }
+            $menudata = ["sobre_nosotros", "horario", "telefono", "logo", "portada", "carta", "bebida", "carta_text", "bebida_text"];
+            foreach ($menudata as $k => $v) {
+                $alm->data->$v = unserialize($alm->data->$v);
+            }
+            $alm->data =  decode_entity($alm->data);
+            $alm->menu =  decode_entity($alm->menu);
+            // if (!empty($user2)) {
+                // return $alm;
+            // } else {
+                echo  $json = json_encode($alm);
+            // }
+            die();
+       
     }
 
     public function updateTextMenu()

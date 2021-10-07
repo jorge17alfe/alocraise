@@ -29,7 +29,7 @@ class LoginController
                 $confirm_password = $alm->Filtrar_datos($_POST["confirm_password"]);
                 $email = $alm->Filtrar_datos($_POST["email"]);
                 $confirm_email = $alm->Filtrar_datos($_POST["confirm_email"]);
-
+                
                 // Validamos usuario
                 $result_user = $this->validateUser($registro);
                 if ($result_user == 1) {
@@ -37,7 +37,7 @@ class LoginController
                 } else {
                     $error[] = $result_user;
                 }
-
+                
                 // Validamos password
                 [$result_pass, $bolean_pass] = $this->validatePassword($password, $confirm_password);
                 if ($bolean_pass == 1) {
@@ -45,7 +45,9 @@ class LoginController
                 } else {
                     $error[] = $result_pass;
                 }
-
+                
+                // print_r($result_pass);
+                // die();
                 // Validamos E-mail
                 [$result_email, $bolean_email] = $this->validateEmail($email, $confirm_email);
                 if ($bolean_email == 1) {

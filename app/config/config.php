@@ -1,5 +1,5 @@
 <?php
-define('SERVERURL', 'https://localhost/alocraise2.0/');
+// define('SERVERURL', 'https://localhost/alocraise2.0/');
 // define  ('SERVERURL','https://micartaonline.es/');
 define('HEAD', 'includes/head');
 define('HEADHEAD', 'includes/add/head');
@@ -13,9 +13,9 @@ define('TABLE_DATAAPP', 'datos_usuarios');
 define('TABLE_MESSAGES', 'messages');
 // CONFIG WEB
 $_config = array(
-    'title' => 'MiCartaOnline',
+    'title' => 'Mi Carta Online',
     'addtitle' => ' - Restaurante online',
-    'subtitle' => 'Web para tu restaurante',
+    'subtitle' => 'Web y carta digital',
     'web_description' => 'Carta digital y web online para tu restaurante ,cafetería, bar etc. Sencillo y la manejes tu mismo, código qr para tus mesas',
     'web_keyboards' => 'web restaurante, carta digital, carta online, restaurante, cafeteria, bar, codigo qr',
     'codification' => 'utf-8',

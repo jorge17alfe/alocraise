@@ -34,7 +34,7 @@ function view($page = null, $head = null, $footer = null, $parameter = null)
 
 function viewadd($page = null, $parameter = null)
 {
-    return  Route::viewadd($page, $parameter);
+    Route::viewadd($page, $parameter);
 }
 function assets($route)
 {

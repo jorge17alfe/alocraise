@@ -40,34 +40,39 @@
 
 
     const example0 = (data = '') => {
-        return ("<h1>Example 0" + data + "</h1>")
+
+        return ("<h1>Example 0 jorge" + data + "</h1>")
     }
     jl["jorge"] = example0()
 
     const example1 = (data = '') => {
-        return ("<h1>Example 1" + data + "</h1>")
+        return ("<h1>Example 1 damy" + data + "</h1>")
     }
     jl["damy"] = example1()
 
     const example2 = (data = '') => {
-        return ("<h1>Example 2" + data + "</h1>")
+        return ("<h1>Example 2 magdy" + data + "</h1>")
     }
     jl["magdy"] = example2()
 
     const example3 = (data = '') => {
-        return ("<h1>Example 3" + data + "</h1>")
+        return ("<h1>Example 3 marg" + data + "</h1>")
     }
     jl["marg"] = example3()
 
+
+
+
     const page404 = (data = '') => {
+        // history.pushState(null, "", "page-404")
         return (
-        `<div className='container contenido '>
+            `<div className='container contenido '>
             <section className='container text-center pag_error pl-2'>
                 <img src='<?= SERVERURL ?>public/assets/img/osoliam.png' alt='logo' />
                 <h3>Hay un error, esa página aún no existe.</h3>
                 <p>Inténtalo de nuevo...</p>
                 <p>Que tengas la mejor de las suertes..!!</p>
-                <a className='' type='button' onClick='javascript:window.history.go(-1)'>
+                <a className='' type='button' onClick='returnPage()'>
                 Regresar..
                 </a>
             </section>
@@ -76,8 +81,25 @@
     }
     jl["page404"] = page404()
 
+    let url3 = [];
 
-
+    const url2 = (url) => {
+        var ele = url3.pop();
+        url3 = [];
+        url3.push(ele);
+        url3.push(url);
+        // console.log(url3);
+        // console.log(window.location["href"])
+        // $("#root2").append(window.location["href"])
+        return history.pushState(null, "", url)
+    }
+    
+    function returnPage() {
+        window.history.go(-1);
+        var url4= url3[url3.length-2]
+        // console.log(url4);
+        $("#root2").html(jl[url4])
+    }
 
     let link = $(".example");
     link.each((e) => {
@@ -86,6 +108,7 @@
 
             if (jl[jl2]) {
                 $("#root2").html(jl[jl2])
+                url2(jl2)
             } else {
                 $("#root2").html(jl["page404"])
 
@@ -93,8 +116,6 @@
         })
     })
 
-
-    // console.log(jl)
 </script>
 <style>
     .example:hover {

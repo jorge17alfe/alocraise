@@ -8,10 +8,6 @@ class Database{
         // $username = "dbu2237934";
         // $password = "alocraise1+";
         
-        // // DATABASE ALOCRAISE
-        // $servername = "mysql:host=db5000718675.hosting-data.io; dbname=dbs658788";
-        // $username = "dbu302250";
-        // $password = "Aaroncito1+";
         
         // // DATABASE LOCAL XAMPP
         $servername = "mysql:host=localhost; dbname=aloc_raise2.0";
