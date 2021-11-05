@@ -2,12 +2,12 @@
     <!-- SECCTIONS MENU TEXT-->
     <div class=" pr-0">
         <div class="row col-12 justify-content-sm-around justify-content-center  input-group-sm btn-20 pr-0">
-            <a id="btn_show_carta_text" href='javascript:void[0]' onclick="hideShowSection('carta_text','COMIDA')" class='btn_show_section form-control btn   col-md-4 col-sm-5 col-9 mb-2'>VER COMIDA</a>
-            <a id="btn_show_bebida_text" href='javascript:void[0]' onclick="hideShowSection('bebida_text','BEBIDA')" class='btn_show_section form-control btn   col-md-4 col-sm-5 col-9'>VER BEBIDA</a>
+            <a id="btn_show_carta_text" href='javascript:void[0]' onclick="hideShowSection('carta_text','COMIDA')" class=' form-control btn   col-md-4 col-sm-5 col-9 mb-2'>VER COMIDA</a>
+            <a id="btn_show_bebida_text" href='javascript:void[0]' onclick="hideShowSection('bebida_text','BEBIDA')" class=' form-control btn   col-md-4 col-sm-5 col-9'>VER BEBIDA</a>
         </div>
         <div class="row  col-12 text-right mt-3 input-group-sm justify-content-center pr-0 font-weight-bold">
-            <button id="add_carta_text" onclick="addsectionText('carta_text')" class="form-control btn btn_carta_text close-all-section   col-md-4 col-sm-5 col-10 px-4 font-weight-bold" style="color:var(--color_primary);">+ Sección <i class="fas fa-utensils"></i></button>
-            <button id="add_bebida_text" onclick="addsectionText('bebida_text')" class="form-control btn btn_bebida_text close-all-section  col-md-4 col-sm-5 col-10 px-4 font-weight-bold" style="color:var(--color_primary);">+ Sección <i class="fas fa-glass-cheers"></i></button>
+            <button id="add_carta_text" onclick="addsectionText('carta_text')" class="form-control btn     col-md-4 col-sm-5 col-10 px-4 font-weight-bold" style="color:var(--color_primary);">+ Sección <i class="fas fa-utensils"></i></button>
+            <button id="add_bebida_text" onclick="addsectionText('bebida_text')" class="form-control btn   col-md-4 col-sm-5 col-10 px-4 font-weight-bold" style="color:var(--color_primary);">+ Sección <i class="fas fa-glass-cheers"></i></button>
         </div>
     </div>
     <form id='menu_text' name='menu' class='row  col-sm-12 col-12  my-2  pr-0 mr-0'>
@@ -52,11 +52,17 @@
     let num = 1000;
 
     function addsectionText(data) {
+        console.log(data)
         var section = "<div  class='input-sm row  py-1 col-md-4 col-6 input-group-sm borrarsection'>"
-        section += "<label class='input-group-sm col-12 '>+ Sección <input name='datos_textos[" + data + "][][0]' class=' form-control col-12 text-primary font-weight-bold' type='text'></label>"
+        section += "<label class='input-group-sm col-12 '>+ Sección <input data='" + data + "' name='datos_textos["+data+"][][0]'  class=' form-control col-12 text-primary font-weight-bold' type='text'></label>"
         section += "</div>"
         $('#addsection' + data).append(section);
     }
+
+    // $(document).on("keyup", (e)=>{
+    //     let res =e.target.getAttribute("data");
+    //     e.target.setAttribute("name","datos_textos["+res+"]["+e.target.value+"]" )
+    // })
 
     function addindexText(section, data) {
 
@@ -80,19 +86,20 @@
 
         var index = "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center align-content-center'>"
         index += "<div  class=' col-12 pb-0 mb-0'>"
-        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenostitle[i] + "</small></p>"
+        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenos[i].title + "</small></p>"
         index += "</div>"
         index += "<div  class='' style='height:45px;'>"
-        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[i] + ".png' name='alergenoimg" + i + "' style='width:45px; height:45px;'>"
-        index += "<input  type='checkbox' onclick='choosealergens(\"inputalergensdatos_textos" + section + data + num + i + "\")' id='inputalergensdatos_textos" + section + data + num + i + "' name='datos_textos[" + section + "][" + data + "][" + num + "][" + i + "]' class='position-relative mb-0' style='width:13px; top:-20px; right:-15px;' value='" + alergenos[i] + "'>"
+        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[i].alergens + ".png' name='alergenoimg" + i + "' style='width:45px; height:45px;'>"
+        index += "<input  type='checkbox' onclick='choosealergens(\"inputalergensdatos_textos" + section + data + num + i + "\")' id='inputalergensdatos_textos" + section + data + num + i + "' name='datos_textos[" + section + "][" + data + "][" + num + "][" + i + "]' class='position-relative mb-0' style='width:13px; top:-20px; right:-15px;' value='" + alergenos[i].alergens + "'>"
         index += "</div>"
         index += "</div>"
         return index;
     }
 
+   
     function choosealergens(input) {
+        console.log(input)
         const boton = $("#" + input);
-
         const elementpadre = $(boton).parent();
         if ($(boton).attr("checked") === "checked") {
             $(boton).removeAttr("checked")
@@ -106,9 +113,6 @@
                 "border-radius": "10%"
             })
         }
-
-
-
     }
 
 
@@ -188,7 +192,7 @@
                 $("#main" + section + datas).fadeOut(600, function() {
                     getRow();
                     if (item != '') {
-                        hideShowSection(section);
+                        // hideShowSection(section);
                         setTimeout(() => {
                             showItems(section, datas);
                         }, 200)

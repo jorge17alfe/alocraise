@@ -148,7 +148,7 @@
             </div>
             <div id="accordion" class="">
                 <!-- carta -->
-                <?php?>
+                
                 <div class="  mt-4  mb-5 row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-9 col-sm-11 col-11">
                         <?php $aleatorio = rand(0, count($phases) - 1); ?>
@@ -216,10 +216,10 @@
                 </div>
 
                 <div class="container text-right  my-1 mb-lg-0 col-xl-7 col-lg-8 col-md-9 col-sm-11 col-11 pr-0 ">
-                    <?php if ($parameter->data->swwifi == 1) { ?>
+                    <?php if (isset($parameter->data->sw_elements["swwifi"])) { ?>
                         <p class="mb-0 "><strong> WIFI <i class="fas fa-wifi fa-2x"></i></strong></p>
-                        <p class="mb-0"><strong>Nombre red : </strong><?= $parameter->data->wifi_name ?></p>
-                        <p><strong>Clave : </strong><?= $parameter->data->wifi_pass ?></p>
+                        <p class="mb-0"><strong>Nombre red : </strong><?= $parameter->data->wifi["wifi_name"] ?></p>
+                        <p><strong>Clave : </strong><?= $parameter->data->wifi["wifi_pass"] ?></p>
                     <?php } ?>
                 </div>
             </div>
@@ -229,7 +229,7 @@
     <div class="container-fluid row mr-0 pr-0 ">
         <div class="container m-auto row  my-5 py-5 pr-0 mr-0">
             <section class="ccards col-md-6 col-12 pl-0 my-3" id="ccards">
-                <?php if ($parameter->data->swaceptartarjetas == 1) { ?>
+                <?php if (isset($parameter->data->sw_elements["swaceptartarjetas"])) { ?>
                     <h6>Aceptamos Tarjetas de Crédito</h6>
                     <div class="main_card mt-3">
                         <img src="<?= assets("app/img/amex.gif") ?>" alt="tarjeta-de-credito-imagen-animada-0011" />
@@ -241,12 +241,15 @@
 
             <div class="main-social-network col-md-6 col-12 pr-0 my-3 ">
                 <h6 class="text-right">Siguenos...</h6>
-                <div class="social-network d-flex justify-content-end">
-                    <?php if ($parameter->data->swtwitter == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_twitter; ?>"><i class="fab fa-twitter"></i></a></li> <?php } ?>
-                    <?php if ($parameter->data->swinstagram == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_instagram; ?>"><i class="fab fa-instagram"></i></a></li> <?php } ?>
-                    <?php if ($parameter->data->swfacebook == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_facebook; ?>"><i class="fab fa-facebook"></i></a></li> <?php } ?>
-                    <?php if ($parameter->data->swlinkedin == 1) { ?> <li class="nav-item "><a class="nav-link ml-3" target="_blank" href="<?= $parameter->data->social_linkedin; ?>"><i class="fab fa-linkedin"></i></a></li> <?php } ?>
+                <div class="social-network d-flex flex-wrap justify-content-between">
 
+
+                    <?php 
+                            foreach($parameter->data->choose_social_network as $v){
+                                if (isset($parameter->data->sw_elements["sw".$v])) { ?> 
+                                        <li class="nav-item mb-3"><a class="nav-link ml-3" target="_blank" href="https://<?= $parameter->data->social_network[$v]; ?>"><i class="fab fa-<?= $v?>"></i></a></li> 
+                             <?php } 
+                             } ?>
                 </div>
             </div>
         </div>

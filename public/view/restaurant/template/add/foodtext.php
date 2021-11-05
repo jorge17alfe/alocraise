@@ -12,7 +12,7 @@ switch ($parameter->data->moneda) {
 }
 $alergenos = ["altramuces", "apio", "azufresulfitos", "cacahuetes", "crustaceos", "frutoscascara", "gluten", "huevos", "lacteos", "moluscos", "mostaza", "pescado", "sesamo", "soya"];
 $alergenostitle = ["altramuces", "apio", "azufre y sulfitos", "cacahuetes", "crustáceos", "frutos de cáscara", "gluten", "huevos", "lácteos", "moluscos", "mostaza", "pescado", "sésamo", "soja"];
-if ($parameter->data->sw_menu_text == '1') {
+if (isset($parameter->data->sw_elements["sw_menu_text"])) {
 ?>
     <?php
     if (!empty($parameter->data->carta)) {
@@ -43,11 +43,16 @@ if ($parameter->data->sw_menu_text == '1') {
                 <?php
                 for ($a = 1; $a < count($parameter->data->carta_text[$i]); $a++) {
                 ?>
-                    <div class="text-left  row justify-content-between align-content-center <?php if (!empty($parameter->data->carta_text[$i][$a][2])) { echo "border-bottom ";} ?> py-2">
+                    <?php 
+                    if (isset($parameter->data->carta_text[$i][$a][3]) && $parameter->data->carta_text[$i][$a][3] === "not-available") {/* vacio */}else{
+                        ?>
+                    <div class="text-left  row justify-content-between align-content-center <?php if (!empty($parameter->data->carta_text[$i][$a][2])) {
+                                                                                                echo "border-bottom ";
+                                                                                            } ?> py-2">
                         <p class="col-sm-9 col-8 mb-0 pb-0"><?php echo $parameter->data->carta_text[$i][$a][0] ?></p>
                         <p class="col-sm-3 col-4 text-right mb-0 pb-0">
                             <?php if (!empty($parameter->data->carta_text[$i][$a][2])) {
-                                echo $parameter->data->carta_text[$i][$a][2] . $parameter->data->moneda;
+                                echo $parameter->data->carta_text[$i][$a][2] .' '. $parameter->data->moneda;
                             } ?>
                         </p>
                         <p class="col-12 mb-0 pb-0"><small> <?php echo $parameter->data->carta_text[$i][$a][1] ?></small></p>
@@ -63,6 +68,7 @@ if ($parameter->data->sw_menu_text == '1') {
                             ?>
                         </div>
                     </div>
+                    <?php }?>
 
                 <?php
                 }

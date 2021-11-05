@@ -252,10 +252,11 @@
                 </div>
             </div>
             <div class="container text-center  my-5 mb-lg-0 text-black-50">
-                <?php if ($parameter->data->swwifi == 1) { ?>
+                <?php
+                if (isset($parameter->data->sw_elements["swwifi"])) { ?>
                     <p class="mb-0 "><strong> WIFI <i class="fas fa-wifi fa-2x"></i></strong></p>
-                    <p class="mb-0"><strong>Nombre red : </strong><?= $parameter->data->wifi_name ?></p>
-                    <p><strong>Clave : </strong><?= $parameter->data->wifi_pass ?></p>
+                    <p class="mb-0"><strong>Nombre red : </strong><?= $parameter->data->wifi["wifi_name"] ?></p>
+                    <p><strong>Clave : </strong><?= $parameter->data->wifi["wifi_pass"] ?></p>
                 <?php } ?>
             </div>
         </div>
@@ -286,7 +287,7 @@
     <section class="contact-section bg-black">
         <div class="container">
             <div class="row py-5 " id="">
-                <?php if ($parameter->data->swaceptartarjetas == 1) { ?>
+                <?php if (isset($parameter->data->sw_elements["swaceptartarjetas"])) { ?>
                     <div class="d-flex row justify-content-start  col-md-6 col-sm-12 col-12 pl-5">
                         <p class="text-white col-12">Aceptamos</p>
                         <div class="col-12 pl-0">
@@ -295,16 +296,20 @@
                             <img width="60px" src="<?= SERVERURL ?>public/assets/app/img/visa.gif" alt="tarjeta-de-credito-imagen-animada-0009" />
                         </div>
                     </div>
-                <?php } ?>
-                <div class="d-flex row col-md-6 col-sm-12 col-12 pr-0" id="social-network">
-                    <p class="text-white text-right col-12">Siguenos..</p>
-                    <div class="col-12  social d-flex  justify-content-end text-white pr-0">
-                        <?php if ($parameter->data->swtwitter == 1) { ?> <a class="justify-content-center align-content-center row mx-2" href="<?= $parameter->data->social_twitter; ?>" target="_blank"><i class="fab fa-twitter fa-2x"></i></a> <?php } ?>
-                        <?php if ($parameter->data->swinstagram == 1) { ?> <a class="justify-content-center align-content-center row mx-2" href="<?= $parameter->data->social_instagram; ?>" target="_blank"><i class="fab fa-instagram fa-2x"></i></a> <?php } ?>
-                        <?php if ($parameter->data->swfacebook == 1) { ?> <a class="justify-content-center align-content-center row mx-2 " href="<?= $parameter->data->social_facebook; ?>" target="_blank"><i class="fab fa-facebook fa-2x"></i></a> <?php } ?>
-                        <?php if ($parameter->data->swlinkedin == 1) { ?> <a class="justify-content-center align-content-center row mx-2" href="<?= $parameter->data->social_linkedin; ?>" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a> <?php } ?>
+                <?php }
+                ?>
+                    <div class="d-flex row col-md-6 col-sm-12 col-12 pr-0" id="social-network">
+                        <p class="text-white text-right col-12">Siguenos..</p>
+                        <div class="col-12  social d-flex  justify-content-end text-white pr-0">
+                            <?php 
+                            foreach($parameter->data->choose_social_network as $v){
+                                if (isset($parameter->data->sw_elements["sw".$v])) { ?> 
+                                    <a class="justify-content-center align-content-center row mx-2" href="https://<?= $parameter->data->social_network[$v]; ?>" target="_blank"><i class='fab fa-<?= $v?> fa-2x'></i></a> 
+                             <?php } 
+                             } ?>
+                        </div>
                     </div>
-                </div>
+                
             </div>
             <div class="row" id="contact">
                 <div class="col-md-4 col-12 mb-3 mb-md-0">
@@ -358,7 +363,7 @@
                     <a href="<?= SERVERURL ?>politica-privacidad"><?= get_string('privacy-politic') ?></a> -
                     <a href="<?= SERVERURL ?>politica-cookies"><?= get_string('cookies-politic') ?></a> -
                     <a href="<?= SERVERURL ?>aviso-legal"><?= get_string('legal-notice') ?></a> -
-                    <a href="<?= SERVERURL ?>"> &copy; <?= config('title').' '.date('Y') ?></a></small>
+                    <a href="<?= SERVERURL ?>"> &copy; <?= config('title') . ' ' . date('Y') ?></a></small>
             </span>
         </footer>
     </section>

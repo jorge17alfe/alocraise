@@ -12,7 +12,7 @@ class DesignController
             foreach ($menumenu as $k => $v) {
                 $alm->menu->$v = unserialize($alm->menu->$v);
             }
-            $menudata = ["sobre_nosotros", "horario", "telefono", "logo", "portada", "carta", "bebida", "carta_text", "bebida_text"];
+            $menudata = ["wifi", "sobre_nosotros", "social_network","choose_social_network", "sw_elements", "horario", "telefono", "logo", "portada", "carta", "bebida", "carta_text", "bebida_text"];
             foreach ($menudata as $k => $v) {
                 $alm->data->$v = unserialize($alm->data->$v);
             }

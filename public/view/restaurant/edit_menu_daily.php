@@ -16,7 +16,7 @@
                 <input name="sw_menu[id_usuario]" type="hidden" class="id_usuario" value="">
                 <p class="col-lg-8 col-9" id="titulo"> <strong> </strong></p>
                 <div class="switch  mt-1 col-lg-4 col-3  text-left">
-                    <input class="" type="checkbox" data-toggle="toggle" name="sw_menu[sw_menu]" id="sw_menuBtn" data-size="small" data-style="ios" data-onstyle="info" value="1" checked>
+                    <input class="" type="checkbox" data-toggle="toggle" name="sw_menu[sw_elements][sw_menu]" id="sw_menuBtn" data-size="small" data-style="ios" data-onstyle="info" value="1" checked>
                 </div>
                 <script>
                     $(document).ready(function() {
@@ -28,7 +28,7 @@
                                     data: $("#swMenu").serialize()
                                 })
                                 .done(function(response) {
-                                    // console.log(response)
+                                    console.log(response)
                                     setTimeout(showMenu, 80)
                                 })
                         });
@@ -41,13 +41,14 @@
                             })
                             .done(function(response) {
                                 const task = JSON.parse(response);
-                                if (task.menu.sw_menu == 1) {
+                                // console.log(task.data.sw_elements)
+                                if (task.data.sw_elements['sw_menu'] == 1) {
                                     $("#sw_menuBtn").attr("checked", "checked");
                                     $("#mainMenu_dia").hide(800);
                                     $("#main_img_menu").show(800);
                                     $("#titulo").html("Pública tus textos <strong>" + task.data.nombre_empresa + "</strong>");
-                                } else if (task.menu.sw_menu == false) {
-                                    $("#sw_menuBtn").removeAttr("checked");
+                                } else {
+                                    // $("#sw_menuBtn").removeAttr("checked");
                                     $("#mainMenu_dia").show(800);
                                     $("#main_img_menu").hide(800);
                                     $("#titulo").html("Pública tu menú imagen <strong>" + task.data.nombre_empresa + "</strong>");
@@ -153,6 +154,7 @@
         getRow();
         $("#menu_dia").submit((e) => {
             e.preventDefault();
+            // console.log($("#menu_dia").serialize())
             $.post({
                     url: "<?= SERVERURL ?>restaurant/updateText",
                     data: $("#menu_dia").serialize()
@@ -202,19 +204,25 @@
                 $(".second_primero").remove();
                 $(".second_segundo").remove();
 
-                for (var i = 0; i < task.menu.primero.length; i++) {
-                    var row = "<div id='mainprimero" + i + "' class='second_primero row col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 input-group-sm px-0'>"
-                    row += "<input name='menu[primero][" + i + "]' id='primero" + i + "' type='text' class='primero form-control  col-xl-10 col-lg-10 col-md-10 col-sm-11 col-10  mb-1 ml-0'  placeholder='Primer plato' value='" + task.menu.primero[i] + "'>"
-                    row += "<a href='javascript:void(0)' onclick='deleterow(" + i + ",\"primero\",\"menu\")' id='deleteprim" + i + "' class='deleteprim text-danger btn-sm ' style='height:30px; width:25px !important;'><i class='fas fa-trash'></i></a>"
-                    row += "</div>"
-                    $("#main_primero").append(row);
-                }
-                for (var i = 0; i < task.menu.segundo.length; i++) {
-                    var row = "<div id='mainsegundo" + i + "' class='second_segundo row col-xl-4 col-lg-4 csegundo col-sm-12 col-12 input-group-sm px-0'>"
-                    row += "<input name='menu[segundo][" + i + "]' id='segundo" + i + "' type='text' class='segundo form-control col-xl-10 col-lg-10 col-md-10 col-sm-11 col-10  mb-1 ml-0'  placeholder='Segundo plato' value='" + task.menu.segundo[i] + "'>"
-                    row += "<a href='javascript:void(0)' onclick='deleterow(" + i + ",\"segundo\",\"menu\")' id='deleteseg" + i + "' class='deleteseg text-danger btn-sm  ' style='height:30px; width:25px !important;'><i class='fas fa-trash'></i></a>"
-                    row += "</div>"
-                    $("#main_segundo").append(row);
+                var menu = [
+                    "primero",
+                    "segundo"
+                ]
+
+                for (let ele of menu) {
+                    for (var i = 0; i < task.menu[ele].length; i++) {
+                        var row = "<div id='main" + ele + i + "' class='second_" + ele + " row col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 input-group-sm px-0'>"
+                        row += "<input name='menu[" + ele + "][" + i + "][0]' id='" + ele + "" + i + "' type='text' class='" + ele + " form-control  col-xl-10 col-lg-10 col-md-10 col-sm-11 col-10  mb-1 ml-0'  placeholder='" + ele + " plato' value='" + task.menu[ele][i] + "'>"
+                        row += "<a href='javascript:void(0)' onclick='deleterow(" + i + ",\"" + ele + "\",\"menu\")' id='delete" + ele + i + "' class='delete" + ele + " text-danger btn-sm ' style='height:30px; width:25px !important;'><i class='fas fa-trash'></i></a>"
+                        row += "<div class='d-flex flex-wrap'>"
+                        for (var o = 3; o < 17; o++) {
+                            row += addShowAlergens1( ele, i, o);
+                        }
+                        row += "</div>"
+                        row += "</div>"
+                        $("#main_" + ele).append(row);
+                        // console.log( task.menu[ele][i])
+                    }
                 }
 
             })
@@ -224,53 +232,92 @@
     function addplato(data) {
         var row = "<input name='menu[" + data + "][" + num + "][]'  type='text' class='deleterow form-control w-25 col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12 mr-1 mb-1 '  placeholder='Añadir " + data + "' >"
         for (var i = 3; i < 17; i++) {
-            row += addShowAlergens(data, num, i);
+            row += addShowAlergens1(data, num, i);
         }
         $("#main_" + data + "").append(row);
         num++
     }
     var alergenos = {
-        3: "altramuces",
-        4: "apio",
-        5: "azufresulfitos",
-        6: "cacahuetes",
-        7: "crustaceos",
-        8: "frutoscascara",
-        9: "gluten",
-        10: "huevos",
-        11: "lacteos",
-        12: "moluscos",
-        13: "mostaza",
-        14: "pescado",
-        15: "sesamo",
-        16: "soya"
+        3: {
+            alergens: "not-available",
+            title: "no disponible"
+        },
+        4: {
+            alergens: "altramuces",
+            title: "altramuces"
+        },
+        5: {
+            alergens: "apio",
+            title: "apio"
+        },
+        6: {
+            alergens: "azufresulfitos",
+            title: "azufre y sulfitos"
+        },
+        7: {
+            alergens: "cacahuetes",
+            title: "cacahuetes"
+        },
+        8: {
+            alergens: "crustaceos",
+            title: "crustáceos"
+        },
+        9: {
+            alergens: "frutoscascara",
+            title: "frutos de cáscara"
+        },
+        10: {
+            alergens: "gluten",
+            title: "gluten"
+        },
+        11: {
+            alergens: "huevos",
+            title: "huevos"
+        },
+        12: {
+            alergens: "lacteos",
+            title: "lácteos"
+        },
+        13: {
+            alergens: "moluscos",
+            title: "moluscos"
+        },
+        14: {
+            alergens: "mostaza",
+            title: "mostaza"
+        },
+        15: {
+            alergens: "pescado",
+            title: "pescado"
+        },
+        16: {
+            alergens: "sesamo",
+            title: "sésamo"
+        },
+        17: {
+            alergens: "soya",
+            title: "soja"
+        },
     }
 
-    var alergenostitle = {
-        3: "altramuces",
-        4: "apio",
-        5: "azufre y sulfitos",
-        6: "cacahuetes",
-        7: "crustáceos",
-        8: "frutos de cáscara",
-        9: "gluten",
-        10: "huevos",
-        11: "lácteos",
-        12: "moluscos",
-        13: "mostaza",
-        14: "pescado",
-        15: "sésamo",
-        16: "soja"
-    }
-    function addShowAlergens( data, num, i) {
+    function addShowAlergens1(data, a, i) {
 
-        var index = "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center align-content-center'>"
-        index += "<div  class=' col-12 pb-0 mb-0'>"
-        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenostitle[i] + "</small></p>"
+        var index = '';
+        index += "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center '>"
+        index += "<div  class=' col-12 pb-0 mb-2'>"
+        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenos[i].title + "</small></p>"
         index += "</div>"
-        index += "<div  class='' style='height:45px;'>"
-        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[i] + ".png' name='alergenoimg" + i + "' style='width:45px; height:45px;'>"
-        index += "<input  type='checkbox' onclick='choosealergens(\"inputalergensmenu"+ data + num + i + "\")' id='inputalergensdatos_textos" +data + num + i + "' name='menu[" + data + "][" + num + "][" + i + "]' class='position-relative mb-0' style='width:13px; top:-20px; right:-15px;' value='" + alergenos[i] + "'>"
+        index += "<div  "
+        // if (data[a].includes(alergenos[i].alergens)) {
+        // index += "style='background-color:var(--color_second); border-radius:10%; "
+        // }
+        index += " width:100%;' class='col-6' >"
+        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[i].alergens + ".png' name='alergenoimg" + i + "' style='width:45px; height:45px;'>"
+        index += "<input "
+        // if (data[a].includes(alergenos[i].alergens)) {
+        // index += "checked "
+        // }
+        index += " onclick='choosealergens(\"alergenos" + a + i + "\")'  id='alergenos" + a + i + "'   type='checkbox' name='menu["+data+"][" + a + "][" + i + "]' class='inputalergens position-absolute' style='width:33%; height:50%; top:33%; left:35%; opacity:0,3;' value='" + alergenos[i].alergens + "'>"
         index += "</div>"
         index += "</div>"
         return index;

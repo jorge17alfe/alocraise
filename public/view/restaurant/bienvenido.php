@@ -4,7 +4,7 @@
         <div class="header text-center col-md-12 col-12 pr-0 row">
             <h3 class=" col-md-12 mb-2  pr-0 font-weight-bold"><?= gretting() ?></h3> <br>
             <h4 class="  col-md-12 col-12 ">
-                <<< <?= $parameter->data->id_usuario ?>>>>
+                <<< <?= $parameter->data->id_usuario ?> >>>
             </h4>
             <p class="col-md-12 text-center pb-4 pr-0 font-weight-bold"><?= get_string('welcome1').' '.config('title') ?></p>
         </div>

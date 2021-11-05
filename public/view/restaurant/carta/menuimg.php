@@ -1,7 +1,7 @@
 <!-- Carta -->
 <div id="main_carta" class="row mb-4 pr-0 col-md-12 col-12 border-top pt-2 ">
     <button id="addcarta" onclick="addrow('carta')" class="btn btn-outline-success btn-sm col-md-3 col-sm-4 col-5 my-3">+ carta</button>
-    <a href='javascript:void[0]' onclick="hideShowSection('carta', 'CARTA')" id="btn_show_carta" class="btn_show_section btn-sm col-md-3 col-sm-4 col-5 my-3">VER CARTA</a>
+    <a href='javascript:void[0]' onclick="hideShowSection('carta', 'CARTA')" id="btn_show_carta" class=" btn-sm col-md-3 col-sm-4 col-5 my-3">VER CARTA</a>
     <form id='send_imagecarta' class='hide-showcarta send_image row  col-12  mb-2 justify-content-between close-all-section ' enctype='multipart/form-data' method="POST">
         <input name='image[id_usuario]' type='hidden' class='id_usuario' id="idcarta" value='<?= $parameter->data->id_usuario; ?>'>
         <input onclick="enviarForm('carta')" class='addcarta btn btn-sm btn-outline-primary col-12  my-2' type="button" value="Guardar">
@@ -13,7 +13,7 @@
 <!-- Bebida -->
 <div id="main_bebida" class="row pr-0 col-md-12 col-12 border-top pt-2 ">
     <button id="addbebida" onclick="addrow('bebida')" class="btn btn-outline-success btn-sm col-md-3 col-sm-4 col-5 my-3">+ bebida</button>
-    <a href='javascript:void[0]' onclick="hideShowSection('bebida', 'BEBIDA')" id="btn_show_bebida" class="btn_show_section btn-sm col-md-3 col-sm-4 col-5 my-3">VER BEBIDA</a>
+    <a href='javascript:void[0]' onclick="hideShowSection('bebida', 'BEBIDA')" id="btn_show_bebida" class=" btn-sm col-md-3 col-sm-4 col-5 my-3">VER BEBIDA</a>
     <form id='send_imagebebida' class='hide-showbebida send_image row  col-12  mb-2 justify-content-between close-all-section ' enctype='multipart/form-data' method="POST">
         <input name='image[id_usuario]' type='hidden' class='id_usuario' id="idbebida" value='<?= $parameter->data->id_usuario; ?>'>
         <input onclick="enviarForm('bebida')" class='addbebida btn btn-sm btn-outline-primary col-12  mt-2' type="button" value="Guardar">
@@ -25,44 +25,71 @@
 <script>
     getRow();
     var alergenos = {
-        3: "not-available",
-        4: "altramuces",
-        5: "apio",
-        6: "azufresulfitos",
-        7: "cacahuetes",
-        8: "crustaceos",
-        9: "frutoscascara",
-        10: "gluten",
-        11: "huevos",
-        12: "lacteos",
-        13: "moluscos",
-        14: "mostaza",
-        15: "pescado",
-        16: "sesamo",
-        17: "soya"
-    }
-
-    var alergenostitle = {
-        3: "no disponible",
-        4: "altramuces",
-        5: "apio",
-        6: "azufre y sulfitos",
-        7: "cacahuetes",
-        8: "crustáceos",
-        9: "frutos de cáscara",
-        10: "gluten",
-        11: "huevos",
-        12: "lácteos",
-        13: "moluscos",
-        14: "mostaza",
-        15: "pescado",
-        16: "sésamo",
-        17: "soja"
+        3: {
+            alergens: "not-available",
+            title: "no disponible"
+        },
+        4: {
+            alergens: "altramuces",
+            title: "altramuces"
+        },
+        5: {
+            alergens: "apio",
+            title: "apio"
+        },
+        6: {
+            alergens: "azufresulfitos",
+            title: "azufre y sulfitos"
+        },
+        7: {
+            alergens: "cacahuetes",
+            title: "cacahuetes"
+        },
+        8: {
+            alergens: "crustaceos",
+            title: "crustáceos"
+        },
+        9: {
+            alergens: "frutoscascara",
+            title: "frutos de cáscara"
+        },
+        10: {
+            alergens: "gluten",
+            title: "gluten"
+        },
+        11: {
+            alergens: "huevos",
+            title: "huevos"
+        },
+        12: {
+            alergens: "lacteos",
+            title: "lácteos"
+        },
+        13: {
+            alergens: "moluscos",
+            title: "moluscos"
+        },
+        14: {
+            alergens: "mostaza",
+            title: "mostaza"
+        },
+        15: {
+            alergens: "pescado",
+            title: "pescado"
+        },
+        16: {
+            alergens: "sesamo",
+            title: "sésamo"
+        },
+        17: {
+            alergens: "soya",
+            title: "soja"
+        },
     }
 
     function enviarForm(data) {
         var form = new FormData($("#send_image" + data + "")[0]);
-        // console.log(form);
+        console.log(form);
         $.ajax({
                 type: 'POST',
                 url: "<?= SERVERURL ?>restaurant/updateImages",
@@ -72,12 +99,13 @@
                 processData: false
             })
             .done((response) => {
+                console.log(response)
                 $(".main" + data).remove();
-                $(".deleteadd").remove();
-                console.log(response);
+                // $(".deleteadd").remove();
+                // console.log(response);
                 showresponse("respuesta" + data, response)
-                setTimeout(getRow, 100);
-                setTimeout(getIframe, 200);
+                setTimeout(getRow, 1000);
+                // setTimeout(getIframe, 200);
                 return false;
             });
     }
@@ -90,13 +118,14 @@
             .done((response) => {
                 // console.log(response);
                 const task = JSON.parse(response);
-                // console.log(task);
+                // console.log(task.data);
 
 
 
 
                 //  ---------------------------------------------MENU TEXT---------------------------------------------
                 $(".borrarsection").remove();
+
                 const section2 = ["carta_text", "bebida_text"]
                 for (var s = 0; s < section2.length; s++) {
                     //    console.log(task.data[section2[s]]);
@@ -122,72 +151,30 @@
                             index += "</div>"
                             for (var i = 1; i < task.data[section2[s]][a].length; i++) {
                                 index += "<div class=' hide-show" + section2[s] + a + " input-sm row  py-1 col-12 input-group-sm justify-content-between close-all-items  px-0 mb-2'> "
+
+                                
                                 index += "<small class='font-weight-bold'>" + i + ")</small><input id='namedatostextos" + section2[s] + a + i + "0' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][0]' class=' form-control col-3 col-3'  type='text' >"
+                                
+
                                 index += "<input id='descripdatostextos" + section2[s] + a + i + "1' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][1]' class=' form-control col-5 col-6'  type='text' value=''>"
                                 index += "<input id='pricedatostextos" + section2[s] + a + i + "2' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][2]' class=' form-control col-2 col-2'  type='text' value='' >"
 
                                 index += "<a href='javascript:void[0]' onclick='showalergenos(\"" + section2[s] + "\"," + a + "," + i + ")' id='' class='btn_vermas_alergen" + section2[s] + a + i + " btn_vermas_alergen text-info ' ><small>ver +</small></a>"
 
                                 index += "<div  class='show_alergenos" + section2[s] + a + i + " close_alergenos input-sm row  py-1 ml-3 col-12 input-group-sm justify-content-between' style=' display:none;'>"
-                                index += "<div class='col-12 row justify-content-end mr-0 pr-0'>"
-                                index += "<div class='col-md-5 col-sm-9 col-12 row justify-content-between mr-0 pr-0 mb-3'>"
+                                index += "<div class='col-12 row justify-content-between align-content-center mr-0 pr-0'>"
 
+                                index += printAlergens(task.data, section2[s], a, i, 3);
 
-                                index += "<div  class=' input-sm row  input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 '>"
-                                // index += "<div  class=' col-12 pb-0 mb-2'>"
-                                // index += "<a href='javascript:void[0]'<small>" + alergenostitle[3] + "</small></a>"
-                                // index += "<a href='javascript:void[0]' style='color:var(--color_primary);' class=''><small><small>" + alergenostitle[3] + "</small></small></a>"
-                                // index += "</div>"
-                                index += "<div  "
-                                // if (alergenos[3] == "1") {
-                                    index += "style='background-color:var(--color_second); border-radius:10%; "
-                                // }
-                                index += " width:100%;' class='col-12' >"
-                                index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[3] + ".png' name='alergenoimg" + 3+ "' style='width:35px; height:35px;'>"
-                                index += "<input "
-                                // if (alergenos[3] == "1") {
-                                    index += "checked "
-                                // }
-                                index += " onclick='choosealergens(\"alergenos" + section2[s] + a + i + "3\")'  id='alergenos" + section2[s] + a + i + "3'   type='checkbox' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][3]' class='inputalergens position-absolute' style='width:33%; height:50%; top:33%;px; left:35%; opacity:0;' value='" + alergenos[3] + "'>"
-                                index += "</div>"
-                                index += "</div>"
-
-
-
-
-
-
-                                // index += "<div class=''>"
-                                // index += "<small>No disponible</small>"
-                                // index += "<input id='pricedatostextos" + section2[s] + a + i + "2' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][3]' class=' form-control col-2 col-2'  type='checkbox' value='' >"
-                                // index += "</div>"
-
+                                index += "<div class='col-lg-4 col-md-5 col-7 row justify-content-between align-content-center'>"
                                 index += "<a href='javascript:void[0]' onclick='upDownItem(\"" + section2[s] + "\"," + a + "," + i + ",-1)' style='color:var(--color_primary);' class=''><small class=' d-block'><small>SUBIR</small></small> <i class='fas fa-arrow-up'></i></a>"
                                 index += "<a href='javascript:void[0]' onclick='upDownItem(\"" + section2[s] + "\"," + a + "," + i + ",1)' style='color:var(--color_primary);' class=''><i class='fas fa-arrow-down'></i><small class=' d-block'><small>BAJAR</small></small> </a>"
                                 index += "<a href='javascript:void[0]' onclick='deleteRowItem(" + i + "," + a + ",\"" + section2[s] + "\",\"datos_textos\")' class='text-danger ' ><small class='d-block'>BORRAR</small><small><i class='fas fa-trash'></i></small></a>"
-
                                 index += "</div>"
+
                                 index += "</div>"
                                 for (var o = 4; o < 18; o++) {
-                                    index += "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center align-content-center'>"
-                                    index += "<div  class=' col-12 pb-0 mb-2'>"
-                                    index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenostitle[o] + "</small></p>"
-                                    index += "</div>"
-                                    index += "<div  "
-                                    if (task.data[section2[s]][a][i].includes(alergenos[o])) {
-                                
-                                        index += "style='background-color:var(--color_second); border-radius:10%; "
-                                    }
-                                    index += " width:100%;' class='col-6' >"
-                                    index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[o] + ".png' name='alergenoimg" + o + "' style='width:45px; height:45px;'>"
-                                    index += "<input "
-                                    if (task.data[section2[s]][a][i].includes(alergenos[o])) {
-
-                                        index += "checked "
-                                    }
-                                    index += " onclick='choosealergens(\"alergenos" + section2[s] + a + i + o + "\")'  id='alergenos" + section2[s] + a + i + o + "'   type='checkbox' name='datos_textos[" + section2[s] + "][" + a + "][" + i + "][" + o + "]' class='inputalergens position-absolute' style='width:33%; height:50%; top:33%;px; left:35%; opacity:0;' value='" + alergenos[o] + "'>"
-                                    index += "</div>"
-                                    index += "</div>"
+                                    index += printAlergens(task.data, section2[s], a, i, o);
                                 }
                                 index += "</div>"
                                 index += "</div>"
@@ -209,14 +196,17 @@
                 for (var s = 0; s < section2.length; s++) {
                     for (var a = 0; a < task.data[section2[s]].length; a++) {
                         for (var i = 1; i < task.data[section2[s]][a].length; i++) {
-                            $("#namedatostextos" + section2[s] + a + i + "0").val(task.data[section2[s]][a][i][0]);
-                            $("#descripdatostextos" + section2[s] + a + i + "1").val(task.data[section2[s]][a][i][1]);
-                            $("#pricedatostextos" + section2[s] + a + i + "2").val(task.data[section2[s]][a][i][2]);
-                            $("#pricedatostextos" + section2[s] + a + i + "3").val(task.data[section2[s]][a][i][2]);
+                            var color_back='';
+                            if (task.data[section2[s]][a][i][3] === 'not-available'){
+                                color_back="rgb(244, 67, 54)";
+                            }
+                            $("#namedatostextos" + section2[s] + a + i + "0").val(task.data[section2[s]][a][i][0]).css("background-color", color_back);
+                            $("#descripdatostextos" + section2[s] + a + i + "1").val(task.data[section2[s]][a][i][1]).css("background-color", color_back);
+                            $("#pricedatostextos" + section2[s] + a + i + "2").val(task.data[section2[s]][a][i][2]).css("background-color", color_back);
+                           
                         }
                     }
                 }
-
                 // ---------------------------------------------MENU IMG---------------------------------------------
                 // delete row add
                 for (var i = 0; i < 3; i++) {
@@ -288,6 +278,30 @@
         }
 
         $(".btn_close_section ").hide('swing');
+    }
+
+
+    function printAlergens(data, section, a, i, o) {
+        var index = '';
+        index += "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center '>"
+        index += "<div  class=' col-12 pb-0 mb-2'>"
+        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenos[o].title + "</small></p>"
+        index += "</div>"
+        index += "<div  "
+        if (data[section][a][i].includes(alergenos[o].alergens)) {
+            index += "style='background-color:var(--color_second); border-radius:10%; "
+        }
+        index += " width:100%;' class='col-6' >"
+        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[o].alergens + ".png' name='alergenoimg" + o + "' style='width:45px; height:45px;'>"
+        index += "<input "
+        if (data[section][a][i].includes(alergenos[o].alergens)) {
+            index += "checked "
+        }
+        index += " onclick='choosealergens(\"alergenos" + section + a + i + o + "\")'  id='alergenos" + section + a + i + o + "'   type='checkbox' name='datos_textos[" + section + "][" + a + "][" + i + "][" + o + "]' class='inputalergens position-absolute' style='width:33%; height:50%; top:33%; left:35%; opacity:0;' value='" + alergenos[o].alergens + "'>"
+        index += "</div>"
+        index += "</div>"
+        return index;
+        // console.log(data[section][a][i][o])
     }
 </script>
 

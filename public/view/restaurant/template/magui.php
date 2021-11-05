@@ -198,7 +198,7 @@
                                                                     echo 'justify-content-end';
                                                                 } ?>">
                     <!-- Aceptamos Tarjetas de Crédito< -->
-                    <?php if ($parameter->data->swaceptartarjetas == 1) { ?>
+                    <?php if (isset($parameter->data->sw_elements["swaceptartarjetas"])) { ?>
                         <section class=" main_cards  col-md-6 col-12" id="ccards">
                             <p class="font-weight-bold ml-3 col-12">Aceptamos </p>
                             <div class="cards  col-12">
@@ -210,10 +210,10 @@
                     <?php } ?>
                     <!-- wifi -->
                     <div class="text-right  mb-5 mb-lg-0  pr-0 col-md-6 col-12" id="mainwifi">
-                        <?php if ($parameter->data->swwifi == 1) { ?>
+                        <?php if ($parameter->data->sw_elements["swwifi"] == 1) { ?>
                             <p class="mb-0 "><strong> WIFI <i class="fas fa-wifi fa-2x"></i></strong></p>
-                            <p class="mb-0"><strong>Nombre red : </strong><?= $parameter->data->wifi_name ?></p>
-                            <p><strong>Clave : </strong><?= $parameter->data->wifi_pass ?></p>
+                            <p class="mb-0"><strong>Nombre red : </strong><?= $parameter->data->wifi["wifi_name"] ?></p>
+                            <p><strong>Clave : </strong><?= $parameter->data->wifi["wifi_pass"] ?></p>
                         <?php } ?>
                     </div>
                 </div>
@@ -269,10 +269,13 @@
     </div>
     <!-- redes sociales -->
     <div class="container row network-social m-auto d-flex  position-fixed  flex-column btn-20 col-12 ">
-        <?php if ($parameter->data->swtwitter == 1) { ?><a href="<?= $parameter->data->social_twitter; ?>" target="_blank" class=" btn mb-1 "><i class="fab fa-twitter "></i></a><?php } ?>
-        <?php if ($parameter->data->swinstagram == 1) { ?><a href="<?= $parameter->data->social_instagram; ?>" target="_blank" class=" btn mb-1"><i class="fab fa-instagram"></i> </a><?php } ?>
-        <?php if ($parameter->data->swfacebook == 1) { ?><a href="<?= $parameter->data->social_facebook; ?>" target="_blank" class=" btn mb-1"><i class="fab fa-facebook-f "></i></a><?php } ?>
-        <?php if ($parameter->data->swlinkedin == 1) { ?><a href="<?= $parameter->data->social_linkedin; ?>" target="_blank" class=" btn mb-1"><i class="fab fa-linkedin "></i> </a><?php } ?>
+
+    <?php 
+                            foreach($parameter->data->choose_social_network as $v){
+                                if (isset($parameter->data->sw_elements["sw".$v])) { ?> 
+                                    <a class="justify-content-center align-content-center row mx-2" href="https://<?= $parameter->data->social_network[$v]; ?>" target="_blank" class=" btn mb-1 "><i class='fab fa-<?= $v?> fa-2x'></i></a> 
+                             <?php } 
+                             } ?>
     </div>
     <!-- footer  -->
     <div class="footer  container-fluid position-sticky mt-5 " id="footer">
@@ -308,8 +311,8 @@
             </ul>
             <span class="col-12 col-sm-12 my-2 text-center px-0"><small>
             <a href="<?= SERVERURL ?>quienes-somos"><?= get_string('aboutus') ?></a> -
-                    <a href="<?= SERVERURL ?>política-privacidad"><?= get_string('privacy-politic') ?></a> -
-                    <a href="<?= SERVERURL ?>política-cookies"><?= get_string('cookies-politic') ?></a> -
+                    <a href="<?= SERVERURL ?>politica-privacidad"><?= get_string('privacy-politic') ?></a> -
+                    <a href="<?= SERVERURL ?>politica-cookies"><?= get_string('cookies-politic') ?></a> -
                     <a href="<?= SERVERURL ?>aviso-legal"><?= get_string('legal-notice') ?></a> -
                     <a href="<?= SERVERURL ?>">&copy; Copyright <?= config('title').' '. date('Y') ?></a></small>
             </span>

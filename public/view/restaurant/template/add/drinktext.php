@@ -1,6 +1,6 @@
 <?php
 
-if ($parameter->data->sw_menu_text == '1') {
+if (isset($parameter->data->sw_elements["sw_menu_text"])) {
 ?>
     <?php
     if (!empty($parameter->data->bebida)) {
@@ -34,27 +34,34 @@ if ($parameter->data->sw_menu_text == '1') {
                 <?php
                 for ($a = 1; $a < count($parameter->data->bebida_text[$i]); $a++) {
                 ?>
-                    <div class="text-left  row justify-content-between align-content-center <?php if (!empty($parameter->data->bebida_text[$i][$a][2])) { echo "border-top ";} ?> py-2">
-                        <p class="col-sm-9 col-8 mb-0 pb-0"><?php echo $parameter->data->bebida_text[$i][$a][0] ?></p>
-                        <p class="col-sm-3 col-4 text-right mb-0 pb-0">
-                            <?php if (!empty($parameter->data->bebida_text[$i][$a][2])) {
-                                echo $parameter->data->bebida_text[$i][$a][2] . $parameter->data->moneda;
-                            } ?>
-                        </p>
-                        <p class="col-12 mb-0 pb-0"><small> <?php echo $parameter->data->bebida_text[$i][$a][1] ?></small></p>
-                        <div class="col-12  mb-0 pb-0">
-                            <?php
-                            for ($o = 3; $o < count($parameter->data->bebida_text[$i][$a]); $o++) {
-                                if (in_array($parameter->data->bebida_text[$i][$a][$o], $alergenos)) {
-                            ?>
-                                    <img src="<?= assets("img/alergenos/ico/") . $parameter->data->bebida_text[$i][$a][$o] . '.png'  ?>" alt="" style='width:23px;'>
-                            <?php
+                    <?php
+                    if (isset($parameter->data->bebida_text[$i][$a][3]) && $parameter->data->bebida_text[$i][$a][3] === "not-available") {/* vacio */
+                    } else {
+                    ?>
+                        <div class="text-left  row justify-content-between align-content-center <?php if (!empty($parameter->data->bebida_text[$i][$a][2])) {
+                                                                                                    echo "border-top ";
+                                                                                                } ?> py-2">
+                            <p class="col-sm-9 col-8 mb-0 pb-0"><?php echo $parameter->data->bebida_text[$i][$a][0] ?></p>
+                            <p class="col-sm-3 col-4 text-right mb-0 pb-0">
+                                <?php if (!empty($parameter->data->bebida_text[$i][$a][2])) {
+                                    echo $parameter->data->bebida_text[$i][$a][2] . ' ' . $parameter->data->moneda;
+                                } ?>
+                            </p>
+                            <p class="col-12 mb-0 pb-0"><small> <?php echo $parameter->data->bebida_text[$i][$a][1] ?></small></p>
+                            <div class="col-12  mb-0 pb-0">
+                                <?php
+                                for ($o = 3; $o < count($parameter->data->bebida_text[$i][$a]); $o++) {
+                                    if (in_array($parameter->data->bebida_text[$i][$a][$o], $alergenos)) {
+                                ?>
+                                        <img src="<?= assets("img/alergenos/ico/") . $parameter->data->bebida_text[$i][$a][$o] . '.png'  ?>" alt="" style='width:23px;'>
+                                <?php
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
-                    </div>
                 <?php
+                    }
                 }
                 ?>
             </div>

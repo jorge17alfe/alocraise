@@ -1,5 +1,5 @@
 <?php
-// define('SERVERURL', 'https://localhost/alocraise2.0/');
+define('SERVERURL', 'https://localhost/alocraise2.0/');
 // define  ('SERVERURL','https://micartaonline.es/');
 define('HEAD', 'includes/head');
 define('HEADHEAD', 'includes/add/head');

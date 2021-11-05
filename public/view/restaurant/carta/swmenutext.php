@@ -3,7 +3,7 @@
     <input name="sw_menu_text[id_usuario]" type="hidden" class="id_usuario" value="<?= $parameter->data->id_usuario; ?>">
     <p class="col-lg-8 col-9" id="titulo"> <strong> </strong></p>
     <div class="switch  mt-1 col-lg-4 col-3  text-left">
-        <input class="" type="checkbox" data-toggle="toggle" name="sw_menu_text[sw_menu_text]" id="sw_menu_textBtn" data-size="small" data-style="ios" data-onstyle="info" value="1">
+        <input class="" type="checkbox" data-toggle="toggle" name="sw_menu_text[sw_elements][sw_menu_text]" id="sw_menu_textBtn" data-size="small" data-style="ios" data-onstyle="info" value="1">
     </div>
     <script>
         $(document).ready(function() {
@@ -15,7 +15,7 @@
                         data: $("#swMenuText").serialize()
                     })
                     .done(function(response) {
-                        // console.log(response);
+                        console.log(response);
                         // setTimeout(showMenu, 80)
                         showMenu();
                     })
@@ -29,8 +29,8 @@
                 })
                 .done(function(response) {
                     const task = JSON.parse(response);
-                    // console.log(task.data.sw_menu_text);
-                    if (task.data.sw_menu_text == 1) {
+                    // console.log(task.data.sw_elements) 
+                    if (task.data.sw_elements['sw_menu_text'] == 1) {
                         $("#sw_menu_textBtn").attr('checked', 'checked');
                         $("#mainMenu_texts").hide(800);
                         $("#mainMenu_images").show(800);
