@@ -54,7 +54,7 @@
     function addsectionText(data) {
         console.log(data)
         var section = "<div  class='input-sm row  py-1 col-md-4 col-6 input-group-sm borrarsection'>"
-        section += "<label class='input-group-sm col-12 '>+ Sección <input data='" + data + "' name='datos_textos["+data+"][][0]'  class=' form-control col-12 text-primary font-weight-bold' type='text'></label>"
+        section += "<label class='input-group-sm col-12 '>+ Sección <input data='" + data + "' name='datos_textos[" + data + "][][0]'  class=' form-control col-12 text-primary font-weight-bold' type='text'></label>"
         section += "</div>"
         $('#addsection' + data).append(section);
     }
@@ -82,65 +82,6 @@
         num++;
     }
 
-    function addShowAlergens(section, data, num, i) {
-
-        var index = "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center align-content-center'>"
-        index += "<div  class=' col-12 pb-0 mb-0'>"
-        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenos[i].title + "</small></p>"
-        index += "</div>"
-        index += "<div  class='' style='height:45px;'>"
-        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[i].alergens + ".png' name='alergenoimg" + i + "' style='width:45px; height:45px;'>"
-        index += "<input  type='checkbox' onclick='choosealergens(\"inputalergensdatos_textos" + section + data + num + i + "\")' id='inputalergensdatos_textos" + section + data + num + i + "' name='datos_textos[" + section + "][" + data + "][" + num + "][" + i + "]' class='position-relative mb-0' style='width:13px; top:-20px; right:-15px;' value='" + alergenos[i].alergens + "'>"
-        index += "</div>"
-        index += "</div>"
-        return index;
-    }
-
-   
-    function choosealergens(input) {
-        console.log(input)
-        const boton = $("#" + input);
-        const elementpadre = $(boton).parent();
-        if ($(boton).attr("checked") === "checked") {
-            $(boton).removeAttr("checked")
-            elementpadre.css({
-                "background-color": "transparent"
-            })
-        } else {
-            $(boton).attr("checked", "checked")
-            elementpadre.css({
-                "background-color": "var(--color_second)",
-                "border-radius": "10%"
-            })
-        }
-    }
-
-
-    function upDownItem(section, group, item, suma) {
-        var user = $("#id_usuario").val();
-        // console.log(section)
-        $.post({
-                url: "<?= SERVERURL ?>restaurant/upDownItem",
-                data: {
-                    "user": user,
-                    "section": section,
-                    "group": group,
-                    "item": item,
-                    "suma": suma,
-                }
-            })
-            .done(function(response) {
-                getRow();
-                if (item != '') {
-                    hideShowSection(section);
-                    setTimeout(() => {
-                        showItems(section, group);
-                    }, 200)
-                }
-                return false;
-            });
-    }
-
     function closeItems(a, b) {
         $(".btn_show_items" + a + b).show("swing");
         $(".btn_close_items" + a + b).hide("swing");
@@ -151,14 +92,14 @@
         $(".close-all-section").hide('swing')
         $(".show-btn-save").show('swing')
         // $("#add_" + a).show('swing')
-        if ($("#btn_show_"+ a).text() === "VER " + b) {
-            
+        if ($("#btn_show_" + a).text() === "VER " + b) {
+
             $("#btn_show_" + a).text("OCULTAR " + b);
             $(".hide-show" + a).show('swing');
-            
+
         } else {
             $(".btn_show_section").text("VER");
-            $("#btn_show_"+ a).text("VER " + b);
+            $("#btn_show_" + a).text("VER " + b);
             $(".hide-show" + a).hide('swing');
         }
     }
@@ -199,5 +140,42 @@
                     }
                 });
             })
+    }
+
+    function printAlergens(data, section, a, i, o) {
+        var index = '';
+        index += "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center '>"
+        index += "<div  class=' col-12 pb-0 mb-2'>"
+        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenos[o].title + "</small></p>"
+        index += "</div>"
+        index += "<div  "
+        if (data[section][a][i].includes(alergenos[o].alergens)) {
+            index += "style='background-color:var(--color_second); border-radius:10%; "
+        }
+        index += " width:100%;' class='col-6' >"
+        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[o].alergens + ".png' name='alergenoimg" + o + "' style='width:45px; height:45px;'>"
+        index += "<input "
+        if (data[section][a][i].includes(alergenos[o].alergens)) {
+            index += "checked "
+        }
+        index += " onclick='choosealergens(\"alergenos" + section + a + i + o + "\")'  id='alergenos" + section + a + i + o + "'   type='checkbox' name='datos_textos[" + section + "][" + a + "][" + i + "][" + o + "]' class='inputalergens position-absolute' style='width:33%; height:50%; top:33%; left:35%; opacity:0;' value='" + alergenos[o].alergens + "'>"
+        index += "</div>"
+        index += "</div>"
+        return index;
+        // console.log(data[section][a][i][o])
+    }
+
+    function addShowAlergens(section, data, num, i) {
+
+        var index = "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center align-content-center'>"
+        index += "<div  class=' col-12 pb-0 mb-0'>"
+        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenos[i].title + "</small></p>"
+        index += "</div>"
+        index += "<div  class='' style='height:45px;'>"
+        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[i].alergens + ".png' name='alergenoimg" + i + "' style='width:45px; height:45px;'>"
+        index += "<input  type='checkbox' onclick='choosealergens(\"inputalergensdatos_textos" + section + data + num + i + "\")' id='inputalergensdatos_textos" + section + data + num + i + "' name='datos_textos[" + section + "][" + data + "][" + num + "][" + i + "]' class='position-relative mb-0' style='width:13px; top:-20px; right:-15px;' value='" + alergenos[i].alergens + "'>"
+        index += "</div>"
+        index += "</div>"
+        return index;
     }
 </script>

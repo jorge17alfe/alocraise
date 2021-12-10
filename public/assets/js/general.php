@@ -47,13 +47,13 @@
     // SHOW HIDE RESPONSE FORM
     function showresponse(data, response) {
         $("." + data + "").show('swing').html(response, "swing")
-        setTimeout(()=> {
+        setTimeout(() => {
             $("." + data + "").hide('swing').html('')
         }, 3000);
         return;
     }
 
- 
+
     // ANIMATE HIDE-SHOW SLICE ELEMENT
     $(".right").css({
         left: 3000
@@ -138,4 +138,52 @@
     $(".logo").on("click", function() {
         window.location = '<?= SERVERURL ?>';
     })
+
+
+    function choosealergens(input) {
+        console.log(input)
+        const boton = $("#" + input);
+        const elementpadre = $(boton).parent();
+        if ($(boton).attr("checked") === "checked") {
+            $(boton).removeAttr("checked")
+            elementpadre.css({
+                "background-color": "transparent"
+            })
+        } else {
+            $(boton).attr("checked", "checked")
+            elementpadre.css({
+                "background-color": "var(--color_second)",
+                "border-radius": "10%"
+            })
+        }
+    }
+
+   
+
+
+    function upDownItem(section, group, item, suma) {
+        var user = $("#id_usuario").val();
+        console.log(section)
+        // return;
+        $.post({
+                url: "<?= SERVERURL ?>restaurant/upDownItem",
+                data: {
+                    "user": user,
+                    "section": section,
+                    "group": group,
+                    "item": item,
+                    "suma": suma,
+                }
+            })
+            .done(function(response) {
+                getRow();
+                if (item != '') {
+                    hideShowSection(section);
+                    setTimeout(() => {
+                        showItems(section, group);
+                    }, 200)
+                }
+                return false;
+            });
+    }
 </script>

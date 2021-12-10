@@ -238,6 +238,7 @@
                 type: "GET",
             })
             .done(function(response) {
+            
                 const task = JSON.parse(response);
                 // load datos enterprice
                 // load local currency
@@ -275,7 +276,6 @@
                 if (task.data.color_web2 == '') {
                     task.data.color_web2 = 'rgb(39, 51, 165, 0.835)';
                 }
-
                 for (ele in task.data.wifi) {
                     $("#" + ele).val(task.data.wifi[ele]);
                 }
@@ -312,7 +312,10 @@
                     twitch: "twitch",
                     github: "github",
                     youtube: "youtube",
-                    line: "line"
+                    line: "line",
+                    telegram:"telegram",
+                    weibo:"weibo"
+
                 }
                 for (ele in social_network) {
                     let row = `<div class="hl deleteall  form-check form-check-inline border-right pr-3">`

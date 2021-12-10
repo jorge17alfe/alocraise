@@ -210,7 +210,9 @@
                     <?php } ?>
                     <!-- wifi -->
                     <div class="text-right  mb-5 mb-lg-0  pr-0 col-md-6 col-12" id="mainwifi">
-                        <?php if ($parameter->data->sw_elements["swwifi"] == 1) { ?>
+                        <?php 
+                        
+                        if (isset($parameter->data->sw_elements["swwifi"]) && $parameter->data->sw_elements["swwifi"] == 1 ) { ?>
                             <p class="mb-0 "><strong> WIFI <i class="fas fa-wifi fa-2x"></i></strong></p>
                             <p class="mb-0"><strong>Nombre red : </strong><?= $parameter->data->wifi["wifi_name"] ?></p>
                             <p><strong>Clave : </strong><?= $parameter->data->wifi["wifi_pass"] ?></p>

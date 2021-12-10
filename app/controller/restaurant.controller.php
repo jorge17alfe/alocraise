@@ -96,7 +96,7 @@ class RestaurantController
             $alm = new ConsultsBD;
             $alm->menu = $this->model->getRow(TABLE_MENU, '*', array($this->column, $user));
             $alm->data = $this->model->getRow(TABLE_DATAAPP, '*', array($this->column, $user));
-            $menumenu = ["primero", "segundo", "img_menu"];
+            $menumenu = ["primero", "segundo","postre", "img_menu"];
             foreach ($menumenu as $k => $v) {
                 $alm->menu->$v = unserialize($alm->menu->$v);
             }
@@ -121,7 +121,7 @@ class RestaurantController
         $alm = new ConsultsBD;
         $alm->menu = $this->model->getRow(TABLE_MENU, '*', array($this->column, $user2));
         $alm->data = $this->model->getRow(TABLE_DATAAPP, '*', array($this->column, $user2));
-        $menumenu = ["primero", "segundo", "img_menu"];
+        $menumenu = ["primero", "segundo","postre", "img_menu"];
         foreach ($menumenu as $k => $v) {
             $alm->menu->$v = unserialize($alm->menu->$v);
         }
@@ -142,8 +142,8 @@ class RestaurantController
     public function updateTextMenu()
     {
 
-        // print_r($_POST);
-        // die();
+        print_r($_POST);
+        die();
         if (!empty($_POST)) {
             [$group, $e, $user] = descomposeArray($_POST);
             $result = array_keys($_POST[$group]);
@@ -224,6 +224,8 @@ class RestaurantController
 
     public function updateText()
     {
+        // print_r($_POST['menu']);
+        // exit;
         if (isset($_POST['datos_textos']) || isset($_POST['menu']) || isset($_POST['sw_menu']) || isset($_POST['plantilla']) || isset($_POST['sw_menu_text'])) {
             $alm = new Validar();
             [$group, $e, $user] = descomposeArray($_POST);
@@ -252,7 +254,7 @@ class RestaurantController
             foreach ($_POST[$group] as $k => $v) {
                 $alm->$group[$k] = $v;
                 if (is_array($alm->$group[$k])) {
-                    if (in_array($k, array('sobre_nosotros', 'horario', 'primero', 'segundo'))) {
+                    if (in_array($k, array('sobre_nosotros', 'horario','primero', 'segundo','postre'))) {
                         // print_r($alm->$group[$k]);
                         $alm->$group[$k] = array_values($alm->$group[$k]);
                         // print_r($alm->$group[$k]);

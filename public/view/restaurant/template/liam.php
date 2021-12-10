@@ -298,18 +298,21 @@
                     </div>
                 <?php }
                 ?>
-                    <div class="d-flex row col-md-6 col-sm-12 col-12 pr-0" id="social-network">
-                        <p class="text-white text-right col-12">Siguenos..</p>
-                        <div class="col-12  social d-flex  justify-content-end text-white pr-0">
-                            <?php 
-                            foreach($parameter->data->choose_social_network as $v){
-                                if (isset($parameter->data->sw_elements["sw".$v])) { ?> 
-                                    <a class="justify-content-center align-content-center row mx-2" href="https://<?= $parameter->data->social_network[$v]; ?>" target="_blank"><i class='fab fa-<?= $v?> fa-2x'></i></a> 
-                             <?php } 
-                             } ?>
-                        </div>
+                <div class="d-flex row col-md-6 col-sm-12 col-12 pr-0" id="social-network">
+                    <p class="text-white text-right col-12">Siguenos..</p>
+                    <div class="col-12  social d-flex  justify-content-end text-white pr-0">
+                        <?php
+                        if ($parameter->data->choose_social_network) {
+                            foreach ($parameter->data->choose_social_network as $v) {
+                                if (isset($parameter->data->sw_elements["sw" . $v])) { ?>
+                                    <a class="justify-content-center align-content-center row mx-2" href="https://<?= $parameter->data->social_network[$v]; ?>" target="_blank"><i class='fab fa-<?= $v ?> fa-2x'></i></a>
+                        <?php }
+                            }
+                        }
+                        ?>
                     </div>
-                
+                </div>
+
             </div>
             <div class="row" id="contact">
                 <div class="col-md-4 col-12 mb-3 mb-md-0">

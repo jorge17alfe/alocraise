@@ -8,7 +8,7 @@ class DesignController
             $alm = new ConsultsBD;
             $alm->menu = $alm->getRow(TABLE_MENU, '*', array('id_usuario', $user));
             $alm->data = $alm->getRow(TABLE_DATAAPP, '*', array('id_usuario', $user));
-            $menumenu = ["primero", "segundo", "img_menu"];
+            $menumenu = ["primero", "segundo","postre", "img_menu"];
             foreach ($menumenu as $k => $v) {
                 $alm->menu->$v = unserialize($alm->menu->$v);
             }

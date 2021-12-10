@@ -248,8 +248,6 @@
         row += "<a href='javascript:void[0]' onclick='deleterow(" + i + ",\"" + data + "\",\"image\")' id='deleteport" + i + "' class=' rounded-circle  btn text-danger mt-1 mr-lg-4 mr-sm-2 mx-2 p-0' style='height:28px; width:23px !important;'><i class='fas fa-trash'></i></a>";
         row += "</div>"
         row += "</div>"
-
-
         row += " </div>"
         $("#id" + data + "").after(row);
     }
@@ -277,34 +275,13 @@
 
         }
 
-        $(".btn_close_section ").hide('swing');
+        $(".btn_close_section").hide('swing');
     }
 
 
-    function printAlergens(data, section, a, i, o) {
-        var index = '';
-        index += "<div  class=' input-sm row  py-3 input-group-sm col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 justify-content-center '>"
-        index += "<div  class=' col-12 pb-0 mb-2'>"
-        index += "<p class='text-uppercase text-center pb-0 mb-0' style='font-size:10px; line-height: 70%;'><small>" + alergenos[o].title + "</small></p>"
-        index += "</div>"
-        index += "<div  "
-        if (data[section][a][i].includes(alergenos[o].alergens)) {
-            index += "style='background-color:var(--color_second); border-radius:10%; "
-        }
-        index += " width:100%;' class='col-6' >"
-        index += "<img class='mx-auto d-block' src='<?= assets("img/alergenos/ico/") ?>" + alergenos[o].alergens + ".png' name='alergenoimg" + o + "' style='width:45px; height:45px;'>"
-        index += "<input "
-        if (data[section][a][i].includes(alergenos[o].alergens)) {
-            index += "checked "
-        }
-        index += " onclick='choosealergens(\"alergenos" + section + a + i + o + "\")'  id='alergenos" + section + a + i + o + "'   type='checkbox' name='datos_textos[" + section + "][" + a + "][" + i + "][" + o + "]' class='inputalergens position-absolute' style='width:33%; height:50%; top:33%; left:35%; opacity:0;' value='" + alergenos[o].alergens + "'>"
-        index += "</div>"
-        index += "</div>"
-        return index;
-        // console.log(data[section][a][i][o])
-    }
+   
 </script>
-
+<?php require assetsphp("js/general") ?>
 
 <style>
     .portada,

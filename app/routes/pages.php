@@ -105,7 +105,7 @@ class Pages
             $alm->data = $alm->getRow(TABLE_DATAAPP, '*', array('nombre_web', $nombre_web));
             $alm->menu = $alm->getRow(TABLE_MENU, '*', array('id_usuario', $alm->data->id_usuario));
             
-            $menumenu=["primero","segundo","img_menu"];
+            $menumenu=["primero","segundo","postre","img_menu"];
             foreach($menumenu as $k => $v){
                 $alm->menu->$v = unserialize($alm->menu->$v);
             }
