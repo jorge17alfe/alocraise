@@ -1,15 +1,15 @@
 <?php
 include 'app/routes/pages.php';
 
-class Routes extends Pages
-{
-    public function __construct()
-    {
-        // return;
-        $this->routePage();
-    }
-    public static function routePage()
-    {
+// class Routes extends Pages
+// {
+//     public function __construct()
+//     {
+//         // return;
+//         $this->routePage();
+//     }
+//     public static function routePage()
+//     {
         session_start();
         Pages::registerPage('index', 'usuario/index', HEAD, FOOTER);
         Pages::registerPage('page-404', 'includes/404', HEAD, FOOTER);
@@ -24,6 +24,6 @@ class Routes extends Pages
         // Pages::registerPage('reloj', 'example/reloj', HEADHEAD, '');
         // Pages::registerPage('ahorcado1', 'example/ahorcado', HEADHEAD, '');
         // Pages::registerPage('example', 'example/example', HEADHEAD, '');
-        return;
-    }
-}
+        // return;
+//     }
+// }

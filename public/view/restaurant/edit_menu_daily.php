@@ -41,7 +41,7 @@
                             })
                             .done(function(response) {
                                 const task = JSON.parse(response);
-                                // console.log(task.data.sw_elements)
+                                console.log(task.data.sw_elements)
                                 if (task.data.sw_elements['sw_menu'] == 1) {
                                     $("#sw_menuBtn").attr("checked", "checked");
                                     $("#mainMenu").hide(800);

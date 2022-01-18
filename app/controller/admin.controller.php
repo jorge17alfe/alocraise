@@ -102,7 +102,6 @@ class AdminController
 
     public function updateRow($user = null)
     {
-        // print_r($_POST);
         session_start();
         if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] === config('admin')  && isset($_POST["id_usuario"])) {
             $id_usuario = $_POST['id_usuario'];
@@ -150,6 +149,7 @@ class AdminController
     public function deleteFoldersUsers($user = null)
     {
         if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] === config('admin') && isset($user)) {
+
             if ($user === config('admin')) {
                 die("The user cannot be removed is Administrator Acount");
             }
@@ -158,11 +158,12 @@ class AdminController
             $menu_dia = $this->model->getRow('menu_dia', 'img_menu', array("id_usuario", $user));
             $img = ["logo", "portada", "bebida", "carta", "img_menu"];
             $result->img_menu = $menu_dia->img_menu;
+
             foreach ($result as $k => $v) {
                 if (in_array($k, $img)) {
                     $ruta = (dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img/" . $k . "/");
                     $result->$k = unserialize($result->$k);
-                    // print_r($result->$k);
+
                     foreach ($result->$k as $v1) {
                         if (is_file($ruta . $v1)) {
                             unlink($ruta  . $v1);
@@ -171,6 +172,7 @@ class AdminController
                 }
                 rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img/" . $k);
             }
+            
             rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user . "/img");
             rmdir(dirname(dirname(dirname(__FILE__))) . "/public/users/" . $user);
             return;

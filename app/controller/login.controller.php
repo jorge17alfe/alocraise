@@ -30,7 +30,7 @@ class LoginController
                 $email = $alm->Filtrar_datos($_POST["email"]);
                 $confirm_email = $alm->Filtrar_datos($_POST["confirm_email"]);
                 
-                // Validamos usuario
+                // Validate usuario
                 $result_user = $this->validateUser($registro);
                 if ($result_user == 1) {
                     $alm->user = $registro;
@@ -38,7 +38,7 @@ class LoginController
                     $error[] = $result_user;
                 }
                 
-                // Validamos password
+                // Validate password
                 [$result_pass, $bolean_pass] = $this->validatePassword($password, $confirm_password);
                 if ($bolean_pass == 1) {
                     $alm->password = $result_pass;
@@ -46,9 +46,7 @@ class LoginController
                     $error[] = $result_pass;
                 }
                 
-                // print_r($result_pass);
-                // die();
-                // Validamos E-mail
+                // Validate E-mail
                 [$result_email, $bolean_email] = $this->validateEmail($email, $confirm_email);
                 if ($bolean_email == 1) {
                     $alm->email = $result_email;
@@ -208,7 +206,7 @@ class LoginController
             if (isset($token->recuperar_password)) {
                 [$pass, $bolean_pass] = $this->validatePassword($password, $confirm_password);
                 if ($bolean_pass == 1) {
-                    // Ejecutamos la consulta y actualizamos contaraseña y eliminamos token BD
+                    // Eject the consult, update password and delete token DB 
                     $this->model->updateRow(TABLE_PASS, 'password', $pass, array('recuperar_password', $token->recuperar_password));
                     $this->model->updateRow(TABLE_PASS, 'recuperar_password', '', array('recuperar_password', $token->recuperar_password));
                     msgAlert('Contraseña actualizada', 'iniciar-sesion');

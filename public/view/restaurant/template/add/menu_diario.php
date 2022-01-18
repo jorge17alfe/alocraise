@@ -1,7 +1,5 @@
-<?php if ($parameter->menu->sw_menu == 1 && !empty($parameter->menu->img_menu[0])) { ?>
-    <img class="img_menu w-100 " src="<?= SERVERURL ?>public/users/<?= $parameter->menu->id_usuario; ?>/img/img_menu/<?= $parameter->menu->img_menu[0]; ?>">
-<?php } ?>
-<?php if ($parameter->menu->sw_menu == null) { ?>
+<?php
+if (!isset($parameter->data->sw_elements['sw_menu'])) { ?>
     <div class="py-5">
         <?php if (!empty($parameter->data->logo[0])) { ?>
             <img height="100px " class="logo_menu rounded mb-4" src="<?= SERVERURL ?>public/users/<?= $parameter->data->id_usuario; ?>/img/logo/<?= $parameter->data->logo[0]; ?>">
@@ -23,15 +21,16 @@
             }
 
             foreach ($menu_sect as $k => $value) {
-                $d = (count($parameter->menu->$value) <= 1) ? 'nuestro '.$value  : 'nuestros '. count($parameter->menu->$value).' '. $value . 's';
+                $d = (count($parameter->menu->$value) <= 1) ? 'nuestro ' . $value  : 'nuestros ' . count($parameter->menu->$value) . ' ' . $value . 's';
             ?>
+             
 
-                <h5 class="">
-                    A escoger entre  <?= $d ?>
+                <h5 >
+                    <u>A escoger entre <?= $d ?></u>
                 </h5>
                 <?php
                 for ($i = 0; $i < count($parameter->menu->$value); $i++) {
-                    echo "<p class='py-0 my-0'><small>" . ($i + 1) . "º </small>" . $parameter->menu->$value[$i][0] . "</p>";
+                    echo "<p class='py-0 my-0 '><small>" . ($i + 1) . "º </small>" . $parameter->menu->$value[$i][0] . "</p>";
                 ?>
                     <div class="col-12 mb-0 pb-0">
                         <?php
@@ -52,7 +51,7 @@
 
         <br>
         <p>
-            <strong> <?php echo $parameter->menu->incluye . '<br />'; ?></strong>
+           <u> <strong> <?php echo $parameter->menu->incluye . '<br />'; ?></strong></u>
         </p>
         <p class="">
             <?php
@@ -61,4 +60,6 @@
             ?>
         </p>
     </div>
+<?php } else { ?>
+    <img class="img_menu w-100 " src="<?= SERVERURL ?>public/users/<?= $parameter->menu->id_usuario; ?>/img/img_menu/<?= $parameter->menu->img_menu[0]; ?>">
 <?php } ?>

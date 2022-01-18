@@ -20,22 +20,6 @@ class RestaurantController
         }
         redirect("iniciar-sesion");
     }
-    public function example($data = null)
-    {
-        session_start();
-        if (isset($_SESSION["usuario"])) {
-            // $var =  "<div style='margin-bottom:1rem; margin:2rem 1rem; font-size:85px; background-color:blue; height:10rem; width:10rem;'> </div>";
-            // $var .= "<div style='margin-bottom:1rem; margin:2rem 1rem; font-size:85px; background-color:red; height:10rem; width:10rem;'> </div>";
-            // $var .= "<div style='margin-bottom:1rem; margin:2rem 1rem; font-size:85px; background-color:purple; height:10rem; width:10rem;'> </div>";
-            $var = "It´s page show route " . SERVERURL . "restaurant/example";
-            echo $var;
-
-            // $alm = $this->getParameter($_SESSION["usuario"]);
-            // view('example/example', HEAD, FOOTER, $alm);
-            die();
-        }
-        redirect("iniciar-sesion");
-    }
 
     public function editImage($data = null)
     {
@@ -117,7 +101,6 @@ class RestaurantController
     }
     public function getData2($user2 = 'jorge')
     {
-
         $alm = new ConsultsBD;
         $alm->menu = $this->model->getRow(TABLE_MENU, '*', array($this->column, $user2));
         $alm->data = $this->model->getRow(TABLE_DATAAPP, '*', array($this->column, $user2));
@@ -141,10 +124,8 @@ class RestaurantController
 
     public function updateTextMenu()
     {
-
-        print_r($_POST);
-        die();
         if (!empty($_POST)) {
+
             [$group, $e, $user] = descomposeArray($_POST);
             $result = array_keys($_POST[$group]);
             if (isset($_POST[$group])) {
@@ -161,14 +142,14 @@ class RestaurantController
                         }
                     }
                 }
-                // print_r($result);
+
                 foreach ($_POST[$group] as $k => $v) {
                     $alm->$group[$k] = serialize($v);
                 }
+
                 unset($alm->$group[$this->column]);
-                // print_r($alm->$group);
-                // exit();
                 $table = $this->getTable($group);
+
                 foreach ($alm->$group as $name => $value) {
                     $ok =  $this->model->updateRow($table, $name, $value, array($this->column, $_POST[$group]['id_usuario']));
                 }
@@ -224,8 +205,6 @@ class RestaurantController
 
     public function updateText()
     {
-        // print_r($_POST['menu']);
-        // exit;
         if (isset($_POST['datos_textos']) || isset($_POST['menu']) || isset($_POST['sw_menu']) || isset($_POST['plantilla']) || isset($_POST['sw_menu_text'])) {
             $alm = new Validar();
             [$group, $e, $user] = descomposeArray($_POST);
@@ -234,6 +213,7 @@ class RestaurantController
                 $webname = $alm->Eliminar_acentos($_POST[$group]['nombre_empresa']);
                 $_POST[$group]['nombre_web'] = strtolower(str_replace(' ', '-', $webname)) . '-' . md5($_POST[$group]['id_usuario']);
             }
+
             if (isset($_POST["sw_menu"]) || isset($_POST['sw_menu_text'])) {
                 if (isset($_POST[$group])) {
                     $res = $this->getData($_POST[$group]["id_usuario"]);
@@ -245,34 +225,31 @@ class RestaurantController
                     }
                 }
             }
+
             if (!isset($_POST['datos_textos']['sw_elements'])) {
                 $_POST['datos_textos']['sw_elements'] = '';
             }
+
             if (!isset($_POST['datos_textos']['choose_social_network'])) {
                 $_POST['datos_textos']['choose_social_network'] = '';
             }
+
             foreach ($_POST[$group] as $k => $v) {
                 $alm->$group[$k] = $v;
                 if (is_array($alm->$group[$k])) {
                     if (in_array($k, array('sobre_nosotros', 'horario','primero', 'segundo','postre'))) {
-                        // print_r($alm->$group[$k]);
                         $alm->$group[$k] = array_values($alm->$group[$k]);
-                        // print_r($alm->$group[$k]);
                         for ($i = 0; $i  < count($alm->$group[$k]); $i++) {
                             if (is_array($alm->$group[$k][$i])) {
-                                // for ($a = 0; $a  < count($alm->$group[$k][$i]); $a++) {
                                     $alm->$group[$k][$i]= array_values( $alm->$group[$k][$i]);
                                 foreach ($alm->$group[$k][$i] as $key=> $value) {
                                     $alm->$group[$k][$i][$key] = $alm->Filtrar_datos($alm->$group[$k][$i][$key]);
                                     $alm->$group[$k][$i][$key] = ucfirst($alm->$group[$k][$i][$key]);
-                                    // print_r($alm->$group[$k][$i][$key]);
                                 }
                             } else {
-                                
                                 $alm->$group[$k][$i] = ucfirst($alm->$group[$k][$i]);
                             }
                         }
-                        // $alm->$group[$k] = serialize($alm->$group[$k]);
                     }
                     $alm->$group[$k] = serialize($alm->$group[$k]);
                 } else {
@@ -284,10 +261,11 @@ class RestaurantController
             }
             
             $table = $this->getTable($group);
-            // print_r($alm->$group[$k]); exit;
+
             foreach ($alm->$group as $name => $value) {
                 $ok =  $this->model->updateRow($table, $name, $value, array($this->column, $alm->$group['id_usuario']));
             }
+
             if ($ok == true) {
                 echo  'Datos actualizados';
                 return $ok;
@@ -300,10 +278,13 @@ class RestaurantController
     public function updateImages()
     {
         if (!empty($_FILES)) {
+
             foreach ($_POST as $group => $nothing)
                 $user = $_POST[$group]['id_usuario'];
+
             foreach ($_FILES[$group]['name'] as $k => $v);
             $alm = new   Validar;
+
             for ($i = 0; $i < count($_FILES[$group]['name'][$k]); $i++) {
                 if (!empty($_FILES[$group]['name'][$k][$i])) {
                     $alm->image_name = $_FILES[$group]['name'][$k][$i];
@@ -340,6 +321,7 @@ class RestaurantController
                     }
                 }
             }
+
             if (isset($error)) {
                 for ($i = 0; $i < count($error); $i++) {
                     echo ($i + 1) . "º " . $error[$i] . "<br>";
@@ -363,14 +345,13 @@ class RestaurantController
 
     public function deleteRow()
     {
-        // print_r($_POST);
-        // exit();
         if (isset($_POST["group"])) {
             $alm = new Validar;
             [$array, $name, $value] = descomposeArray($_POST);
             $table = $this->getTable($_POST['group']);
             $data = $this->model->getRow($table, '*', array($this->column, $_POST[$this->column]));
             $data->$array = unserialize($data->$array);
+
             if ($_POST["group"] === 'image' || $_POST["group"] === 'menu') {
                 $contar = 0;
                 foreach ($data->$array as $v) {
@@ -383,6 +364,7 @@ class RestaurantController
                     unlink($ruta . $data->$array[$name]);
                 }
             }
+
             if (isset($_POST['item'])) {
                 unset($data->$array[$name][$_POST['item']]);
                 $data->$array[$name] = array_values($data->$array[$name]);
@@ -390,6 +372,7 @@ class RestaurantController
                 unset($data->$array[$name]);
                 $data->$array = array_values($data->$array);
             }
+
             $data->$array = serialize($data->$array);
             foreach ($data as $name => $value)
                 $this->model->updateRow($table, $name, $value, array($this->column, $_POST[$this->column]));
@@ -417,7 +400,6 @@ class RestaurantController
 
     public function getTable($group = null)
     {
-        // echo $group;
         if ($group == 'menu' ||$group == 'img_menu') {
             $table = TABLE_MENU;
             return $table;
