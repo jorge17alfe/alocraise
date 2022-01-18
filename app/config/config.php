@@ -4,7 +4,7 @@ define('SERVERURL', 'https://localhost/alocraise2.0/');
 define('HEAD', 'includes/head');
 define('HEADHEAD', 'includes/add/head');
 define('FOOTER', 'includes/footer');
-define('CLAVE_PIN_APP', 'POL1K2RETY47UTRY190UK7FRTH6');
+define('CLAVE_PIN_APP', 'P693OL1K2RETY47UTRY190UK7FRTH6UIPÑLKJ396');
 define('TABLE_PERSONAL', 'datos_personales');
 define('TABLE_MENU', 'menu_dia');
 define('TABLE_PASS', 'usuarios_pass');
