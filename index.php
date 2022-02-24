@@ -10,7 +10,7 @@ $lang =
     substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
 include 'app/config/database.php';
-include 'app/config/databaseAhorcado.php';
+// include 'app/config/databaseAhorcado.php';
 include 'app/config/config.php';
 include 'app/routes/route.php';
 include 'app/helpers/functions.php';

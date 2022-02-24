@@ -55,8 +55,6 @@ class RestaurantController
 
     public function getParameter($user = "jorge")
     {
-
-
         if (isset($user)) {
             $alm = new ConsultsBD;
             $alm->menu = $this->model->getRow(TABLE_MENU, '*', array($this->column, $user));
