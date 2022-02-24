@@ -23,5 +23,5 @@ include 'app/lang/es.php';
 
 include 'app/routes/core.php';
 new Core;
-
+// example para commit
 ?>
